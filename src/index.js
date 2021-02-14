@@ -1,11 +1,16 @@
-import React, { Component } from "react";
-import ReactDOM from "react-dom";
-import "./index.css";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { BrowserRouter as Router } from 'react-router-dom';import './index.css';
 
-class Welcome extends Component {
-  render() {
-    return <h1>Hello there</h1>;
-  }
-}
+import App from './App';
 
-ReactDOM.render(<Welcome />, document.getElementById("root"));
+ReactDOM.render(
+  <React.StrictMode>
+    <Router>
+      <App/>
+    </Router>
+  </React.StrictMode>,
+  document.getElementById('root')
+);
+
+

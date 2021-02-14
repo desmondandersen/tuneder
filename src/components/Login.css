@@ -1,0 +1,16 @@
+.Login {
+    padding: 60px;
+}
+
+.Login button {
+    margin: 0 auto;
+    width: 320px;
+    text-align: center;
+}
+
+.Login form{
+    margin: 0 auto;
+    width: 320px;
+    text-align: left;
+}
+

@@ -1,0 +1,11 @@
+.CreateAccount button {
+    margin: 0 auto;
+    width: 320px;
+    text-align: center;
+}
+
+.CreateAccount form{
+    margin: 0 auto;
+    width: 320px;
+    text-align: left;
+}
