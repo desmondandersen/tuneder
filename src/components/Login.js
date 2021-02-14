@@ -14,18 +14,21 @@ export default function Login() {
     function validSubmission(){
         return username.length > 0 && password.length >0; 
     }
-
-
-
+    
+    function handleSubmit(){
+        console.log("logged in")
+    }
 
 
     return(
         <div className = "Login">
-            <Form>
+            <Form onSubmit = {handleSubmit}>
                 <Form.Group controlId = "username">
                     <Form.Label>Username</Form.Label>
                     <Form.Control
+                        autoFocus
                         placeholder="username"
+                        value = {username}
                         onChange = {(e) => setUsername(e.target.value)}
                     />
                 </Form.Group>
@@ -34,11 +37,12 @@ export default function Login() {
                     <Form.Label>Password</Form.Label>
                     <Form.Control
                         placeholder="password"
+                        value = {password}
                         onChange = {(e) => setPassword(e.target.value)}
                     />
                 </Form.Group>
 
-                <Button>
+                <Button id = 'submitButton' type = 'submit' disabled = {!validSubmission()}>
                     Login
                 </Button>
             </Form>

@@ -2,3 +2,7 @@
   text-align: center;
   font-family: Helvetica Neue;
 }
+
+.Bar {
+  justify-content: end;
+}
