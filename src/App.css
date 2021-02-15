@@ -2,3 +2,40 @@
   text-align: center;
   font-family: Helvetica Neue;
 }
+
+.CreateAccount button {
+  margin: 0 auto;
+  width: 320px;
+  text-align: center;
+}
+
+.CreateAccount form{
+  margin: 0 auto;
+  width: 320px;
+  text-align: left;
+}
+
+.initializer {
+  padding: 80px;
+  text-align: center;
+}
+
+.Home .initializer h1 {
+  font-family: sans-serif;
+}
+
+.Login {
+  padding: 60px;
+}
+
+.Login button {
+  margin: 0 auto;
+  width: 320px;
+  text-align: center;
+}
+
+.Login form{
+  margin: 0 auto;
+  width: 320px;
+  text-align: left;
+}
