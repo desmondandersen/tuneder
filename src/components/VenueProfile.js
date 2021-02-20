@@ -4,8 +4,7 @@ import Button from "react-bootstrap/Button";
 
 function VenueProfile(props) {
     return (
-        <Card style={{ width: '20rem' }}>
-            <Card.Img variant="top" src="holder.js/100px180" />
+        <Card style={{ width: '30rem'}, {marginTop: '1rem'}}>
             <Card.Body>
                 <Card.Title>{props.name}</Card.Title>
                 <Card.Text>
