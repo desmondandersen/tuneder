@@ -5,6 +5,7 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import VenueProfile from "./VenueProfile";
 import PersonProfile from "./PersonProfile";
+
 //import { Button } from "bootstrap";
 
 // to be replaced with database info
