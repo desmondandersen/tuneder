@@ -2,6 +2,9 @@ import React, { useState } from "react"
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 
+import {Link} from 'react-router-dom';
+import { LinkContainer } from "react-router-bootstrap"
+
 
 export default function Login() {
     //create constructor for username, password
@@ -43,7 +46,17 @@ export default function Login() {
                 <Button id = 'submitButton' type = 'submit' disabled = {!validSubmission()}>
                     Login
                 </Button>
+
+                <p class = 'text-right'>
+                    <LinkContainer to = '/create_account'>
+                        <Link> Create Account </Link>
+                    </LinkContainer>
+                </p>
+
+                
             </Form>
+
         </div>
+
     )
 }
