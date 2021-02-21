@@ -4,38 +4,47 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col'
+import Col from 'react-bootstrap/Col';
+import { useState, useReducer } from 'react';
 
-    
+export default function NewMusician(){
+      const [firstName, setfirstName] = useState('');
+      const [password, setPassword] = useState('');
 
-class NewMusician extends React.Component {
-    constructor(props) {
-                super(props);
-                this.state = {value: ['guitar']};
+      
+      function validPassword() {
+        return password.length > 4;
+      }
+      function validName() {
+        return firstName.length > 0;
+      }
 
-                this.handleChange = this.handleChange.bind(this);
-                this.handleSubmit = this.handleSubmit.bind(this);
-              }
-
-              handleChange(event) {
-                this.setState({value: Array.from(event.target.selectedOptions,(item) => item.value)});
-              }
-
-              handleSubmit(event) {
-                alert('You submitted the form');
-                event.preventDefault();
-              }
-
-              render() {
-                return (
-                        <div className="wrapper">
+      const handleSubmit= event=> {
+          event.preventDefault();
+          if (!validPassword()) {
+          alert('Password too short. Change and resubmit')
+          return
+          }
+          if (!validName()){
+            alert('First Name is a required field. Please fill it in and resubmit.' )
+            return
+          }
+          alert('You submitted the form');
+          
+      }
+          return(
+                      <div className="wrapper">
                         <h1 >Create A New Musician Profile!</h1>
-                        <Form className="text-left">
+                        <Form className="text-left" onSubmit={handleSubmit}>
                           <Form.Row> 
                           <Col md={4} > 
                              <Form.Group ccontrolId="firstname">
                               <Form.Label> First Name</Form.Label>
-                              <Form.Control type="name" placeholder="Enter first name" />
+                              <Form.Control 
+                              type="name" 
+                              placeholder="Enter first name"
+                              value={firstName}
+                              onChange={(e)=>setfirstName(e.target.value)} />
                             </Form.Group> 
                           </Col>
                           <Col md ={5}>
@@ -66,13 +75,14 @@ class NewMusician extends React.Component {
 
                         </Form.Row>
                         
-                        
-                        
-                
                         <Col md={9}> 
                           <Form.Group controlId="password">
                             <Form.Label>Password</Form.Label>
-                            <Form.Control type="password" placeholder="8 characters minimum" />
+                            <Form.Control 
+                            type="password" 
+                            placeholder="5 characters minimum"
+                            value={password}
+                            onChange={(e)=> setPassword(e.target.value)} />
                           </Form.Group>
                         </Col>
                         <Col md={9}>
@@ -85,10 +95,8 @@ class NewMusician extends React.Component {
                         </Form.Group>
                         </Col>
                       
-                       
-                        
-
-                        <Col md={7}> 
+                      <Form.Row> 
+                      <Col md={7}> 
                         <Form.Group controlId="primaryInstrument">
                             <Form.Label>Primary Instrument</Form.Label>
                             <Form.Control as="select">
@@ -102,15 +110,28 @@ class NewMusician extends React.Component {
                           </Form.Group>
                           </Col>
                           
-                          <Col md={7}>
-                         
+                          <Col >
+                        
                           <Form.Group controlId="primaryexpertise">
-                            <Form.Label>Expertise Level</Form.Label>
-                            <Form.Control type="range" />
+                          {[ 'radio'].map((type) => (
+                          <div key={`inline-${type}`} className="mb-3">
+                            <br></br>
+                            <Form.Label>Level of Expertise: </Form.Label>
+                          <Form.Check inline label="1" type={type} name='expertise' id={`inline-${type}-1`} />
+                          <Form.Check inline label="2" type={type} name='expertise' id={`inline-${type}-2`} />
+                          <Form.Check inline label="3" type={type} name='expertise' id={`inline-${type}-3`} />
+                          <Form.Check inline label="4" type={type} name='expertise' id={`inline-${type}-4`} />
+                          <Form.Check inline label="5" type={type} name='expertise' id={`inline-${type}-5`} />
+                          </div>
+                          ))}
                             </Form.Group>
                           </Col>
-                          <Col md={7}> 
-                          <Form.Group controlId="secondaryInstrument">
+                      </Form.Row>
+
+
+                      <Form.Row> 
+                      <Col md={7}> 
+                        <Form.Group controlId="secondaryInstrument">
                             <Form.Label>Secondary Instrument</Form.Label>
                             <Form.Control as="select">
                               <option>Drums</option>
@@ -118,15 +139,30 @@ class NewMusician extends React.Component {
                               <option>Guitar</option>
                               <option>Bass</option>
                               <option>Vocals</option>
+                              <option>Other, add in notes section</option>
                             </Form.Control>
                           </Form.Group>
                           </Col>
-                        <Col md={7}> 
-                        <Form.Group controlId="secondaryexpertise">
-                            <Form.Label>Expertise Level</Form.Label>
-                            <Form.Control type="range" />
-                        </Form.Group>
-                        </Col>
+                          
+                          <Col >
+                        
+                          <Form.Group controlId="secondaryexpertise">
+                          {[ 'radio'].map((type) => (
+                          <div key={`inline-${type}`} className="mb-3">
+                          <br></br>
+                          <Form.Label>Level of Expertise: </Form.Label>
+                          <Form.Check inline label="1" type={type} name='expertise' id={`inline-${type}-1`} />
+                          <Form.Check inline label="2" type={type} name='expertise' id={`inline-${type}-2`} />
+                          <Form.Check inline label="3" type={type} name='expertise' id={`inline-${type}-3`} />
+                          <Form.Check inline label="4" type={type} name='expertise' id={`inline-${type}-4`} />
+                          <Form.Check inline label="5" type={type} name='expertise' id={`inline-${type}-5`} />
+                          </div>
+                          ))}
+                            </Form.Group>
+                          </Col>
+                      </Form.Row>
+                        
+                        
                         
                         <Col md={7}> 
                         <Form.Group controlId="moreInfo">
@@ -140,11 +176,14 @@ class NewMusician extends React.Component {
                           </Button>
                         </Form>
                         </div>
-                );
-              }
-            }
 
-export default NewMusician;
+
+
+
+  )
+}
+    
+
 
 
               
