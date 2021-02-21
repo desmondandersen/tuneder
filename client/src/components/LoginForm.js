@@ -9,11 +9,7 @@ export default function Login() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-<<<<<<< HEAD:client/src/components/Login.js
-  //make sure entries are valid TODO: 0 length for now, but change to 3 & 5
-=======
   // Validate login items
->>>>>>> 496dc5ae643cb2579011fc93c9e212dff0471392:client/src/components/LoginForm.js
   function validSubmission() {
     return username.length > 2 && password.length;
   }
