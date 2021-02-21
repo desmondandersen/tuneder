@@ -1,45 +1,33 @@
-.App {
+.app {
   text-align: center;
-  font-family: Helvetica Neue;
+  font-family: 'Helvetica Neue', sans-serif;
 }
 
-.CreateAccount button {
-  margin: 0 auto;
-  width: 320px;
-  text-align: center;
-}
-
-.CreateAccount form{
-  margin: 0 auto;
-  width: 320px;
-  text-align: left;
-}
-
-.initializer {
-  padding: 80px;
-  text-align: center;
-}
-
-.Home .initializer h1 {
-  font-family: sans-serif;
-}
-
-.Login {
+.user-input {
   padding: 60px;
 }
 
-.Login button {
+.user-input button {
   margin: 0 auto;
   width: 320px;
   text-align: center;
 }
 
-.Login form{
+.user-input form {
   margin: 0 auto;
   width: 320px;
   text-align: left;
 }
 
-.Login p{
+.user-input p {
   margin-top: 10px;
+}
+
+.profile-card--person {
+  margin-top: '1rem';
+  width: '15rem';
+}
+.profile-card--venue {
+  margin-top: '1rem';
+  width: '30rem';
 }

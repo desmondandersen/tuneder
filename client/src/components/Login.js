@@ -20,7 +20,7 @@ export default function Login() {
   }
 
   return (
-    <div className='Login'>
+    <div className='user-input'>
       <Form onSubmit={handleSubmit}>
         <Form.Group controlId='username'>
           <Form.Label>Username</Form.Label>
@@ -46,8 +46,8 @@ export default function Login() {
         </Button>
 
         <p class='text-right'>
-          <LinkContainer to='/create_account'>
-            <Link> Create Account </Link>
+          <LinkContainer to='/create-account'>
+            <Link> Create Account</Link>
           </LinkContainer>
         </p>
       </Form>

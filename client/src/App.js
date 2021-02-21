@@ -22,7 +22,7 @@ function App() {
   }, [dispatch]);
 
   return (
-    <div className='App'>
+    <div className='app'>
       <Container>
         <Navbar collapseOnSelect bg='light' expand='md'>
           <LinkContainer to='/'>
