@@ -10,7 +10,7 @@ export default function Login() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  //make sure entries are valid TODO: 0 length for now, but change to 5 & 5
+  //make sure entries are valid TODO: 0 length for now, but change to 3 & 5
   function validSubmission() {
     return username.length > 2 && password.length > 4;
   }
