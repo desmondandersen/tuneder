@@ -10,13 +10,14 @@ export default function Login() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  //make sure entries are valid TODO: 0 length for now, but change to 5 & 8
+  //make sure entries are valid TODO: 0 length for now, but change to 5 & 5
   function validSubmission() {
-    return username.length > 0 && password.length > 0;
+    return username.length > 2 && password.length > 4;
   }
 
   function handleSubmit() {
     console.log('logged in');
+
   }
 
   return (
@@ -41,9 +42,13 @@ export default function Login() {
           />
         </Form.Group>
 
-        <Button id='submitButton' type='submit' disabled={!validSubmission()}>
-          Login
-        </Button>
+        {/* if login info is valid, the button brings you to home. if not, button is disabled*/}
+        <Link to = '/'>
+          <Button id='submitButton' type='submit' disabled={!validSubmission()}>
+            Login
+          </Button>
+        </Link>
+        
 
         <p class='text-right'>
           <LinkContainer to='/create_account'>
