@@ -7,10 +7,11 @@ import venueRoutes from './routes/venues';
 
 const app = express();
 
-app.use('/venues', venueRoutes);
-
 app.use(bodyParser.json({ limit: '30mb', extended: true }));
 app.use(cors());
+
+// Specify routes
+app.use('/venues', venueRoutes);
 
 // Connect to mongoDB cluster
 const CONNECTION_URL =
@@ -23,9 +24,7 @@ mongoose
     useUnifiedTopology: true,
   })
   .then(() =>
-    app.listen(PORT, () =>
-      console.log(`Server running on http://localhost:${PORT}/`)
-    )
+    app.listen(PORT, () => console.log(`Server running on port: ${PORT}`))
   )
   .catch((error) => console.log(error.message));
 
