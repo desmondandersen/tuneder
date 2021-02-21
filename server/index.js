@@ -3,7 +3,11 @@ import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import cors from 'cors';
 
+import venueRoutes from './routes/venues';
+
 const app = express();
+
+app.use('/venues', venueRoutes);
 
 app.use(bodyParser.json({ limit: '30mb', extended: true }));
 app.use(cors());
