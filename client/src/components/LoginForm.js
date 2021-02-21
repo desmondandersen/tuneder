@@ -3,25 +3,27 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
 import { Link } from 'react-router-dom';
-import { LinkContainer } from 'react-router-bootstrap';
 
 export default function Login() {
-  //create constructor for username, password
+  // Create constructor for username, password
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
+<<<<<<< HEAD:client/src/components/Login.js
   //make sure entries are valid TODO: 0 length for now, but change to 3 & 5
+=======
+  // Validate login items
+>>>>>>> 496dc5ae643cb2579011fc93c9e212dff0471392:client/src/components/LoginForm.js
   function validSubmission() {
-    return username.length > 2 && password.length > 4;
+    return username.length > 2 && password.length;
   }
 
   function handleSubmit() {
-    console.log('logged in');
-
+    console.log('Logging in...');
   }
 
   return (
-    <div className='Login'>
+    <div className='user-input'>
       <Form onSubmit={handleSubmit}>
         <Form.Group controlId='username'>
           <Form.Label>Username</Form.Label>
@@ -43,17 +45,14 @@ export default function Login() {
         </Form.Group>
 
         {/* if login info is valid, the button brings you to home. if not, button is disabled*/}
-        <Link to = '/'>
+        <Link to='/'>
           <Button id='submitButton' type='submit' disabled={!validSubmission()}>
             Login
           </Button>
         </Link>
-        
 
-        <p class='text-right'>
-          <LinkContainer to='/create_account'>
-            <Link> Create Account </Link>
-          </LinkContainer>
+        <p className='text-right'>
+          <Link to='/create-account'>Create Account</Link>
         </p>
       </Form>
     </div>
