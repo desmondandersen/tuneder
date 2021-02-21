@@ -30,7 +30,7 @@ class NewMusician extends React.Component {
                 return (
                         <div className="wrapper">
                         <h1 >Create A New Musician Profile!</h1>
-                        <Form className="text-left">
+                        <Form className="text-left" onSubmit={this.handleSubmit}>
                           <Form.Row> 
                           <Col md={4} > 
                              <Form.Group ccontrolId="firstname">
@@ -85,10 +85,8 @@ class NewMusician extends React.Component {
                         </Form.Group>
                         </Col>
                       
-                       
-                        
-
-                        <Col md={7}> 
+                      <Form.Row> 
+                      <Col md={7}> 
                         <Form.Group controlId="primaryInstrument">
                             <Form.Label>Primary Instrument</Form.Label>
                             <Form.Control as="select">
@@ -102,15 +100,28 @@ class NewMusician extends React.Component {
                           </Form.Group>
                           </Col>
                           
-                          <Col md={7}>
-                         
+                          <Col >
+                        
                           <Form.Group controlId="primaryexpertise">
-                            <Form.Label>Expertise Level</Form.Label>
-                            <Form.Control type="range" />
+                          {[ 'radio'].map((type) => (
+                          <div key={`inline-${type}`} className="mb-3">
+                            <br></br>
+                            <Form.Label>Level of Expertise: </Form.Label>
+                          <Form.Check inline label="1" type={type} name='expertise' id={`inline-${type}-1`} />
+                          <Form.Check inline label="2" type={type} name='expertise' id={`inline-${type}-2`} />
+                          <Form.Check inline label="3" type={type} name='expertise' id={`inline-${type}-3`} />
+                          <Form.Check inline label="4" type={type} name='expertise' id={`inline-${type}-4`} />
+                          <Form.Check inline label="5" type={type} name='expertise' id={`inline-${type}-5`} />
+                          </div>
+                          ))}
                             </Form.Group>
                           </Col>
-                          <Col md={7}> 
-                          <Form.Group controlId="secondaryInstrument">
+                      </Form.Row>
+
+
+                      <Form.Row> 
+                      <Col md={7}> 
+                        <Form.Group controlId="secondaryInstrument">
                             <Form.Label>Secondary Instrument</Form.Label>
                             <Form.Control as="select">
                               <option>Drums</option>
@@ -118,15 +129,30 @@ class NewMusician extends React.Component {
                               <option>Guitar</option>
                               <option>Bass</option>
                               <option>Vocals</option>
+                              <option>Other, add in notes section</option>
                             </Form.Control>
                           </Form.Group>
                           </Col>
-                        <Col md={7}> 
-                        <Form.Group controlId="secondaryexpertise">
-                            <Form.Label>Expertise Level</Form.Label>
-                            <Form.Control type="range" />
-                        </Form.Group>
-                        </Col>
+                          
+                          <Col >
+                        
+                          <Form.Group controlId="secondaryexpertise">
+                          {[ 'radio'].map((type) => (
+                          <div key={`inline-${type}`} className="mb-3">
+                          <br></br>
+                          <Form.Label>Level of Expertise: </Form.Label>
+                          <Form.Check inline label="1" type={type} name='expertise' id={`inline-${type}-1`} />
+                          <Form.Check inline label="2" type={type} name='expertise' id={`inline-${type}-2`} />
+                          <Form.Check inline label="3" type={type} name='expertise' id={`inline-${type}-3`} />
+                          <Form.Check inline label="4" type={type} name='expertise' id={`inline-${type}-4`} />
+                          <Form.Check inline label="5" type={type} name='expertise' id={`inline-${type}-5`} />
+                          </div>
+                          ))}
+                            </Form.Group>
+                          </Col>
+                      </Form.Row>
+                        
+                        
                         
                         <Col md={7}> 
                         <Form.Group controlId="moreInfo">
