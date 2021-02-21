@@ -7,4 +7,5 @@ The concept behind our web app is an interactive platform for musicians to colla
 Make sure you have the latest versions of node and npm installed.
 
 1. Clone repository and navigate to project directory.
-2. Run `yarn start`.
+2. `npm install` to install dependencies.
+3. `yarn --cwd client start`
