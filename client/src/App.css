@@ -23,6 +23,7 @@
   margin-top: 10px;
 }
 
+.form--musician form,
 .form--venue form {
   margin: 0 auto;
   width: 60%;

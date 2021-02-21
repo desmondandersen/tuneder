@@ -6,18 +6,17 @@ import { Link } from 'react-router-dom';
 import { LinkContainer } from 'react-router-bootstrap';
 
 export default function Login() {
-  //create constructor for username, password
+  // Create constructor for username, password
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  //make sure entries are valid TODO: 0 length for now, but change to 5 & 5
+  // Validate login items
   function validSubmission() {
     return username.length > 2 && password.length > 4;
   }
 
   function handleSubmit() {
-    console.log('logged in');
-
+    console.log('Logging in...');
   }
 
   return (
@@ -43,14 +42,13 @@ export default function Login() {
         </Form.Group>
 
         {/* if login info is valid, the button brings you to home. if not, button is disabled*/}
-        <Link to = '/'>
+        <Link to='/'>
           <Button id='submitButton' type='submit' disabled={!validSubmission()}>
             Login
           </Button>
         </Link>
-        
 
-        <p class='text-right'>
+        <p className='text-right'>
           <LinkContainer to='/create-account'>
             <Link> Create Account</Link>
           </LinkContainer>

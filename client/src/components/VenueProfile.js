@@ -7,8 +7,6 @@ import Button from 'react-bootstrap/Button';
 function VenueProfile(props) {
   const venues = useSelector((state) => state.venues);
 
-  console.log(venues);
-
   return (
     <Card className='card--venue'>
       <Card.Body>

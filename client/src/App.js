@@ -2,14 +2,13 @@ import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { getVenues } from './actions/venues';
-import Login from './components/LoginForm.js';
+import { getMusicians } from './actions/musicians';
 import Routes from './Routes.js';
 import { LinkContainer } from 'react-router-bootstrap';
 
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 
 import './App.css';
@@ -18,7 +17,8 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getVenues());
+    //dispatch(getVenues());
+    dispatch(getMusicians());
   }, [dispatch]);
 
   return (

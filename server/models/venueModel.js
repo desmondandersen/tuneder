@@ -9,6 +9,6 @@ const venueSchema = mongoose.Schema({
   // date: { type: Date, default: new Date() },
 });
 
-const VenueMessage = mongoose.model('VenueMessage', venueSchema);
+const Venues = mongoose.model('Venues', venueSchema);
 
-export default VenueMessage;
+export default Venues;

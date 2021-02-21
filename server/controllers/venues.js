@@ -1,15 +1,15 @@
 import express from 'express';
 
-import VenueMessage from '../models/venueMessage.js';
+import Venues from '../models/venueModel.js';
 
 const router = express.Router();
 
 // Get venue information
 export const getVenues = async (req, res) => {
   try {
-    const venueMessages = await VenueMessage.find();
+    const venues = await Venues.find();
 
-    res.status(200).json(venueMessages);
+    res.status(200).json(venues);
   } catch (error) {
     res.status(404).json({ message: error.message });
   }
@@ -18,7 +18,7 @@ export const getVenues = async (req, res) => {
 // Create new venue
 export const createVenue = async (req, res) => {
   const venue = req.body;
-  const newVenue = new VenueMessage(venue);
+  const newVenue = new Venues(venue);
 
   try {
     await newVenue.save();

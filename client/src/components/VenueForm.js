@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Form from 'react-bootstrap/Form';
@@ -14,17 +15,16 @@ const VenueForm = () => {
   });
   const dispatch = useDispatch();
 
-  // handleChange(event) {
-  //   this.setState({
-  //     value: Array.from(event.target.selectedOptions, (item) => item.value),
-  //   });
-  // }
-
   const handleSubmit = (event) => {
     event.preventDefault();
 
     dispatch(createVenue(venueData)); // dispatch action
   };
+
+  // Validate login items
+  function validSubmission() {
+    return venueData.name.length && venueData.email.length;
+  }
 
   return (
     <div className='form--venue'>
@@ -85,9 +85,11 @@ const VenueForm = () => {
           <Form.Control as='textarea' rows={7} />
         </Form.Group> */}
 
-        <Button variant='primary' type='submit'>
-          Submit
-        </Button>
+        <Link to='/'>
+          <Button variant='primary' type='submit' disabled={!validSubmission()}>
+            Submit
+          </Button>
+        </Link>
       </Form>
     </div>
   );

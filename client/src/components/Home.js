@@ -30,18 +30,19 @@ const musicians = [
 
 export default function Home() {
   const venues = useSelector((state) => state.venues);
+
   return (
     <div className='Home'>
       <Container>
         <Row>
           <Col>
             <h2>Venues</h2>
-            {venues.map((venue) => {
+            {venues.map((venue, key) => {
               return (
                 <VenueProfile
                   name={venue.name}
                   artist={venue.artist}
-                  key={venue.name}
+                  key={key}
                 />
               );
             })}
@@ -51,25 +52,25 @@ export default function Home() {
             <h2>Musicians</h2>
             <Row>
               <Col>
-                {musicians.map((person) => {
+                {musicians.map((person, key) => {
                   return (
                     <MusicianProfile
                       name={person.name}
                       instrument={person.instrument}
                       genre={person.genre}
-                      key={person.name}
+                      key={key}
                     />
                   );
                 })}
               </Col>
               <Col>
-                {musicians.map((person) => {
+                {musicians.map((person, key) => {
                   return (
                     <MusicianProfile
                       name={person.name}
                       instrument={person.instrument}
                       genre={person.genre}
-                      key={person.name}
+                      key={key}
                     />
                   );
                 })}
