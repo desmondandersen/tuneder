@@ -1,10 +1,14 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
+
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 
 function VenueProfile(props) {
+  const venues = useSelector((state) => state.venues);
+
   return (
-    <Card style={({ width: '30rem' }, { marginTop: '1rem' })}>
+    <Card className='card--venue'>
       <Card.Body>
         <Card.Title>{props.name}</Card.Title>
         <Card.Text>{props.artist}</Card.Text>
