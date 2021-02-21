@@ -3,7 +3,6 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
 import { Link } from 'react-router-dom';
-import { LinkContainer } from 'react-router-bootstrap';
 
 export default function Login() {
   // Create constructor for username, password
@@ -12,7 +11,7 @@ export default function Login() {
 
   // Validate login items
   function validSubmission() {
-    return username.length > 2 && password.length > 4;
+    return username.length > 2 && password.length;
   }
 
   function handleSubmit() {
@@ -49,9 +48,7 @@ export default function Login() {
         </Link>
 
         <p className='text-right'>
-          <LinkContainer to='/create-account'>
-            <Link> Create Account</Link>
-          </LinkContainer>
+          <Link to='/create-account'>Create Account</Link>
         </p>
       </Form>
     </div>

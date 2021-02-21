@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Form from 'react-bootstrap/Form';
@@ -14,17 +14,13 @@ const VenueForm = () => {
     email: '',
   });
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
-    dispatch(createVenue(venueData)); // dispatch action
+    dispatch(createVenue(venueData));
+    history.push('/');
   };
-
-  // Validate login items
-  function validSubmission() {
-    return venueData.name.length && venueData.email.length;
-  }
 
   return (
     <div className='form--venue'>
@@ -39,6 +35,7 @@ const VenueForm = () => {
             onChange={(e) =>
               setVenueData({ ...venueData, name: e.target.value })
             }
+            required
           />
         </Form.Group>
 
@@ -51,6 +48,7 @@ const VenueForm = () => {
             onChange={(e) =>
               setVenueData({ ...venueData, email: e.target.value })
             }
+            required
           />
           <Form.Text className='text-muted'>
             We'll never share your email with anyone else.
@@ -85,11 +83,9 @@ const VenueForm = () => {
           <Form.Control as='textarea' rows={7} />
         </Form.Group> */}
 
-        <Link to='/'>
-          <Button variant='primary' type='submit' disabled={!validSubmission()}>
-            Submit
-          </Button>
-        </Link>
+        <Button variant='primary' type='submit'>
+          Submit
+        </Button>
       </Form>
     </div>
   );

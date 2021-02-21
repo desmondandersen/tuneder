@@ -18,7 +18,7 @@ export const createVenue = (venue) => async (dispatch) => {
   try {
     const { data } = await api.createVenue(venue);
     const action = { type: 'CREATE', payload: data };
-
+    console.log('Creating venue');
     dispatch(action);
   } catch (error) {
     console.log('Error creating venue...');
