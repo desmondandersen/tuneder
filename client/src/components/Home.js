@@ -4,7 +4,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import VenueProfile from './VenueProfile';
-import PersonProfile from './PersonProfile';
+import MusicianProfile from './MusicianProfile';
 
 //import { Button } from "bootstrap";
 
@@ -75,7 +75,7 @@ export default function Home() {
                 <div className='People'>
                   {musicians.map((person) => {
                     return (
-                      <PersonProfile
+                      <MusicianProfile
                         name={person.name}
                         instrument={person.instrument}
                         genre={person.genre}
@@ -89,7 +89,7 @@ export default function Home() {
                 <div className='People'>
                   {musicians.map((person) => {
                     return (
-                      <PersonProfile
+                      <MusicianProfile
                         name={person.name}
                         instrument={person.instrument}
                         genre={person.genre}
