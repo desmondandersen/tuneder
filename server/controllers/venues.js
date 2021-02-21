@@ -16,7 +16,7 @@ export const getVenues = async (req, res) => {
 };
 
 // Create new venue
-export const createPost = async (req, res) => {
+export const createVenue = async (req, res) => {
   const venue = req.body;
   const newVenue = new VenueMessage(venue);
 

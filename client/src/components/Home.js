@@ -1,32 +1,15 @@
 import React from 'react';
+
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
+
 import VenueProfile from './VenueProfile';
 import MusicianProfile from './MusicianProfile';
 
-//import { Button } from "bootstrap";
+import { useSelector } from 'react-redux';
 
-// to be replaced with database info
-const venues = [
-  {
-    name: "Geraldo's Pub",
-    artist: 'Rock Cover Band',
-  },
-  {
-    name: 'Whiskey-A-Go-Go',
-    artist: 'Folk Solo',
-  },
-  {
-    name: 'Dodger Stadium',
-    artist: 'U2',
-  },
-  {
-    name: "Joe's Backyard",
-    artist: 'Mariachi Band',
-  },
-];
 const musicians = [
   {
     name: 'Joshua Homme',
@@ -46,60 +29,53 @@ const musicians = [
 ];
 
 export default function Home() {
+  const venues = useSelector((state) => state.venues);
   return (
     <div className='Home'>
       <Container>
         <Row>
           <Col>
-            <Button style={({ margin: '10px' }, { width: '100%' })}>
-              See all venues
-            </Button>
-            <div className='Venues'>
-              {venues.map((venue) => {
-                return (
-                  <VenueProfile
-                    name={venue.name}
-                    artist={venue.artist}
-                    key={venue.name}
-                  />
-                );
-              })}
-            </div>
+            <h2>Venues</h2>
+            {venues.map((venue) => {
+              return (
+                <VenueProfile
+                  name={venue.name}
+                  artist={venue.artist}
+                  key={venue.name}
+                />
+              );
+            })}
+            <Button style={{ width: '100%' }}>See all venues</Button>
           </Col>
           <div>
-            <Button style={({ marginTop: '10px' }, { width: '100%' })}>
-              See more musicians
-            </Button>
+            <h2>Musicians</h2>
             <Row>
               <Col>
-                <div className='People'>
-                  {musicians.map((person) => {
-                    return (
-                      <MusicianProfile
-                        name={person.name}
-                        instrument={person.instrument}
-                        genre={person.genre}
-                        key={person.name}
-                      />
-                    );
-                  })}
-                </div>
+                {musicians.map((person) => {
+                  return (
+                    <MusicianProfile
+                      name={person.name}
+                      instrument={person.instrument}
+                      genre={person.genre}
+                      key={person.name}
+                    />
+                  );
+                })}
               </Col>
               <Col>
-                <div className='People'>
-                  {musicians.map((person) => {
-                    return (
-                      <MusicianProfile
-                        name={person.name}
-                        instrument={person.instrument}
-                        genre={person.genre}
-                        key={person.name}
-                      />
-                    );
-                  })}
-                </div>
+                {musicians.map((person) => {
+                  return (
+                    <MusicianProfile
+                      name={person.name}
+                      instrument={person.instrument}
+                      genre={person.genre}
+                      key={person.name}
+                    />
+                  );
+                })}
               </Col>
             </Row>
+            <Button style={{ width: '100%' }}>See more musicians</Button>
           </div>
         </Row>
       </Container>

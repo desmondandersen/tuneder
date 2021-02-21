@@ -23,11 +23,16 @@
   margin-top: 10px;
 }
 
-.profile-card--person {
-  margin-top: '1rem';
-  width: '15rem';
+.form--venue form {
+  margin: 0 auto;
+  width: 60%;
+  text-align: left;
 }
-.profile-card--venue {
-  margin-top: '1rem';
-  width: '30rem';
+
+.card--musician {
+  margin-bottom: 10px;
+}
+
+.card--venue {
+  margin-bottom: 10px;
 }

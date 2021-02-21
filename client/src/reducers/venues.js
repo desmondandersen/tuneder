@@ -3,8 +3,10 @@ const reducer = (venues = [], action) => {
     case 'FETCH_ALL':
       return action.payload;
     case 'CREATE':
-      return venues;
+      return [...venues, action.payload];
     default:
       return venues;
   }
 };
+
+export default reducer;
