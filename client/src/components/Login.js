@@ -12,7 +12,7 @@ export default function Login() {
 
   //make sure entries are valid TODO: 0 length for now, but change to 5 & 5
   function validSubmission() {
-    return username.length > 4 && password.length > 4;
+    return username.length > 2 && password.length > 4;
   }
 
   function handleSubmit() {
