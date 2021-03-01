@@ -118,6 +118,7 @@ const MusicianForm = () => {
                 <div key={`inline-${type}`} className='mb-3'>
                   <br></br>
                   <Form.Label>Level of Expertise:  </Form.Label>
+                  
                   <Form.Check
                     inline
                     label='1'
