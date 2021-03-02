@@ -10,28 +10,24 @@ import MusicianProfile from './MusicianProfile';
 
 import { useSelector } from 'react-redux';
 
-// const venues = [
-//   {
-//     name: 'Joshua Homme',
-//     instrument: 'Guitar',
-//     genre: 'Desert Rock',
-//   },
-//   {
-//     name: 'John Paul Jones',
-//     instrument: 'Bass, Keys',
-//     genre: 'Heavy Rock',
-//   },
-//   {
-//     name: 'Dave Grohl',
-//     instrument: 'Drums',
-//     genre: 'Heavy Rock',
-//   },
-// ];
-
 export default function Home() {
-  const venues = useSelector((state) => state.venues);
-  const musicians = useSelector((state) => state.musicians);
-  console.log(venues);
+  /*logic to import all venues and musicians, 
+  then put them in separate arrays*/
+  const all = useSelector((state) => state.venues);
+  const venues = [];
+  const musicians = [];
+  for (var i = 0; i < all.length; i++){
+      if (all[i].type == 'Venue') venues.push(all[i]);
+      else musicians.push(all[i]);
+  }
+ 
+  /* separate musicians array into 2 separate columns */
+  const musicians1 = [];
+  const musicians2 = [];
+  for (var j  = 0; j < musicians.length; j++){
+      if (j%2 == 0) musicians1.push(musicians[j]);
+      else musicians2.push(musicians[j]);
+  }
 
   return (
     <div className='Home'>
@@ -54,12 +50,12 @@ export default function Home() {
             <h2>Musicians</h2>
             <Row>
               <Col>
-                {musicians.map((person, key) => {
+                {musicians1.map((person, key) => {
                   return (
                     <MusicianProfile
                       name={person.name}
-                      instrument="Geetar"
-                      genre="Death Metal"
+                      instrument={person.instrument1}
+                      genre={person.genre}
                       // instrument={person.instrument}
                       // genre={person.genre}
                       key={key}
@@ -68,12 +64,12 @@ export default function Home() {
                 })}
               </Col>
               <Col>
-                {musicians.map((person, key) => {
+                {musicians2.map((person, key) => {
                   return (
                     <MusicianProfile
                     name={person.name}
-                    instrument="Geetar"
-                    genre="Death Metal"
+                    instrument={person.instrument1}
+                    genre={person.genre}
                     // instrument={person.instrument}
                     // genre={person.genre}
                     key={key}

@@ -10,6 +10,7 @@ import { createVenue } from '../actions/venues';
 
 const VenueForm = () => {
   const [venueData, setVenueData] = useState({
+    type: 'Venue',
     name: '',
     email: '',
   });

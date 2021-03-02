@@ -4,7 +4,6 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 
 import venueRoutes from './routes/venues';
-import musicianRoutes from './routes/musicians';
 
 const app = express();
 
@@ -13,7 +12,6 @@ app.use(cors());
 
 // Specify routes
 app.use('/venues', venueRoutes);
-app.use('/musicians', musicianRoutes);
 
 // Connect to mongoDB cluster
 const CONNECTION_URL =
