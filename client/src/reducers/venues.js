@@ -1,4 +1,4 @@
-const reducer = (venues = [], action) => {
+const reducerV = (venues = [], action) => {
   switch (action.type) {
     case 'FETCH_ALL':
       return action.payload;
@@ -9,4 +9,4 @@ const reducer = (venues = [], action) => {
   }
 };
 
-export default reducer;
+export default reducerV;

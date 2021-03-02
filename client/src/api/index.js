@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const url = 'http://localhost:5000/venues';
+const venueUrl = 'http://localhost:5000/venues';
 
-export const fetchVenues = () => axios.get(url);
-export const createVenue = (newVenue) => axios.post(url, newVenue);
+export const fetchVenues = () => axios.get(venueUrl);
+export const createVenue = (newVenue) => axios.post(venueUrl, newVenue);

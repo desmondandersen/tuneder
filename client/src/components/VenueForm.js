@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-
+ 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
@@ -10,6 +10,7 @@ import { createVenue } from '../actions/venues';
 
 const VenueForm = () => {
   const [venueData, setVenueData] = useState({
+    type: 'Venue',
     name: '',
     email: '',
   });

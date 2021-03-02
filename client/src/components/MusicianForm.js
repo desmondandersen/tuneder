@@ -1,34 +1,46 @@
-import React from 'react';
+import React, {useState} from 'react';
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 
-import { useState } from 'react';
+import { createVenue } from '../actions/venues';
 
 const MusicianForm = () => {
-  const [firstName, setfirstName] = useState('');
-  const [password, setPassword] = useState('');
+  const [venueData, setVenueData] = useState({
+    type: 'Musician',
+    name: '',
+    email: '',
+    instrument1: '',
+    instrument2: '',
+    genre: ''
+  });
+  const dispatch = useDispatch();
+  const history = useHistory();
 
-  function validPassword() {
-    return password.length > 4;
-  }
-  function validName() {
-    return firstName.length > 0;
-  }
+  // function validPassword() {
+  //   return password.length > 4;
+  // }
+  // function validName() {
+  //   return firstName.length > 0;
+  // }
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (!validPassword()) {
-      alert('Password too short. Change and resubmit');
-      return;
-    }
-    if (!validName()) {
-      alert('First Name is a required field. Please fill it in and resubmit.');
-      return;
-    }
-    alert('You submitted the form');
+    // if (!validPassword()) {
+    //   alert('Password too short. Change and resubmit');
+    //   return;
+    // }
+    // if (!validName()) {
+    //   alert('First Name is a required field. Please fill it in and resubmit.');
+    //   return;
+    // }
+    dispatch(createVenue(venueData));
+    history.push('/');
+    //alert('You submitted the form');
   };
   return (
     <div className='form--musician'>
@@ -41,8 +53,10 @@ const MusicianForm = () => {
               <Form.Control
                 type='name'
                 placeholder='Enter first name'
-                value={firstName}
-                onChange={(e) => setfirstName(e.target.value)}
+                value={venueData.name}
+                onChange={(e) => 
+                setVenueData({...venueData, name: e.target.value})
+                }
               />
             </Form.Group>
           </Col>
@@ -58,7 +72,13 @@ const MusicianForm = () => {
           <Col md={4}>
             <Form.Group controlId='email'>
               <Form.Label>Email address</Form.Label>
-              <Form.Control type='email' placeholder='Enter email' />
+              <Form.Control type='email' placeholder='Enter email' 
+                value={venueData.email}
+                onChange={(e) =>
+                setVenueData({...venueData, email: e.target.value })
+              }
+              required
+              />
               <Form.Text className='text-muted'>
                 We'll never share your email with anyone else.
               </Form.Text>
@@ -80,8 +100,8 @@ const MusicianForm = () => {
               <Form.Control
                 type='password'
                 placeholder='5 characters minimum'
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                //value={password}
+                //onChange={(e) => setPassword(e.target.value)}
               />
             </Form.Group>
           </Col>
@@ -100,16 +120,37 @@ const MusicianForm = () => {
         </Form.Row>
 
         <Form.Row>
+          <Col md={9}>
+            <Form.Group controlId='genre'>
+              <Form.Label>Genre</Form.Label>
+              <Form.Control type='genre' placeholder='RB/Soul' 
+                value={venueData.genre}
+                onChange={(e) =>
+                setVenueData({...venueData, genre: e.target.value })
+                }
+              required/>
+              <Form.Text className='text-muted'>
+                Enter your preferred genre to play
+              </Form.Text>
+            </Form.Group>
+          </Col>
+        </Form.Row>
+
+        <Form.Row>
           <Col md={7}>
             <Form.Group controlId='primaryInstrument'>
               <Form.Label>Primary Instrument</Form.Label>
-              <Form.Control as='select'>
-                <option>Drums</option>
-                <option>Piano</option>
-                <option>Guitar</option>
-                <option>Bass</option>
-                <option>Vocals</option>
-                <option>Other, add in notes section</option>
+              <Form.Control as='select'
+                value={venueData.instrument1}
+                onChange={(e) =>
+                setVenueData({...venueData, instrument1: e.target.value })
+                }>
+                <option name = 'Drums'>Drums</option>
+                <option name = 'Piano'>Piano</option>
+                <option name = 'Guitar'>Guitar</option>
+                <option name = 'Bass'>Bass</option>
+                <option name = 'Vocals'>Vocals</option>
+                <option name = 'Other'>Other, add in notes section</option>
               </Form.Control>
             </Form.Group>
           </Col>
@@ -166,7 +207,11 @@ const MusicianForm = () => {
           <Col md={7}>
             <Form.Group controlId='secondaryInstrument'>
               <Form.Label>Secondary Instrument</Form.Label>
-              <Form.Control as='select'>
+              <Form.Control as='select'
+                value={venueData.instrument2}
+                onChange={(e) =>
+                setVenueData({...venueData, instrument2: e.target.value })
+              }>
                 <option>Drums</option>
                 <option>Piano</option>
                 <option>Guitar</option>
