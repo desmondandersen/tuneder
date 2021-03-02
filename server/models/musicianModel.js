@@ -1,7 +1,9 @@
 import mongoose from 'mongoose';
 
-const venueSchema = mongoose.Schema({
+const musicianSchema = mongoose.Schema({
   name: String,
+  // instrument: String,
+  // genre: String,
   email: String,
   // location: String,
   // sponsor: String,
@@ -9,6 +11,6 @@ const venueSchema = mongoose.Schema({
   // date: { type: Date, default: new Date() },
 });
 
-const Venues = mongoose.model('Venues', venueSchema);
+const Musicians = mongoose.model('Musicians', musicianSchema);
 
-export default Venues;
+export default Musicians;
