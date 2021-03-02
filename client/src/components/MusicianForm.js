@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
@@ -7,16 +7,16 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 
-import { createVenue } from '../actions/venues';
+import { createUser } from '../actions/users';
 
 const MusicianForm = () => {
-  const [venueData, setVenueData] = useState({
+  const [userData, setUserData] = useState({
     type: 'Musician',
     name: '',
     email: '',
     instrument1: '',
     instrument2: '',
-    genre: ''
+    genre: '',
   });
   const dispatch = useDispatch();
   const history = useHistory();
@@ -38,7 +38,7 @@ const MusicianForm = () => {
     //   alert('First Name is a required field. Please fill it in and resubmit.');
     //   return;
     // }
-    dispatch(createVenue(venueData));
+    dispatch(createUser(userData));
     history.push('/');
     //alert('You submitted the form');
   };
@@ -53,9 +53,9 @@ const MusicianForm = () => {
               <Form.Control
                 type='name'
                 placeholder='Enter first name'
-                value={venueData.name}
-                onChange={(e) => 
-                setVenueData({...venueData, name: e.target.value})
+                value={userData.name}
+                onChange={(e) =>
+                  setUserData({ ...userData, name: e.target.value })
                 }
               />
             </Form.Group>
@@ -72,12 +72,14 @@ const MusicianForm = () => {
           <Col md={4}>
             <Form.Group controlId='email'>
               <Form.Label>Email address</Form.Label>
-              <Form.Control type='email' placeholder='Enter email' 
-                value={venueData.email}
+              <Form.Control
+                type='email'
+                placeholder='Enter email'
+                value={userData.email}
                 onChange={(e) =>
-                setVenueData({...venueData, email: e.target.value })
-              }
-              required
+                  setUserData({ ...userData, email: e.target.value })
+                }
+                required
               />
               <Form.Text className='text-muted'>
                 We'll never share your email with anyone else.
@@ -123,12 +125,15 @@ const MusicianForm = () => {
           <Col md={9}>
             <Form.Group controlId='genre'>
               <Form.Label>Genre</Form.Label>
-              <Form.Control type='genre' placeholder='RB/Soul' 
-                value={venueData.genre}
+              <Form.Control
+                type='genre'
+                placeholder='RB/Soul'
+                value={userData.genre}
                 onChange={(e) =>
-                setVenueData({...venueData, genre: e.target.value })
+                  setUserData({ ...userData, genre: e.target.value })
                 }
-              required/>
+                required
+              />
               <Form.Text className='text-muted'>
                 Enter your preferred genre to play
               </Form.Text>
@@ -140,17 +145,19 @@ const MusicianForm = () => {
           <Col md={7}>
             <Form.Group controlId='primaryInstrument'>
               <Form.Label>Primary Instrument</Form.Label>
-              <Form.Control as='select'
-                value={venueData.instrument1}
+              <Form.Control
+                as='select'
+                value={userData.instrument1}
                 onChange={(e) =>
-                setVenueData({...venueData, instrument1: e.target.value })
-                }>
-                <option name = 'Drums'>Drums</option>
-                <option name = 'Piano'>Piano</option>
-                <option name = 'Guitar'>Guitar</option>
-                <option name = 'Bass'>Bass</option>
-                <option name = 'Vocals'>Vocals</option>
-                <option name = 'Other'>Other, add in notes section</option>
+                  setUserData({ ...userData, instrument1: e.target.value })
+                }
+              >
+                <option name='Drums'>Drums</option>
+                <option name='Piano'>Piano</option>
+                <option name='Guitar'>Guitar</option>
+                <option name='Bass'>Bass</option>
+                <option name='Vocals'>Vocals</option>
+                <option name='Other'>Other, add in notes section</option>
               </Form.Control>
             </Form.Group>
           </Col>
@@ -160,8 +167,8 @@ const MusicianForm = () => {
               {['radio'].map((type) => (
                 <div key={`inline-${type}`} className='mb-3'>
                   <br></br>
-                  <Form.Label>Level of Expertise:  </Form.Label>
-                  
+                  <Form.Label>Level of Expertise: </Form.Label>
+
                   <Form.Check
                     inline
                     label='1'
@@ -207,11 +214,13 @@ const MusicianForm = () => {
           <Col md={7}>
             <Form.Group controlId='secondaryInstrument'>
               <Form.Label>Secondary Instrument</Form.Label>
-              <Form.Control as='select'
-                value={venueData.instrument2}
+              <Form.Control
+                as='select'
+                value={userData.instrument2}
                 onChange={(e) =>
-                setVenueData({...venueData, instrument2: e.target.value })
-              }>
+                  setUserData({ ...userData, instrument2: e.target.value })
+                }
+              >
                 <option>Drums</option>
                 <option>Piano</option>
                 <option>Guitar</option>
@@ -273,9 +282,7 @@ const MusicianForm = () => {
           <Col md={9}>
             <Form.Group controlId='portfolio'>
               <Form.Label>Portfolio Link</Form.Label>
-              <Form.Control
-                placeholder='Youtube Link'
-              />
+              <Form.Control placeholder='Youtube Link' />
             </Form.Group>
           </Col>
         </Form.Row>

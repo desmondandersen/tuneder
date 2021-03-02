@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const venueSchema = mongoose.Schema({
+const userSchema = mongoose.Schema({
   type: String,
   name: String,
   email: String,
@@ -10,12 +10,12 @@ const venueSchema = mongoose.Schema({
   description: String,
   instrument1: String,
   instrument2: String,
-  genre: String
+  genre: String,
 
   //likeCount: { type: Number, default: 0 },
   //date: { type: Date, default: new Date() },
 });
 
-const Venues = mongoose.model('Venues', venueSchema);
+const Users = mongoose.model('Users', userSchema);
 
-export default Venues;
+export default Users;

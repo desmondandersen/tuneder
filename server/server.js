@@ -3,7 +3,7 @@ import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import cors from 'cors';
 
-import venueRoutes from './routes/venues';
+import userRoutes from './routes/users';
 
 const app = express();
 
@@ -11,7 +11,7 @@ app.use(bodyParser.json({ limit: '30mb', extended: true }));
 app.use(cors());
 
 // Specify routes
-app.use('/venues', venueRoutes);
+app.use('/api/users', userRoutes);
 
 // Connect to mongoDB cluster
 const CONNECTION_URL =

@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const venueUrl = 'http://localhost:5000/venues';
+const userUrl = 'http://localhost:5000/api/users';
 
-export const fetchVenues = () => axios.get(venueUrl);
-export const createVenue = (newVenue) => axios.post(venueUrl, newVenue);
+export const fetchUsers = () => axios.get(userUrl);
+export const createUser = (newUser) => axios.post(userUrl, newUser);

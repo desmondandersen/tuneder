@@ -1,6 +1,5 @@
 import { combineReducers } from 'redux';
 
-import venues from './venues';
-// import musicians from './musicians';
+import users from './users';
 
-export default combineReducers({ venues });
+export default combineReducers({ users });
