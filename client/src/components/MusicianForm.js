@@ -90,7 +90,21 @@ const MusicianForm = () => {
             </Form.Group>
           </Col>
         </Form.Row>
+        <Form.Row>
+          <Col md={9}>
+            <Form.Group controlId='password'>
+              <Form.Label>Password</Form.Label>
+              <Form.Control
+                type='password'
+                placeholder='5 characters minimum'
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </Form.Group>
+          </Col>
+        </Form.Row>
 
+<<<<<<< HEAD
         <Col md={9}>
           <Form.Group controlId='password'>
             <Form.Label>Password</Form.Label>
@@ -111,6 +125,19 @@ const MusicianForm = () => {
             </Form.Text>
           </Form.Group>
         </Col>
+=======
+        <Form.Row>
+          <Col md={9}>
+            <Form.Group controlId='location'>
+              <Form.Label>Location</Form.Label>
+              <Form.Control type='location' placeholder='Anytown, CA, USA' />
+              <Form.Text className='text-muted'>
+                Please enter in form Town, State, Country
+              </Form.Text>
+            </Form.Group>
+          </Col>
+        </Form.Row>
+>>>>>>> 1f97742e57df2ffc23b0b1f75d11bec3fbc74bb8
 
         <Form.Row>
           <Col md={7}>
@@ -132,7 +159,8 @@ const MusicianForm = () => {
               {['radio'].map((type) => (
                 <div key={`inline-${type}`} className='mb-3'>
                   <br></br>
-                  <Form.Label>Level of Expertise: </Form.Label>
+                  <Form.Label>Level of Expertise:  </Form.Label>
+                  
                   <Form.Check
                     inline
                     label='1'
