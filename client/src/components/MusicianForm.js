@@ -85,11 +85,13 @@ const MusicianForm = () => {
             </Form.Group>
           </Col>
 
+          {/*
           <Col>
             <Form.Group>
               <Form.File id='profilepic' label='Upload a profile picture' />
             </Form.Group>
           </Col>
+          */}
         </Form.Row>
         <Form.Row>
           <Col md={9}>
@@ -267,14 +269,27 @@ const MusicianForm = () => {
           </Col>
         </Form.Row>
 
-        <Col md={7}>
-          <Form.Group controlId='moreInfo'>
-            <Form.Label>
-              Short Bio, and any other info you want on your profile
-            </Form.Label>
-            <Form.Control as='textarea' rows={7} />
-          </Form.Group>
-        </Col>
+        <Form.Row>
+          <Col md={9}>
+            <Form.Group controlId='portfolio'>
+              <Form.Label>Portfolio Link</Form.Label>
+              <Form.Control
+                placeholder='Youtube Link'
+              />
+            </Form.Group>
+          </Col>
+        </Form.Row>
+
+        <Form.Row>
+          <Col md={7}>
+            <Form.Group controlId='moreInfo'>
+              <Form.Label>
+                Short Bio, and any other info you want on your profile
+              </Form.Label>
+              <Form.Control as='textarea' rows={5} />
+            </Form.Group>
+          </Col>
+        </Form.Row>
 
         <Button variant='primary' type='submit'>
           Submit
