@@ -23,6 +23,10 @@
   margin-top: 10px;
 }
 
+.custom-link{
+  color: #659afc;
+}
+
 .form--musician form,
 .form--venue form {
   margin: 0 auto;
@@ -50,4 +54,21 @@
 
 .Home .container{
   margin-top: 20px;
+}
+
+.btn-primary,
+.btn-primary:disabled{
+  color: #fff;
+  background-color: #88b1fc;
+  border-color: #88b1fc;
+}
+
+.btn-primary:hover{
+  color: #fff;
+  background-color: #659afc;
+  border-color: #659afc;
+}
+
+.nav-link{
+  color: #659afc;
 }

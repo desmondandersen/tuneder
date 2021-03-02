@@ -49,7 +49,7 @@ export default function Login() {
         </Link>
 
         <p className='text-right'>
-          <Link to='/create-account'>Create Account</Link>
+          <Link class = 'custom-link' to='/create-account'>Create Account</Link>
         </p>
       </Form>
     </div>
