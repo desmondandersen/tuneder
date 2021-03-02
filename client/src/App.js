@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, batch } from 'react-redux';
 
-import { getUsers } from './actions/users.js';
+import { getVenues } from './actions/venues.js';
 // import { getMusicians } from './actions/musicians.js';
 import Routes from './Routes.js';
 import { LinkContainer } from 'react-router-bootstrap';
@@ -17,7 +17,12 @@ import './App.css';
 function App() {
   const dispatch = useDispatch();
 
-  useEffect(() => dispatch(getUsers()), [dispatch]);
+  useEffect(() => {
+    batch(() => {
+      // dispatch(getMusicians());
+      dispatch(getVenues());
+    })
+  }, [dispatch]);
 
   return (
     <div className='app'>

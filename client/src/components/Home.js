@@ -13,20 +13,20 @@ import { useSelector } from 'react-redux';
 export default function Home() {
   /*logic to import all venues and musicians, 
   then put them in separate arrays*/
-  const all = useSelector((state) => state.users);
+  const all = useSelector((state) => state.venues);
   const venues = [];
   const musicians = [];
-  for (var i = 0; i < all.length; i++) {
-    if (all[i].type === 'Venue') venues.push(all[i]);
-    else musicians.push(all[i]);
+  for (var i = 0; i < all.length; i++){
+      if (all[i].type == 'Venue') venues.push(all[i]);
+      else musicians.push(all[i]);
   }
-
+ 
   /* separate musicians array into 2 separate columns */
   const musicians1 = [];
   const musicians2 = [];
-  for (var j = 0; j < musicians.length; j++) {
-    if (j % 2 == 0) musicians1.push(musicians[j]);
-    else musicians2.push(musicians[j]);
+  for (var j  = 0; j < musicians.length; j++){
+      if (j%2 == 0) musicians1.push(musicians[j]);
+      else musicians2.push(musicians[j]);
   }
 
   return (
@@ -55,7 +55,9 @@ export default function Home() {
       */}
 
       <Container>
-        <Row></Row>
+        <Row>
+          
+        </Row>
         <Row>
           <Col>
             <h2>Venues</h2>
@@ -91,12 +93,12 @@ export default function Home() {
                 {musicians2.map((person, key) => {
                   return (
                     <MusicianProfile
-                      name={person.name}
-                      instrument={person.instrument1}
-                      genre={person.genre}
-                      // instrument={person.instrument}
-                      // genre={person.genre}
-                      key={key}
+                    name={person.name}
+                    instrument={person.instrument1}
+                    genre={person.genre}
+                    // instrument={person.instrument}
+                    // genre={person.genre}
+                    key={key}
                     />
                   );
                 })}
