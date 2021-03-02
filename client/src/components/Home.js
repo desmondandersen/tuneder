@@ -10,7 +10,7 @@ import MusicianProfile from './MusicianProfile';
 
 import { useSelector } from 'react-redux';
 
-// const musicians = [
+// const venues = [
 //   {
 //     name: 'Joshua Homme',
 //     instrument: 'Guitar',

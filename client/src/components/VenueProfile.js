@@ -5,7 +5,7 @@ import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 
 function VenueProfile(props) {
-  const venues = useSelector((state) => state.venues);
+  //const venues = useSelector((state) => state.venues);
 
   return (
     <Card className='card--venue'>

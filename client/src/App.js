@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { useDispatch, batch } from 'react-redux';
 
-import { getVenues } from './actions/venues';
-import { getMusicians } from './actions/musicians';
+import { getVenues } from './actions/venues.js';
+import { getMusicians } from './actions/musicians.js';
 import Routes from './Routes.js';
 import { LinkContainer } from 'react-router-bootstrap';
 
