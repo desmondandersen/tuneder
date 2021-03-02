@@ -85,6 +85,7 @@ const VenueForm = () => {
           </Form.Text>
         </Form.Group>
 
+        {/*
         <Form.Group>
           <Form.File
             id='venuepic'
@@ -92,6 +93,7 @@ const VenueForm = () => {
             custom
           />
         </Form.Group>
+        */}
 
         <Form.Group controlId='audience_size'>
           <Form.Label>What is the size of your audience?</Form.Label>
@@ -111,7 +113,7 @@ const VenueForm = () => {
 
         <Form.Group controlId='Info'>
           <Form.Label>
-            Tell potential musicians/bands about your venue!{' '}
+            Tell musicians about your show openings!{' '}
           </Form.Label>
           <Form.Control as='textarea' rows={3} 
             value={venueData.description}

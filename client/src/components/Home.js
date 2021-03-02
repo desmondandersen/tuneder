@@ -10,6 +10,9 @@ import MusicianProfile from './MusicianProfile';
 
 import { useSelector } from 'react-redux';
 
+import 'react-slideshow-image/dist/styles.css';
+import {Slide} from 'react-slideshow-image';
+
 const musicians = [
   {
     name: 'Joshua Homme',
@@ -28,11 +31,17 @@ const musicians = [
   },
 ];
 
+const slideImages = [
+  
+]
+
 export default function Home() {
   const venues = useSelector((state) => state.venues);
 
   return (
     <div className='Home'>
+
+
       <Container>
         <Row>
           <Col>
