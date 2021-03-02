@@ -10,6 +10,7 @@ import MusicianProfile from './MusicianProfile';
 
 import { useSelector } from 'react-redux';
 
+
 const musicians = [
   {
     name: 'Joshua Homme',
@@ -28,12 +29,39 @@ const musicians = [
   },
 ];
 
+
 export default function Home() {
   const venues = useSelector((state) => state.venues);
 
   return (
     <div className='Home'>
+      {/*
+      <Fade>
+        <div className="each-fade">
+          <div className="image-container">
+            <img src={slideImages[0]} />
+          </div>
+          <h2>First Slide</h2>
+        </div>
+        <div className="each-fade">
+          <div className="image-container">
+            <img src={slideImages[1]} />
+          </div>
+          <h2>Second Slide</h2>
+        </div>
+        <div className="each-fade">
+          <div className="image-container">
+            <img src={slideImages[2]} />
+          </div>
+          <h2>Third Slide</h2>
+        </div>
+      </Fade>
+      */}
+
       <Container>
+        <Row>
+          
+        </Row>
         <Row>
           <Col>
             <h2>Venues</h2>
