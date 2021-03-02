@@ -1,33 +1,44 @@
-import React from 'react';
+import React, {useState} from 'react';
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 
-import { useState } from 'react';
+import {createMusician} from '../actions/musicians';
 
 const MusicianForm = () => {
-  const [firstName, setfirstName] = useState('');
-  const [password, setPassword] = useState('');
+  const [musicianData, setMusicianData] = useState({
+    name: '',
+    email: '',
+  });
+  const dispatch = useDispatch();
+  const history = useHistory();
 
-  function validPassword() {
-    return password.length > 4;
-  }
-  function validName() {
-    return firstName.length > 0;
-  }
+  // const [firstName, setfirstName] = useState('');
+  // const [password, setPassword] = useState('');
+
+  // function validPassword() {
+  //   return password.length > 4;
+  // }
+  // function validName() {
+  //   return firstName.length > 0;
+  // }
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (!validPassword()) {
-      alert('Password too short. Change and resubmit');
-      return;
-    }
-    if (!validName()) {
-      alert('First Name is a required field. Please fill it in and resubmit.');
-      return;
-    }
+    // if (!validPassword()) {
+    //   alert('Password too short. Change and resubmit');
+    //   return;
+    // }
+    // if (!validName()) {
+    //   alert('First Name is a required field. Please fill it in and resubmit.');
+    //   return;
+    // }
+    dispatch(createMusician(musicianData));
+    history.push('/');
     alert('You submitted the form');
   };
   return (
@@ -41,8 +52,10 @@ const MusicianForm = () => {
               <Form.Control
                 type='name'
                 placeholder='Enter first name'
-                value={firstName}
-                onChange={(e) => setfirstName(e.target.value)}
+                value={musicianData.name}
+                onChange={(e) => 
+                  setMusicianData({...musicianData, name: e.target.value})
+                }
               />
             </Form.Group>
           </Col>
@@ -58,7 +71,13 @@ const MusicianForm = () => {
           <Col md={4}>
             <Form.Group controlId='email'>
               <Form.Label>Email address</Form.Label>
-              <Form.Control type='email' placeholder='Enter email' />
+              <Form.Control type='email' placeholder='Enter email' 
+                value={musicianData.email}
+                onChange={(e) =>
+                setMusicianData({...musicianData, email: e.target.value })
+              }
+              required
+              />
               <Form.Text className='text-muted'>
                 We'll never share your email with anyone else.
               </Form.Text>
@@ -78,8 +97,8 @@ const MusicianForm = () => {
             <Form.Control
               type='password'
               placeholder='5 characters minimum'
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              // value={password}
+              // onChange={(e) => setPassword(e.target.value)}
             />
           </Form.Group>
         </Col>

@@ -10,26 +10,28 @@ import MusicianProfile from './MusicianProfile';
 
 import { useSelector } from 'react-redux';
 
-const musicians = [
-  {
-    name: 'Joshua Homme',
-    instrument: 'Guitar',
-    genre: 'Desert Rock',
-  },
-  {
-    name: 'John Paul Jones',
-    instrument: 'Bass, Keys',
-    genre: 'Heavy Rock',
-  },
-  {
-    name: 'Dave Grohl',
-    instrument: 'Drums',
-    genre: 'Heavy Rock',
-  },
-];
+// const musicians = [
+//   {
+//     name: 'Joshua Homme',
+//     instrument: 'Guitar',
+//     genre: 'Desert Rock',
+//   },
+//   {
+//     name: 'John Paul Jones',
+//     instrument: 'Bass, Keys',
+//     genre: 'Heavy Rock',
+//   },
+//   {
+//     name: 'Dave Grohl',
+//     instrument: 'Drums',
+//     genre: 'Heavy Rock',
+//   },
+// ];
 
 export default function Home() {
   const venues = useSelector((state) => state.venues);
+  const musicians = useSelector((state) => state.musicians);
+  console.log(venues);
 
   return (
     <div className='Home'>
@@ -56,8 +58,10 @@ export default function Home() {
                   return (
                     <MusicianProfile
                       name={person.name}
-                      instrument={person.instrument}
-                      genre={person.genre}
+                      instrument="Geetar"
+                      genre="Death Metal"
+                      // instrument={person.instrument}
+                      // genre={person.genre}
                       key={key}
                     />
                   );
@@ -67,10 +71,12 @@ export default function Home() {
                 {musicians.map((person, key) => {
                   return (
                     <MusicianProfile
-                      name={person.name}
-                      instrument={person.instrument}
-                      genre={person.genre}
-                      key={key}
+                    name={person.name}
+                    instrument="Geetar"
+                    genre="Death Metal"
+                    // instrument={person.instrument}
+                    // genre={person.genre}
+                    key={key}
                     />
                   );
                 })}
