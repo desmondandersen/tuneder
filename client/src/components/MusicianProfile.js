@@ -9,7 +9,7 @@ const MusicianProfile = (props) => {
   return (
     <Card className='card--musician'>
       <Card.Body>
-        <Card.Title>{props.instrument}</Card.Title>
+        <Card.Title>{props.instrument_one}</Card.Title>
         <Card.Subtitle>{props.genre}</Card.Subtitle>
         <Card.Text>{props.name}</Card.Text>
         <Nav activeKey={window.location.pathname}>
@@ -17,10 +17,14 @@ const MusicianProfile = (props) => {
             pathname: '/musician-info',
             state: {
               musician_name: props.name,
+              email: props.email,
+              instrument_one: props.instrument_one,
+              instrument_two: props.instrument_two,
+              genre: props.genre,
             }
             }}>
             <Nav.Link>
-              <Button variant='primary'>Learn more</Button>
+              <Button variant='primary'>Full Profile</Button>
             </Nav.Link>
           </LinkContainer>
         </Nav>

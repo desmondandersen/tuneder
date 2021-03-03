@@ -81,7 +81,9 @@ export default function Home() {
                   return (
                     <MusicianProfile
                       name={person.name}
-                      instrument={person.instrument1}
+                      email={person.email}
+                      instrument_one={person.instrument1}
+                      instrument_two={person.instrument2}
                       genre={person.genre}
                       key={key}
                     />
@@ -93,7 +95,9 @@ export default function Home() {
                   return (
                     <MusicianProfile
                       name={person.name}
-                      instrument={person.instrument1}
+                      email={person.email}
+                      instrument_one={person.instrument1}
+                      instrument_two={person.instrument2}
                       genre={person.genre}
                       key={key}
                     />
