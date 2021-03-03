@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
 
-import venues from './venues';
+import users from './users';
 
-export default combineReducers({ venues });
+export default combineReducers({ users });

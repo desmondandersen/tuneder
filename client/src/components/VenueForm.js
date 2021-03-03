@@ -6,10 +6,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
-import { createVenue } from '../actions/venues';
+import { createUser } from '../actions/users';
 
 const VenueForm = () => {
-  const [venueData, setVenueData] = useState({
+  const [userData, setUserData] = useState({
+    type: 'Venue',
     name: '',
     email: '',
   });
@@ -18,7 +19,7 @@ const VenueForm = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    dispatch(createVenue(venueData));
+    dispatch(createUser(userData));
     history.push('/');
   };
 
@@ -31,10 +32,8 @@ const VenueForm = () => {
           <Form.Control
             type='name'
             placeholder='Enter name of venue'
-            value={venueData.name}
-            onChange={(e) =>
-              setVenueData({ ...venueData, name: e.target.value })
-            }
+            value={userData.name}
+            onChange={(e) => setUserData({ ...userData, name: e.target.value })}
             required
           />
         </Form.Group>
@@ -44,9 +43,9 @@ const VenueForm = () => {
           <Form.Control
             type='email'
             placeholder='Enter email'
-            value={venueData.email}
+            value={userData.email}
             onChange={(e) =>
-              setVenueData({ ...venueData, email: e.target.value })
+              setUserData({ ...userData, email: e.target.value })
             }
             required
           />
@@ -54,12 +53,36 @@ const VenueForm = () => {
             We'll never share your email with anyone else.
           </Form.Text>
         </Form.Group>
-        {/* 
+
         <Form.Group controlId='password'>
           <Form.Label>Password</Form.Label>
-          <Form.Control type='password' placeholder='Password' />
+          <Form.Control
+            type='password'
+            placeholder='Enter password'
+            value={userData.password}
+            onChange={(e) =>
+              setUserData({ ...userData, password: e.target.value })
+            }
+            required
+          />
         </Form.Group>
 
+        <Form.Group controlId='location'>
+          <Form.Label>Location</Form.Label>
+          <Form.Control
+            placeholder='Anytown, CA, USA'
+            value={userData.location}
+            onChange={(e) =>
+              setUserData({ ...userData, location: e.target.value })
+            }
+            required
+          />
+          <Form.Text className='text-muted'>
+            Please enter in form Town, State, Country
+          </Form.Text>
+        </Form.Group>
+
+        {/*
         <Form.Group>
           <Form.File
             id='venuepic'
@@ -67,21 +90,38 @@ const VenueForm = () => {
             custom
           />
         </Form.Group>
-        <Form.Group controlId='audience size'>
+        */}
+
+        <Form.Group controlId='audience_size'>
           <Form.Label>What is the size of your audience?</Form.Label>
-          <Form.Control as='select'>
-            <option>Less than 30</option>
-            <option>30-99</option>
-            <option>100-200</option>
-            <option>More than 200</option>
+          <Form.Control
+            as='select'
+            value={userData.audience_size}
+            onChange={(e) =>
+              setUserData({ ...userData, audience_size: e.target.value })
+            }
+            required
+          >
+            <option name='null'>Select</option>
+            <option name='<30'>Less than 30</option>
+            <option name='30-99'>30-99</option>
+            <option name='100-200'>100-200</option>
+            <option name='>200'>More than 200</option>
           </Form.Control>
         </Form.Group>
+
         <Form.Group controlId='Info'>
-          <Form.Label>
-            Tell potential musicians/bands about your venue!{' '}
-          </Form.Label>
-          <Form.Control as='textarea' rows={7} />
-        </Form.Group> */}
+          <Form.Label>Tell musicians about your show openings! </Form.Label>
+          <Form.Control
+            as='textarea'
+            rows={3}
+            value={userData.description}
+            onChange={(e) =>
+              setUserData({ ...userData, description: e.target.value })
+            }
+            required
+          />
+        </Form.Group>
 
         <Button variant='primary' type='submit'>
           Submit

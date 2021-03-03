@@ -1,22 +1,9 @@
 import React from 'react';
-
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 
 import { LinkContainer } from 'react-router-bootstrap';
 import Nav from 'react-bootstrap/Nav';
-
-const handleOnSubmit = props => {
-  props.history.push({
-    pathname: '/venue-info',
-    state: {
-      venue_name: this.props.name,
-      email: "test_email", 
-      city: "test_city",
-      phone: "test_phone",
-    }
-  });
-};
 
 function VenueProfile(props) {
   return (
@@ -29,9 +16,10 @@ function VenueProfile(props) {
             pathname: '/venue-info',
             state: {
               venue_name: props.name,
-              email: "test_email",
-              city: "test_city",
-              phone: "test_phone",
+              email: props.email,
+              password: props.password,
+              location: props.location,
+              description: props.description,
             }
             }}>
             <Nav.Link>
@@ -39,7 +27,6 @@ function VenueProfile(props) {
             </Nav.Link>
           </LinkContainer>
         </Nav>
-        {/* <Button variant='primary'>Learn more</Button> */}
       </Card.Body>
     </Card>
   );

@@ -34,6 +34,7 @@ export default function Login() {
         <Form.Group controlId='password'>
           <Form.Label>Password</Form.Label>
           <Form.Control
+            type='password'
             placeholder='password'
             value={password}
             onChange={(e) => setPassword(e.target.value)}
@@ -48,7 +49,9 @@ export default function Login() {
         </Link>
 
         <p className='text-right'>
-          <Link to='/create-account'>Create Account</Link>
+          <Link class='custom-link' to='/create-account'>
+            Create Account
+          </Link>
         </p>
       </Form>
     </div>

@@ -2,12 +2,12 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { withRouter } from "react-router";
 
-const VenueInfo = props => {
-  const venue_name = props.location.state.venue_name;
+const MusicianInfo = props => {
+  const musician_name = props.location.state.musician_name;
   const email = props.location.state.email;
-  const password = props.location.state.password;
-  const location = props.location.state.location;
-  const description = props.location.state.description;
+  const instrument_one = props.location.state.instrument_one;
+  const instrument_two = props.location.state.instrument_two;
+  const genre = props.location.state.genre;
 
   return (
     <div>
@@ -16,23 +16,23 @@ const VenueInfo = props => {
       </NavLink>
       <div className="form-details">
         <div>
-          <strong>Venue Name:</strong> {venue_name}
+          <strong>Musician Name:</strong> {musician_name}
         </div>
         <div>
           <strong>Email:</strong> {email}
         </div>
         <div>
-          <strong>Password:</strong> {password}
+          <strong>Instrument 1:</strong> {instrument_one}
         </div>
         <div>
-          <strong>Location:</strong> {location}
+          <strong>Instrument 2:</strong> {instrument_two}
         </div>
         <div>
-          <strong>Description:</strong> {description}
+          <strong>Genre:</strong> {genre}
         </div>
       </div>
     </div>
   );
 };
 
-export default withRouter(VenueInfo);
+export default withRouter(MusicianInfo);

@@ -1,11 +1,11 @@
-const reducer = (venues = [], action) => {
+const reducer = (users = [], action) => {
   switch (action.type) {
     case 'FETCH_ALL':
       return action.payload;
     case 'CREATE':
-      return [...venues, action.payload];
+      return [...users, action.payload];
     default:
-      return venues;
+      return users;
   }
 };
 
