@@ -17,9 +17,10 @@ function VenueProfile(props) {
             pathname: '/venue-info',
             state: {
               venue_name: props.name,
-              email: "test_email",
-              city: "test_city",
-              phone: "test_phone",
+              email: props.email,
+              password: props.password,
+              location: props.location,
+              description: props.description,
             }
             }}>
             <Nav.Link>

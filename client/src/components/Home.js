@@ -63,7 +63,10 @@ export default function Home() {
               return (
                 <VenueProfile
                   name={venue.name}
-                  artist={venue.artist}
+                  email={venue.email}
+                  password={venue.password}
+                  location={venue.location}
+                  description={venue.description}
                   key={key}
                 />
               );
