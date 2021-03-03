@@ -5,7 +5,7 @@ import LoginForm from './components/LoginForm.js';
 import CreateAccount from './components/CreateAccount.js';
 import MusicianForm from './components/MusicianForm.js';
 import VenueForm from './components/VenueForm.js';
-import PrivateRoute from './components/PrivateRoute.js';
+import PrivateRoute from './PrivateRoute.js';
 
 
 export default function Routes() {
@@ -25,7 +25,7 @@ export default function Routes() {
       </Route>
       <Route exact path='/new-musician'>
         <MusicianForm />
-      <Route exact path='/my_account'/>
+      <PrivateRoute exact path='/my_account'/>
       </Route>
     </Switch>
   );
