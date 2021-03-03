@@ -5,6 +5,7 @@ import LoginForm from './components/LoginForm.js';
 import CreateAccount from './components/CreateAccount.js';
 import MusicianForm from './components/MusicianForm.js';
 import VenueForm from './components/VenueForm.js';
+import VenueInfo from './components/VenueInfo.js';
 
 export default function Routes() {
   return (
@@ -23,6 +24,10 @@ export default function Routes() {
       </Route>
       <Route exact path='/new-musician'>
         <MusicianForm />
+      </Route>
+      <Route exact path='/venue-info'>
+        <h1>Test: Venue Info Page Has Been Reached</h1>
+        <VenueInfo />
       </Route>
     </Switch>
   );

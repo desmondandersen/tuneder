@@ -80,8 +80,6 @@ export default function Home() {
                       name={person.name}
                       instrument={person.instrument1}
                       genre={person.genre}
-                      // instrument={person.instrument}
-                      // genre={person.genre}
                       key={key}
                     />
                   );
@@ -94,8 +92,6 @@ export default function Home() {
                       name={person.name}
                       instrument={person.instrument1}
                       genre={person.genre}
-                      // instrument={person.instrument}
-                      // genre={person.genre}
                       key={key}
                     />
                   );
