@@ -22,7 +22,7 @@ const NavBar = () => {
               src='logo512.png'
               className='d-inline-block align-top navbar__logo'
             />{' '}
-            Tunder
+            Tuneder
           </Navbar.Brand>
         </Link>
 
