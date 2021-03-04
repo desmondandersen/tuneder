@@ -1,14 +1,13 @@
+// Import React and Redux
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import { createUser } from '../redux/actions/users';
 
-import 'bootstrap/dist/css/bootstrap.min.css';
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
-import Col from 'react-bootstrap/Col';
+// Import bootstrap components
+import { Form, Button, Col } from 'react-bootstrap';
 
-import { createUser } from '../actions/users';
-
+// Musician Form Page
 const MusicianForm = () => {
   const [userData, setUserData] = useState({
     type: 'Musician',

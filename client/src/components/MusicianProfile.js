@@ -1,10 +1,10 @@
 import React from 'react';
-import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/Button';
 
+// Import bootstrap components
+import { Nav, Card, Button } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
-import Nav from 'react-bootstrap/Nav';
 
+// Musician Profile Card
 const MusicianProfile = (props) => {
   return (
     <Card className='card--musician'>
@@ -13,16 +13,18 @@ const MusicianProfile = (props) => {
         <Card.Subtitle>{props.genre}</Card.Subtitle>
         <Card.Text>{props.name}</Card.Text>
         <Nav activeKey={window.location.pathname}>
-          <LinkContainer to={{
-            pathname: '/musician-info',
-            state: {
-              musician_name: props.name,
-              email: props.email,
-              instrument_one: props.instrument_one,
-              instrument_two: props.instrument_two,
-              genre: props.genre,
-            }
-            }}>
+          <LinkContainer
+            to={{
+              pathname: '/musician-info',
+              state: {
+                musician_name: props.name,
+                email: props.email,
+                instrument_one: props.instrument_one,
+                instrument_two: props.instrument_two,
+                genre: props.genre,
+              },
+            }}
+          >
             <Nav.Link>
               <Button variant='primary'>Full Profile</Button>
             </Nav.Link>

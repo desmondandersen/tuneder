@@ -1,23 +1,20 @@
+// Import React and Redux
 import React from 'react';
+import { useSelector } from 'react-redux';
 
+// Import bootstrap components
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 
+// Import components
 import VenueProfile from './VenueProfile';
 import MusicianProfile from './MusicianProfile';
+import Slideshow from './Slideshow';
 
-import { useSelector } from 'react-redux';
-
-import { Fade } from 'react-slideshow-image';
-import 'react-slideshow-image/dist/styles.css'
-
-import guitar_pic from '../pictures/guitarist.png';
-import band_pic from '../pictures/band.png';
-import venue_pic from '../pictures/venue.png';
-
-export default function Home() {
+// Home Page
+const Home = () => {
   /*logic to import all venues and musicians, 
   then put them in separate arrays*/
   const all = useSelector((state) => state.users);
@@ -32,38 +29,14 @@ export default function Home() {
   const musicians1 = [];
   const musicians2 = [];
   for (var j = 0; j < musicians.length; j++) {
-    if (j % 2 == 0) musicians1.push(musicians[j]);
+    if (j % 2 === 0) musicians1.push(musicians[j]);
     else musicians2.push(musicians[j]);
   }
 
   return (
-    <div className='Home'>
-
+    <div className='home'>
+      <Slideshow />
       <Container>
-        <h1>Welcome to Tuneder!</h1>
-        <hr/>
-          <Fade class = 'slideshow'>
-            <div className="each-fade">
-              <div className="image-container">
-                <img src={guitar_pic} className = "photo" />
-              </div>
-              <h4 class = 'caption'>Meet talented freelance musicians!</h4>
-            </div>
-            <div className="each-fade">
-              <div className="image-container">
-                <img src={band_pic} className = "photo"/>
-              </div>
-              <h4 class = 'caption'>Find a member for your band!</h4>
-            </div>
-            <div className="each-fade">
-              <div className="image-container">
-                <img src={venue_pic} className = "photo" />
-              </div>
-              <h4 class = 'caption'>Explore local venues looking to hire!</h4>
-            </div>
-          </Fade>
-        <Row></Row>
-        <hr/>
         <Row>
           <Col>
             <h2>Venues</h2>
@@ -116,10 +89,12 @@ export default function Home() {
                 </Col>
               </div>
             </Row>
-            <Button style={{ width: '100%'}}>See more musicians</Button>
+            <Button style={{ width: '100%' }}>See more musicians</Button>
           </div>
         </Row>
       </Container>
     </div>
   );
-}
+};
+
+export default Home;

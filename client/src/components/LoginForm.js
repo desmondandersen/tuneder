@@ -1,10 +1,12 @@
+// Import React
 import React, { useState } from 'react';
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
-
 import { Link } from 'react-router-dom';
 
-export default function Login() {
+// Import bootstrap components
+import { Form, Button } from 'react-bootstrap';
+
+// Login Page
+const Login = () => {
   // Create constructor for username, password
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -49,11 +51,13 @@ export default function Login() {
         </Link>
 
         <p className='text-right'>
-          <Link class='custom-link' to='/create-account'>
+          <Link className='custom-link' to='/create-account'>
             Create Account
           </Link>
         </p>
       </Form>
     </div>
   );
-}
+};
+
+export default Login;

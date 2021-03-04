@@ -1,9 +1,12 @@
-import React, { useState } from 'react';
-
-import Button from 'react-bootstrap/Button';
+// Import React
+import React from 'react';
 import { Link } from 'react-router-dom';
 
-export default function CreateAccount() {
+// Import bootstrap components
+import Button from 'react-bootstrap/Button';
+
+// Create Account Page
+const CreateAccount = () => {
   return (
     <div className='user-input'>
       <p>I am a...</p>
@@ -17,4 +20,6 @@ export default function CreateAccount() {
       </Link>
     </div>
   );
-}
+};
+
+export default CreateAccount;
