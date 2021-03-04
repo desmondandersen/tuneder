@@ -7,6 +7,8 @@ import MusicianForm from './components/MusicianForm.js';
 import VenueForm from './components/VenueForm.js';
 import PrivateRoute from './PrivateRoute.js';
 
+import VenueInfo from './components/VenueInfo.js';
+import MusicianInfo from './components/MusicianInfo.js';
 
 export default function Routes() {
   return (
@@ -26,6 +28,14 @@ export default function Routes() {
       <Route exact path='/new-musician'>
         <MusicianForm />
       <PrivateRoute exact path='/my_account'/>
+      </Route>
+      <Route exact path='/venue-info'>
+        <h1>Test: Venue Info Page Has Been Reached</h1>
+        <VenueInfo />
+      </Route>
+      <Route exact path='/musician-info'>
+        <h1>Test: Musician Info Page Has Been Reached</h1>
+        <MusicianInfo />
       </Route>
     </Switch>
   );
