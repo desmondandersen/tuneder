@@ -44,31 +44,73 @@
   margin-bottom: 20px;
 }
 
-.card--musician {
-  margin-bottom: 10px;
-}
-
+.card--musician,
 .card--venue {
   margin-bottom: 10px;
 }
 
+.card--venue .btn,
+.card--musician .btn {
+  text-align: center;
+}
+
 .Home .container{
   margin-top: 20px;
+  align-self: center;
+}
+
+.Home .btn{
+  margin-bottom: 20px;
 }
 
 .btn-primary,
 .btn-primary:disabled{
   color: #fff;
-  background-color: #88b1fc;
-  border-color: #88b1fc;
+  background-color: #659afc;
+  border-color: #929294;
+  border-width: 1px;
 }
 
 .btn-primary:hover{
   color: #fff;
-  background-color: #659afc;
-  border-color: #659afc;
+  background-color: #4a89fd;
+  border-color: #929294;
 }
 
 .nav-link{
   color: #659afc;
+}
+
+.slideshow{
+  margin-top: 20px;
+}
+
+.photo{
+  height: 500px;
+  width: 800px;
+}
+
+.caption{
+  margin-top:10px;
+}
+
+.form-details1{
+
+  float: left;
+  position: relative;
+  left: 30%;
+}
+
+.form-details2{
+  display: inline-blockl;
+  margin-top: 20px;
+  text-align: left;
+}
+
+.home col{
+  margin-bottom: 20px;
+}
+
+.card--venue button{
+  align-self: center;
 }
