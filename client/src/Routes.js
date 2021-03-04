@@ -27,11 +27,9 @@ export default function Routes() {
         <MusicianForm />
       </Route>
       <Route exact path='/venue-info'>
-        <h1>Test: Venue Info Page Has Been Reached</h1>
         <VenueInfo />
       </Route>
       <Route exact path='/musician-info'>
-        <h1>Test: Musician Info Page Has Been Reached</h1>
         <MusicianInfo />
       </Route>
     </Switch>

@@ -116,7 +116,7 @@ export default function Home() {
                 </Col>
               </div>
             </Row>
-            <Button style={{ width: '100%' }}>See more musicians</Button>
+            <Button style={{ width: '100%'}}>See more musicians</Button>
           </div>
         </Row>
       </Container>
