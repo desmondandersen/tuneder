@@ -10,6 +10,7 @@ import MusicianForm from './components/MusicianForm.js';
 import VenueForm from './components/VenueForm.js';
 import VenueInfo from './components/VenueInfo.js';
 import MusicianInfo from './components/MusicianInfo.js';
+import Account from './components/Account.js'
 
 import PrivateRoute from './PrivateRoute.js';
 
@@ -31,7 +32,8 @@ const Routes = () => {
       </Route>
       <Route exact path='/new-musician'>
         <MusicianForm />
-        <PrivateRoute exact path='/my_account' />
+      <PrivateRoute exact path='/account' />
+        <Account/>
       </Route>
       <Route exact path='/venue-info'>
         <VenueInfo />
