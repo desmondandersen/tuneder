@@ -152,6 +152,7 @@ const MusicianForm = () => {
                   setUserData({ ...userData, instrument1: e.target.value })
                 }
               >
+                <option name='Select'>Select</option>
                 <option name='Drums'>Drums</option>
                 <option name='Piano'>Piano</option>
                 <option name='Guitar'>Guitar</option>
@@ -221,6 +222,7 @@ const MusicianForm = () => {
                   setUserData({ ...userData, instrument2: e.target.value })
                 }
               >
+                <option>Select</option>
                 <option>Drums</option>
                 <option>Piano</option>
                 <option>Guitar</option>
@@ -241,35 +243,35 @@ const MusicianForm = () => {
                     inline
                     label='1'
                     type={type}
-                    name='expertise'
+                    name='expertise1'
                     id={`inline-${type}-1`}
                   />
                   <Form.Check
                     inline
                     label='2'
                     type={type}
-                    name='expertise'
+                    name='expertise1'
                     id={`inline-${type}-2`}
                   />
                   <Form.Check
                     inline
                     label='3'
                     type={type}
-                    name='expertise'
+                    name='expertise1'
                     id={`inline-${type}-3`}
                   />
                   <Form.Check
                     inline
                     label='4'
                     type={type}
-                    name='expertise'
+                    name='expertise1'
                     id={`inline-${type}-4`}
                   />
                   <Form.Check
                     inline
                     label='5'
                     type={type}
-                    name='expertise'
+                    name='expertise1'
                     id={`inline-${type}-5`}
                   />
                 </div>

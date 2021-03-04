@@ -1,6 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { withRouter } from "react-router";
+import Button from 'react-bootstrap/Button';
 
 const VenueInfo = props => {
   const venue_name = props.location.state.venue_name;
@@ -10,27 +11,16 @@ const VenueInfo = props => {
   const description = props.location.state.description;
 
   return (
-    <div>
-      <NavLink to="/" activeClassName="active">
-        Go Back
-      </NavLink>
-      <div className="form-details">
-        <div>
-          <strong>Venue Name:</strong> {venue_name}
-        </div>
-        <div>
-          <strong>Email:</strong> {email}
-        </div>
-        <div>
-          <strong>Password:</strong> {password}
-        </div>
-        <div>
-          <strong>Location:</strong> {location}
-        </div>
-        <div>
-          <strong>Description:</strong> {description}
-        </div>
+    <div className = 'form-details1'>
+      <div className="form-details2">
+        <h3><strong>Venue Name:</strong> {venue_name}</h3>
+        <h3><strong>Email:</strong> {email}</h3>
+        <h3><strong>Location:</strong> {location}</h3>
+        <h3><strong>Description:</strong> {description}</h3>
       </div>
+      <NavLink to="/" activeClassName="active">
+        <Button>See more venues</Button>
+      </NavLink>
     </div>
   );
 };
