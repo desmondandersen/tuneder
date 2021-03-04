@@ -1,0 +1,159 @@
+@import 'react-slideshow-image/dist/styles.css';
+
+.app {
+  text-align: center;
+  font-family: 'Helvetica Neue', sans-serif;
+}
+
+/* User Input */
+.user-input {
+  padding: 60px;
+}
+
+.user-input button {
+  margin: 0 auto;
+  width: 320px;
+  text-align: center;
+}
+
+.user-input form {
+  margin: 0 auto;
+  width: 320px;
+  text-align: left;
+}
+
+.user-input p {
+  margin-top: 10px;
+}
+
+.custom-link {
+  color: #659afc;
+}
+
+/* Forms */
+.form--musician form,
+.form--venue form {
+  margin: 0 auto;
+  width: 60%;
+  text-align: left;
+}
+
+.form--musician h1,
+.form--venue h1 {
+  margin-top: 20px;
+}
+
+.form--musician button,
+.form--venue button {
+  margin-bottom: 20px;
+}
+
+.form-details1 {
+  float: left;
+  position: relative;
+  left: 30%;
+}
+
+.form-details2 {
+  display: inline-blockl;
+  margin-top: 20px;
+  text-align: left;
+}
+
+/* Cards */
+.card--musician,
+.card--venue {
+  margin-bottom: 10px;
+  align-items: center;
+}
+
+.card--venue .btn,
+.card--musician .btn {
+  text-align: center;
+}
+
+/* Home */
+.home .container {
+  margin-top: 20px;
+}
+
+.home .btn {
+  margin-bottom: 20px;
+}
+
+.home col {
+  margin-bottom: 20px;
+}
+
+/* Buttons */
+.btn-primary,
+.btn-primary:disabled {
+  color: #fff;
+  background-color: #659afc;
+  border-color: #929294;
+  border-width: 1px;
+}
+
+.btn-primary:hover {
+  color: #fff;
+  background-color: #4a89fd;
+  border-color: #929294;
+}
+
+/* Navigation */
+.navbar {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.navbar__logo {
+  width: 30px;
+}
+
+.nav-link {
+  color: #659afc;
+}
+
+/* Slideshow */
+.slideshow {
+  width: 100%;
+  background-color: black;
+}
+
+.each-fade div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image-container {
+  height: 300px;
+  position: relative;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+}
+
+.image-container--guitar {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url('./assets/guitarist.png');
+}
+
+.image-container--band {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.5)),
+    url('./assets/band.png');
+}
+
+.image-container--venue {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.5)),
+    url('./assets/venue.png');
+}
+
+.caption {
+  text-align: center;
+  color: white;
+  margin-top: 10px;
+}

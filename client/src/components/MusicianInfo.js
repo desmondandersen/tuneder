@@ -1,9 +1,13 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
-import { withRouter } from "react-router";
-import Button from 'react-bootstrap/Button';
+import React from 'react';
 
-const MusicianInfo = props => {
+import { NavLink } from 'react-router-dom';
+import { withRouter } from 'react-router';
+
+// Import bootstrap components
+import { Button } from 'react-bootstrap';
+
+// Musician Info Page
+const MusicianInfo = (props) => {
   const musician_name = props.location.state.musician_name;
   const email = props.location.state.email;
   const instrument_one = props.location.state.instrument_one;
@@ -11,14 +15,22 @@ const MusicianInfo = props => {
   const genre = props.location.state.genre;
 
   return (
-    <div className = 'form-details1'>
-      <div className="form-details2">
-        <h3><strong>Musician Name:</strong> {musician_name}</h3>
-        <h3><strong>Email:</strong> {email}</h3>
-        <h3><strong>Specialty:</strong> {instrument_one}, {instrument_two}</h3>
-        <h3><strong>Genre: </strong> {genre}</h3>
+    <div className='form-details1'>
+      <div className='form-details2'>
+        <h3>
+          <strong>Musician Name:</strong> {musician_name}
+        </h3>
+        <h3>
+          <strong>Email:</strong> {email}
+        </h3>
+        <h3>
+          <strong>Specialty:</strong> {instrument_one}, {instrument_two}
+        </h3>
+        <h3>
+          <strong>Genre: </strong> {genre}
+        </h3>
       </div>
-      <NavLink to="/" activeClassName="active">
+      <NavLink to='/' activeClassName='active'>
         <Button>See more venues</Button>
       </NavLink>
     </div>

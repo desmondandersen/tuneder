@@ -1,55 +1,25 @@
+// Import React and Redux
 import React, { useEffect } from 'react';
-import { useDispatch, batch } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { getUsers } from './redux/actions/users.js';
 
-import { getUsers } from './actions/users.js';
-// import { getMusicians } from './actions/musicians.js';
+// Add styling
+import './styles.css';
+
+// Import components
 import Routes from './Routes.js';
-import { LinkContainer } from 'react-router-bootstrap';
+import NavBar from './components/NavBar';
 
-import Navbar from 'react-bootstrap/Navbar';
-import Nav from 'react-bootstrap/Nav';
-import Form from 'react-bootstrap/Form';
-import Container from 'react-bootstrap/Container';
-
-//import combineReducers from './reducers/index';
-import './App.css';
-
-function App() {
+const App = () => {
   const dispatch = useDispatch();
-
   useEffect(() => dispatch(getUsers()), [dispatch]);
 
   return (
     <div className='app'>
-      <Container>
-        <Navbar collapseOnSelect bg='light' expand='md'>
-          <LinkContainer to='/'>
-            <Nav.Link>Home</Nav.Link>
-          </LinkContainer>
-
-          <Form inline>
-            <Form.Control
-              type='text'
-              placeholder='i am looking for a ... '
-              className='mr-sm-2'
-            />
-          </Form>
-          <Navbar.Toggle />
-          <Navbar.Collapse className='justify-content-end'>
-            <Nav activeKey={window.location.pathname}>
-              <LinkContainer to='/login'>
-                <Nav.Link> Log In </Nav.Link>
-              </LinkContainer>
-              <LinkContainer to='/my_account'>
-                <Nav.Link> My Account </Nav.Link>
-              </LinkContainer>
-            </Nav>
-          </Navbar.Collapse>
-        </Navbar>
-      </Container>
+      <NavBar />
       <Routes />
     </div>
   );
-}
+};
 
 export default App;

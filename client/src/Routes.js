@@ -1,16 +1,20 @@
+// Import React
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
+
+// Import components
 import Home from './components/Home.js';
 import LoginForm from './components/LoginForm.js';
 import CreateAccount from './components/CreateAccount.js';
 import MusicianForm from './components/MusicianForm.js';
 import VenueForm from './components/VenueForm.js';
-import PrivateRoute from './PrivateRoute.js';
-
 import VenueInfo from './components/VenueInfo.js';
 import MusicianInfo from './components/MusicianInfo.js';
 
-export default function Routes() {
+import PrivateRoute from './PrivateRoute.js';
+
+// URL Routes
+const Routes = () => {
   return (
     <Switch>
       <Route exact path='/'>
@@ -27,7 +31,7 @@ export default function Routes() {
       </Route>
       <Route exact path='/new-musician'>
         <MusicianForm />
-      <PrivateRoute exact path='/my_account'/>
+        <PrivateRoute exact path='/my_account' />
       </Route>
       <Route exact path='/venue-info'>
         <VenueInfo />
@@ -37,4 +41,6 @@ export default function Routes() {
       </Route>
     </Switch>
   );
-}
+};
+
+export default Routes;
