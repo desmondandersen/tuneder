@@ -54,21 +54,37 @@
 
 .Home .container{
   margin-top: 20px;
+  align-self: center;
 }
 
 .btn-primary,
 .btn-primary:disabled{
   color: #fff;
-  background-color: #88b1fc;
-  border-color: #88b1fc;
+  background-color: #659afc;
+  border-color: #929294;
+  border-width: 1px;
 }
 
 .btn-primary:hover{
   color: #fff;
-  background-color: #659afc;
-  border-color: #659afc;
+  background-color: #4a89fd;
+  border-color: #929294;
 }
 
 .nav-link{
   color: #659afc;
 }
+
+.slideshow{
+  margin-top: 20px;
+}
+
+.photo{
+  height: 500px;
+  width: 800px;
+}
+
+.caption{
+  margin-top:10px;
+}
+

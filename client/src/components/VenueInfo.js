@@ -22,9 +22,6 @@ const VenueInfo = props => {
           <strong>Email:</strong> {email}
         </div>
         <div>
-          <strong>Password:</strong> {password}
-        </div>
-        <div>
           <strong>Location:</strong> {location}
         </div>
         <div>
