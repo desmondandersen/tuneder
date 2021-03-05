@@ -45,7 +45,10 @@ const Home = () => {
                 <VenueProfile
                   name={venue.name}
                   email={venue.email}
-                  location={venue.location}
+                  address={venue.address}
+                  city={venue.city}
+                  state={venue.state}
+                  zip={venue.zip}
                   description={venue.description}
                   key={key}
                 />
@@ -56,38 +59,37 @@ const Home = () => {
           <div>
             <h2>Musicians</h2>
             <Row>
-              <div>
-                <Col>
-                  {musicians1.map((person, key) => {
-                    return (
-                      <MusicianProfile
-                        name={person.name}
-                        email={person.email}
-                        instrument_one={person.instrument1}
-                        instrument_two={person.instrument2}
-                        genre={person.genre}
-                        key={key}
-                      />
-                    );
-                  })}
-                </Col>
-              </div>
-              <div>
-                <Col>
-                  {musicians2.map((person, key) => {
-                    return (
-                      <MusicianProfile
-                        name={person.name}
-                        email={person.email}
-                        instrument_one={person.instrument1}
-                        instrument_two={person.instrument2}
-                        genre={person.genre}
-                        key={key}
-                      />
-                    );
-                  })}
-                </Col>
-              </div>
+              <Col>
+                {musicians1.map((person, key) => {
+                  return (
+                    <MusicianProfile
+                      name={person.name}
+                      email={person.email}
+                      instrument_1={person.instrument_1}
+                      instrument_2={person.instrument_2}
+                      genre={person.genre}
+                      bio={person.bio}
+                      portfolio={person.portfolio}
+                      key={key}
+                    />
+                  );
+                })}
+              </Col>
+              <Col>
+                {musicians2.map((person, key) => {
+                  return (
+                    <MusicianProfile
+                      name={person.name}
+                      email={person.email}
+                      instrument_1={person.instrument_1}
+                      instrument_2={person.instrument_2}
+                      genre={person.genre}
+                      bio={person.bio}
+                      key={key}
+                    />
+                  );
+                })}
+              </Col>
             </Row>
             <Button style={{ width: '100%' }}>See more musicians</Button>
           </div>
