@@ -2,6 +2,7 @@ import React from 'react';
 
 import { NavLink } from 'react-router-dom';
 import { withRouter } from 'react-router';
+import ReactPlayer from 'react-player/lazy'
 
 // Import bootstrap components
 import { Button } from 'react-bootstrap';
@@ -13,8 +14,8 @@ const MusicianInfo = (props) => {
   const instrument_1 = props.location.state.instrument_1;
   const instrument_2 = props.location.state.instrument_2;
   const genre = props.location.state.genre;
-  const portfolio = props.location.state.portfolio;
   const bio = props.location.state.bio;
+  let portfolio = props.location.state.portfolio;
 
   const renderInstruments = () => {
     if (instrument_2)
@@ -27,22 +28,20 @@ const MusicianInfo = (props) => {
     else return instrument_1;
   };
 
+  if(portfolio == ""){
+    portfolio = "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  }
+
   return (
     <div className='form-details1'>
       <div className='form-details2'>
         <h2>{musician_name}</h2>
         <p>
-          <strong>Bio: </strong>
-          {bio}
+          <strong>Bio: </strong> {bio}
           <br />
-          <strong>Genre: </strong>
-          {genre}
+          <strong>Genre: </strong> {genre}
           <br />
-          <strong>Instruments: </strong>
-          {renderInstruments()}
-          <br />
-          <strong>Portfolio: </strong>
-          {portfolio}
+          <strong>Instruments: </strong> {renderInstruments()}
           <br />
           <strong>Contact: </strong>
           <a href={`mailto:${email}`}>{email} </a>
@@ -53,6 +52,15 @@ const MusicianInfo = (props) => {
         <NavLink to='/' activeClassName='active'>
           <Button variant='outline-secondary'>See more musicians</Button>
         </NavLink>
+      </div>
+      <NavLink to='/' activeClassName='active'>
+        <Button>See more venues</Button>
+      </NavLink>
+      <div>
+        <ReactPlayer
+          url={portfolio}
+          controls={true}
+        />
       </div>
     </div>
   );
