@@ -16,6 +16,7 @@ const MusicianForm = () => {
     instrument_1: '',
     instrument_2: '',
     genre: '',
+    portfolio: '',
     bio: '',
   });
 

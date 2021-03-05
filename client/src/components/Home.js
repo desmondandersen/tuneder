@@ -45,7 +45,10 @@ const Home = () => {
                 <VenueProfile
                   name={venue.name}
                   email={venue.email}
-                  location={venue.location}
+                  address={venue.address}
+                  city={venue.city}
+                  state={venue.state}
+                  zip={venue.zip}
                   description={venue.description}
                   key={key}
                 />
@@ -66,6 +69,7 @@ const Home = () => {
                       instrument_2={person.instrument_2}
                       genre={person.genre}
                       bio={person.bio}
+                      portfolio={person.portfolio}
                       key={key}
                     />
                   );
@@ -73,7 +77,6 @@ const Home = () => {
               </Col>
               <Col>
                 {musicians2.map((person, key) => {
-                  console.log(person);
                   return (
                     <MusicianProfile
                       name={person.name}

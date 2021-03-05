@@ -23,6 +23,7 @@ const MusicianProfile = (props) => {
                 instrument_1: props.instrument_1,
                 instrument_2: props.instrument_2,
                 genre: props.genre,
+                portfolio: props.portfolio,
                 bio: props.bio,
               },
             }}

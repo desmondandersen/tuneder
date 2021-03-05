@@ -13,6 +13,7 @@ const MusicianInfo = (props) => {
   const instrument_1 = props.location.state.instrument_1;
   const instrument_2 = props.location.state.instrument_2;
   const genre = props.location.state.genre;
+  const portfolio = props.location.state.portfolio;
   const bio = props.location.state.bio;
 
   const renderInstruments = () => {
@@ -39,6 +40,12 @@ const MusicianInfo = (props) => {
           <br />
           <strong>Instruments: </strong>
           {renderInstruments()}
+          <br />
+          <strong>Portfolio: </strong>
+          {portfolio}
+          <br />
+          <strong>Contact: </strong>
+          <a href={`mailto:${email}`}>{email} </a>
         </p>
         <Button href={`mailto:${email}`} variant='primary'>
           Message
