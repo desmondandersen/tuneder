@@ -63,9 +63,10 @@ const Home = () => {
                       <MusicianProfile
                         name={person.name}
                         email={person.email}
-                        instrument_one={person.instrument1}
-                        instrument_two={person.instrument2}
+                        instrument_one={person.instrument_1}
+                        instrument_two={person.instrument_2}
                         genre={person.genre}
+                        portfolio_link="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
                         key={key}
                       />
                     );
@@ -79,9 +80,10 @@ const Home = () => {
                       <MusicianProfile
                         name={person.name}
                         email={person.email}
-                        instrument_one={person.instrument1}
-                        instrument_two={person.instrument2}
+                        instrument_one={person.instrument_1}
+                        instrument_two={person.instrument_2}
                         genre={person.genre}
+                        portfolio_link="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
                         key={key}
                       />
                     );
