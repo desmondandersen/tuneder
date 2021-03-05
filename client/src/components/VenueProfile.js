@@ -20,7 +20,10 @@ function VenueProfile(props) {
                 venue_name: props.name,
                 email: props.email,
                 password: props.password,
-                location: props.location,
+                address: props.address,
+                city: props.city,
+                state: props.state,
+                zip: props.zip,
                 description: props.description,
               },
             }}
