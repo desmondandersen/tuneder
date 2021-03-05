@@ -10,29 +10,43 @@ import { Button } from 'react-bootstrap';
 const MusicianInfo = (props) => {
   const musician_name = props.location.state.musician_name;
   const email = props.location.state.email;
-  const instrument_one = props.location.state.instrument_one;
-  const instrument_two = props.location.state.instrument_two;
+  const instrument_1 = props.location.state.instrument_1;
+  const instrument_2 = props.location.state.instrument_2;
   const genre = props.location.state.genre;
+  const bio = props.location.state.bio;
+
+  const renderInstruments = () => {
+    if (instrument_2)
+      return (
+        <ul>
+          <li>{instrument_1}</li>
+          <li>{instrument_2}</li>
+        </ul>
+      );
+    else return instrument_1;
+  };
 
   return (
     <div className='form-details1'>
       <div className='form-details2'>
-        <h3>
-          <strong>Musician Name:</strong> {musician_name}
-        </h3>
-        <h3>
-          <strong>Email:</strong> {email}
-        </h3>
-        <h3>
-          <strong>Specialty:</strong> {instrument_one}, {instrument_two}
-        </h3>
-        <h3>
-          <strong>Genre: </strong> {genre}
-        </h3>
+        <h2>{musician_name}</h2>
+        <p>
+          <strong>Bio: </strong>
+          {bio}
+          <br />
+          <strong>Genre: </strong>
+          {genre}
+          <br />
+          <strong>Instruments: </strong>
+          {renderInstruments()}
+        </p>
+        <Button href={`mailto:${email}`} variant='primary'>
+          Message
+        </Button>{' '}
+        <NavLink to='/' activeClassName='active'>
+          <Button variant='outline-secondary'>See more musicians</Button>
+        </NavLink>
       </div>
-      <NavLink to='/' activeClassName='active'>
-        <Button>See more venues</Button>
-      </NavLink>
     </div>
   );
 };
