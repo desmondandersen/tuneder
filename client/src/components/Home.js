@@ -18,28 +18,22 @@ import Slideshow from './Slideshow';
 const Home = () => {
   /*logic to import all venues and musicians, 
   then put them in separate arrays*/
-  const all = useSelector((state) => state.users);
-  const venues = [];
-  const musicians = [];
+  var all = useSelector((state) => state.users);
+  var venues = [];
+  var musicians = [];
   for (var i = 0; i < all.length; i++) {
     if (all[i].type === 'Venue') venues.push(all[i]);
     else musicians.push(all[i]);
   }
   /* separate musicians array into 2 separate columns */
-
+   var [musicians1, setMusicians1] = React.useState(musicians);
+   var [musicians2, setMusicians2] = React.useState([]);
+  /* setup search logic */
   const [searchTerm, setSearchTerm] = React.useState("");
-  var [searchResults, setSearchResults] = React.useState(musicians);
-  var [musicians1, setMusicians1] = React.useState([]);
-  var [musicians2, setMusicians2] = React.useState([]);
 
-  const handleChange = event => {
-    setSearchTerm(event.target.value);
-    console.log(searchTerm);
-  };
-
+  /* create useEffect hook for initial loading */
   React.useEffect(() => {
-    const results = musicians.filter(musician => (musician.instrument_1).toLowerCase().includes(searchTerm));
-    setSearchResults(results);
+    const results = musicians.filter(musician => (musician.instrument_1).toLowerCase().includes(""));
     const musicians1Results = [];
     const musicians2Results = [];
     for (var j = 0; j < results.length; j++) {
@@ -48,10 +42,23 @@ const Home = () => {
     }
     setMusicians1(musicians1Results);
     setMusicians2(musicians2Results);
-    console.log(musicians1Results);
-    console.log(musicians2Results);
-  }, [searchTerm]
-  );
+  }, [all]);
+
+  const handleChange = event => {
+    setSearchTerm(event.target.value);
+  };
+  /* update musicians arrays for real-time search */
+  React.useEffect(() => {
+    const results = musicians.filter(musician => (musician.instrument_1).toLowerCase().includes(searchTerm));
+    const musicians1Results = [];
+    const musicians2Results = [];
+    for (var j = 0; j < results.length; j++) {
+      if (j % 2 === 0) musicians1Results.push(results[j]);
+      else musicians2Results.push(results[j]);
+    }
+    setMusicians1(musicians1Results);
+    setMusicians2(musicians2Results);
+  }, [searchTerm]);
 
   return (
     <div className='home'>
