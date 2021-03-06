@@ -6,15 +6,26 @@ import { Link } from 'react-router-dom';
 // Import bootstrap components
 import { Form, Button } from 'react-bootstrap';
 
+async function loginUser(credentials) {
+  return fetch('http://localhost:5000/login', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(credentials)
+  })
+    .then(data => data.json())
+ }
+
 // Login Page
-const Login = ({setToken}) => {
+export default function Login({setToken}) {
   // Create constructor for username, password
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const [username, setUsername] = useState();
+  const [password, setPassword] = useState();
 
   // Validate login items
   function validSubmission() {
-    return username.length > 2 && password.length;
+    return true;
   }
   const handleSubmit = async e => {
     e.preventDefault();
@@ -22,20 +33,8 @@ const Login = ({setToken}) => {
       username,
       password
     });
-    console.log("so far so good");
     setToken(token);
   }
-
-  async function loginUser(credentials) {
-    return fetch('http://localhost:5000/login', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(credentials)
-    })
-      .then(data => data.json())
-   }
 
   return (
     <div className='user-input'>
@@ -61,7 +60,7 @@ const Login = ({setToken}) => {
         </Form.Group>
 
         {/* if login info is valid, the button brings you to home. if not, button is disabled*/}
-        <Link to='/'>
+        <Link to='/account'>
           <Button id='submitButton' type='submit' disabled={!validSubmission()}>
             Login
           </Button>
@@ -81,4 +80,4 @@ Login.propTypes = {
   setToken: PropTypes.func.isRequired
 }
 
-export default Login;
+
