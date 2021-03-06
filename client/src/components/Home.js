@@ -76,6 +76,7 @@ const Home = () => {
                   state={venue.state}
                   zip={venue.zip}
                   description={venue.description}
+                  yelp = {venue.yelp}
                   key={key}
                 />
               );

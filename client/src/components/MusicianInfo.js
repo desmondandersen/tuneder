@@ -52,10 +52,11 @@ const MusicianInfo = (props) => {
         <NavLink to='/' activeClassName='active'>
           <Button variant='outline-secondary'>See more musicians</Button>
         </NavLink>
+        <NavLink to='/' activeClassName='active'>
+          <Button variant = 'outline-secondary'>See more venues</Button>
+        </NavLink>
       </div>
-      {/* <NavLink to='/' activeClassName='active'>
-        <Button>See more venues</Button>
-      </NavLink> */}
+      <hr></hr>
       <div>
         <ReactPlayer
           url={portfolio}
