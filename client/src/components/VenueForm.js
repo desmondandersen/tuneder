@@ -159,9 +159,9 @@ const VenueForm = () => {
         </Form.Group>
 
         <Form.Group controlId='yelp'>
-          <Form.Label>Yelp Link</Form.Label>
+          <Form.Label>Social Media Links</Form.Label>
           <Form.Control
-            placeholder='Yelp Link'
+            placeholder='Yelp, Facebook, Instagram, etc.'
             value={userData.yelp}
             onChange={(e) =>
               setUserData({ ...userData, yelp: e.target.value })
