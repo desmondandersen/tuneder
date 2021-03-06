@@ -45,8 +45,12 @@ const Home = () => {
                 <VenueProfile
                   name={venue.name}
                   email={venue.email}
-                  location={venue.location}
+                  address={venue.address}
+                  city={venue.city}
+                  state={venue.state}
+                  zip={venue.zip}
                   description={venue.description}
+                  yelp = {venue.yelp}
                   key={key}
                 />
               );
@@ -63,9 +67,11 @@ const Home = () => {
                       <MusicianProfile
                         name={person.name}
                         email={person.email}
-                        instrument_one={person.instrument1}
-                        instrument_two={person.instrument2}
+                        instrument_1={person.instrument_1}
+                        instrument_2={person.instrument_2}
                         genre={person.genre}
+                        bio={person.bio}
+                        portfolio={person.portfolio}
                         key={key}
                       />
                     );
@@ -79,9 +85,11 @@ const Home = () => {
                       <MusicianProfile
                         name={person.name}
                         email={person.email}
-                        instrument_one={person.instrument1}
-                        instrument_two={person.instrument2}
+                        instrument_1={person.instrument_1}
+                        instrument_2={person.instrument_2}
                         genre={person.genre}
+                        bio={person.bio}
+                        portfolio={person.portfolio}
                         key={key}
                       />
                     );

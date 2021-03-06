@@ -10,28 +10,56 @@ import { Button } from 'react-bootstrap';
 const VenueInfo = (props) => {
   const venue_name = props.location.state.venue_name;
   const email = props.location.state.email;
-  const location = props.location.state.location;
+  const address = props.location.state.address;
+  const city = props.location.state.city;
+  const state = props.location.state.state;
+  const zip = props.location.state.zip;
   const description = props.location.state.description;
+  const yelp = props.location.state.yelp;
+
+  let button_display = "";
+
+  if (yelp.includes("yelp")){
+    button_display = "on Yelp"
+  }
+  else if (yelp.includes("facebook")){
+    button_display = "on Facebook"
+  }
+  else if (yelp.includes("instagram")){
+    button_display = "on Instagram"
+  }
+  else{
+    button_display = "Elsewhere"
+  }
+
+  
+
 
   return (
     <div className='form-details1'>
       <div className='form-details2'>
-        <h3>
-          <strong>Venue Name:</strong> {venue_name}
-        </h3>
-        <h3>
-          <strong>Email:</strong> {email}
-        </h3>
-        <h3>
-          <strong>Location:</strong> {location}
-        </h3>
-        <h3>
-          <strong>Description:</strong> {description}
-        </h3>
+        <h2>{venue_name}</h2>
+        <p>
+          <strong>Description: </strong>
+          {description}
+          <br />
+          <strong>Address: </strong>
+          {address}, {city}, {state} {zip}
+          <br />
+          <strong>Contact: </strong>
+          <a href={`mailto:${email}`}>{email} </a>
+          <br />
+        </p>
+        <Button href={`mailto:${email}`} variant='primary'>
+          Message
+        </Button>{' '}
+        <Button  href={yelp} target = '_blank' variant='outline-secondary'>
+          Find us {button_display}
+        </Button>{' '}
+        <NavLink to='/' activeClassName='active'>
+          <Button variant='outline-secondary'>See more venues</Button>
+        </NavLink>
       </div>
-      <NavLink to='/' activeClassName='active'>
-        <Button>See more venues</Button>
-      </NavLink>
     </div>
   );
 };
