@@ -50,7 +50,7 @@ const VenueForm = () => {
             required
           />
           <Form.Text className='text-muted'>
-            We'll never share your email with anyone else.
+          Your email is what others will use to contact you!
           </Form.Text>
         </Form.Group>
 

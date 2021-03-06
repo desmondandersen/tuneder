@@ -1,12 +1,13 @@
 // Import React
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 // Import bootstrap components
 import { Form, Button } from 'react-bootstrap';
 
 // Login Page
-const Login = () => {
+const Login = ({setToken}) => {
   // Create constructor for username, password
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -15,10 +16,26 @@ const Login = () => {
   function validSubmission() {
     return username.length > 2 && password.length;
   }
-
-  function handleSubmit() {
-    console.log('Logging in...');
+  const handleSubmit = async e => {
+    e.preventDefault();
+    const token = await loginUser({
+      username,
+      password
+    });
+    console.log("so far so good");
+    setToken(token);
   }
+
+  async function loginUser(credentials) {
+    return fetch('http://localhost:5000/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(credentials)
+    })
+      .then(data => data.json())
+   }
 
   return (
     <div className='user-input'>
@@ -59,5 +76,9 @@ const Login = () => {
     </div>
   );
 };
+
+Login.propTypes = {
+  setToken: PropTypes.func.isRequired
+}
 
 export default Login;

@@ -21,19 +21,20 @@ const Routes = () => {
       <Route exact path='/'>
         <Home />
       </Route>
+
       <Route exact path='/login'>
         <LoginForm />
       </Route>
+
       <Route exact path='/create-account'>
         <CreateAccount />
       </Route>
+      
       <Route exact path='/new-venue'>
         <VenueForm />
       </Route>
       <Route exact path='/new-musician'>
         <MusicianForm />
-      <PrivateRoute exact path='/account' />
-        <Account/>
       </Route>
       <Route exact path='/venue-info'>
         <VenueInfo />
@@ -41,6 +42,9 @@ const Routes = () => {
       <Route exact path='/musician-info'>
         <MusicianInfo />
       </Route>
+      <PrivateRoute exact path='/account'>
+        <Account />
+      </PrivateRoute>
     </Switch>
   );
 };
