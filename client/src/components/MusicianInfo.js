@@ -53,9 +53,9 @@ const MusicianInfo = (props) => {
           <Button variant='outline-secondary'>See more musicians</Button>
         </NavLink>
       </div>
-      <NavLink to='/' activeClassName='active'>
+      {/* <NavLink to='/' activeClassName='active'>
         <Button>See more venues</Button>
-      </NavLink>
+      </NavLink> */}
       <div>
         <ReactPlayer
           url={portfolio}

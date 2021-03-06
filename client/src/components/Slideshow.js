@@ -12,17 +12,17 @@ const Slideshow = () => {
       <Fade className='slideshow'>
         <div className='each-fade'>
           <div className='image-container image-container--guitar'>
-            <h3 className='caption'>Meet talented freelance musicians!</h3>
+            <h3 className='caption'>Meet talented freelance musicians</h3>
           </div>
         </div>
         <div className='each-fade'>
           <div className='image-container image-container--band'>
-            <h3 className='caption'>Find a member for your band!</h3>
+            <h3 className='caption'>Find a member for your band</h3>
           </div>
         </div>
         <div className='each-fade'>
           <div className='image-container image-container--venue'>
-            <h3 className='caption'>Explore local venues looking to hire!</h3>
+            <h3 className='caption'>Explore local venues looking to hire</h3>
           </div>
         </div>
       </Fade>

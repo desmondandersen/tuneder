@@ -13,6 +13,7 @@ const MusicianForm = () => {
     type: 'Musician',
     name: '',
     email: '',
+    password: '',
     instrument_1: '',
     instrument_2: '',
     genre: '',

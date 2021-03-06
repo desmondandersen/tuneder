@@ -72,6 +72,12 @@
 }
 
 /* Home */
+.home .search {
+  width: 250px;
+  position: fixed;
+  left: 30%;
+  top: 20px;
+}
 .home .container {
   margin-top: 20px;
 }

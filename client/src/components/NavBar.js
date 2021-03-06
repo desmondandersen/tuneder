@@ -6,13 +6,15 @@ import { Nav, Navbar, Form, Container } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import { Link } from 'react-router-dom';
 
+
 // Navigation Bar Component
 const NavBar = () => {
-  const [searchTerm, setSearchTerm] = React.useState("");
-  const handleChange = event => {
-    setSearchTerm(event.target.value);
-    console.log(searchTerm);
-  };
+  // const [searchTerm, setSearchTerm] = React.useState("");
+  // const handleChange = event => {
+  //   setSearchTerm(event.target.value);
+  //   console.log(searchTerm);
+  //   return searchTerm;
+  // };
   return (
     <Container>
       <Navbar
@@ -31,12 +33,12 @@ const NavBar = () => {
           </Navbar.Brand>
         </Link>
 
-        <Form inline>
+        {/* <Form inline>
           <Form.Control type='text' placeholder='Search' className='mr-sm-2' 
             value={searchTerm}
             onChange={handleChange}
           />
-        </Form>
+        </Form> */}
 
         <Navbar.Toggle />
         <Navbar.Collapse className='justify-content-end'>
