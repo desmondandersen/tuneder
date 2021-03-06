@@ -13,6 +13,7 @@ const VenueForm = () => {
     type: 'Venue',
     name: '',
     email: '',
+    password: '',
     address: '',
     city: '',
     state: '',
