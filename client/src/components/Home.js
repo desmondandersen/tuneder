@@ -49,7 +49,7 @@ const Home = () => {
   };
   /* update musicians arrays for real-time search */
   React.useEffect(() => {
-    const results = musicians.filter(musician => (musician.instrument_1).toLowerCase().includes(searchTerm));
+    const results = musicians.filter(musician => (musician.instrument_1).toLowerCase().includes(searchTerm.toLocaleLowerCase()));
     const musicians1Results = [];
     const musicians2Results = [];
     for (var j = 0; j < results.length; j++) {
