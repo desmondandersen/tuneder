@@ -25,6 +25,7 @@ function VenueProfile(props) {
                 state: props.state,
                 zip: props.zip,
                 description: props.description,
+                yelp: props.yelp,
               },
             }}
           >

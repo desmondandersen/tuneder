@@ -99,6 +99,10 @@
   border-color: #929294;
 }
 
+.btn-outline-secondary {
+  margin: 5px;
+}
+
 /* Navigation */
 .navbar {
   margin-top: 10px;

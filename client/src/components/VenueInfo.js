@@ -15,6 +15,25 @@ const VenueInfo = (props) => {
   const state = props.location.state.state;
   const zip = props.location.state.zip;
   const description = props.location.state.description;
+  const yelp = props.location.state.yelp;
+
+  let button_display = "";
+
+  if (yelp.includes("yelp")){
+    button_display = "on Yelp"
+  }
+  else if (yelp.includes("facebook")){
+    button_display = "on Facebook"
+  }
+  else if (yelp.includes("instagram")){
+    button_display = "on Instagram"
+  }
+  else{
+    button_display = "Elsewhere"
+  }
+
+  
+
 
   return (
     <div className='form-details1'>
@@ -33,6 +52,9 @@ const VenueInfo = (props) => {
         </p>
         <Button href={`mailto:${email}`} variant='primary'>
           Message
+        </Button>{' '}
+        <Button  href={yelp} target = '_blank' variant='outline-secondary'>
+          Find us {button_display}
         </Button>{' '}
         <NavLink to='/' activeClassName='active'>
           <Button variant='outline-secondary'>See more venues</Button>

@@ -18,6 +18,7 @@ const userSchema = mongoose.Schema({
   genre: String,
   portfolio: String,
   bio: String,
+  yelp: String,
 
   //likeCount: { type: Number, default: 0 },
   //date: { type: Date, default: new Date() },
