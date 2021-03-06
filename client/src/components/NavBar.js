@@ -8,6 +8,11 @@ import { Link } from 'react-router-dom';
 
 // Navigation Bar Component
 const NavBar = () => {
+  const [searchTerm, setSearchTerm] = React.useState("");
+  const handleChange = event => {
+    setSearchTerm(event.target.value);
+    console.log(searchTerm);
+  };
   return (
     <Container>
       <Navbar
@@ -22,12 +27,15 @@ const NavBar = () => {
               src='logo512.png'
               className='d-inline-block align-top navbar__logo'
             />{' '}
-            Tunder
+            Tuneder
           </Navbar.Brand>
         </Link>
 
         <Form inline>
-          <Form.Control type='text' placeholder='Search' className='mr-sm-2' />
+          <Form.Control type='text' placeholder='Search' className='mr-sm-2' 
+            value={searchTerm}
+            onChange={handleChange}
+          />
         </Form>
 
         <Navbar.Toggle />
