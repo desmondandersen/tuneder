@@ -2,13 +2,39 @@
 import React from 'react';
 
 // Import bootstrap components
-import { Nav, Navbar, Form, Container } from 'react-bootstrap';
+import { Nav, Navbar, Form, Container, Button } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import { Link } from 'react-router-dom';
 
 
 // Navigation Bar Component
 const NavBar = () => {
+  function handleLogOut() {
+    sessionStorage.removeItem('isAuthenticated');
+    if(sessionStorage.getItem('type') == 'Venue')
+    {
+      sessionStorage.removeItem('type');
+      sessionStorage.removeItem('name');
+      sessionStorage.removeItem('email');
+      sessionStorage.removeItem('address');
+      sessionStorage.removeItem('city');
+      sessionStorage.removeItem('state');
+      sessionStorage.removeItem('zip');
+      sessionStorage.removeItem('description');
+    }
+    else
+    {
+      sessionStorage.removeItem('type');
+      sessionStorage.removeItem('name');
+      sessionStorage.removeItem('email');
+      sessionStorage.removeItem('instrument_1');
+      sessionStorage.removeItem('instrument_2');
+      sessionStorage.removeItem('genre');
+      sessionStorage.removeItem('bio');
+      sessionStorage.removeItem('portfolio');
+    }
+  }
+
   // const [searchTerm, setSearchTerm] = React.useState("");
   // const handleChange = event => {
   //   setSearchTerm(event.target.value);
@@ -43,11 +69,11 @@ const NavBar = () => {
         <Navbar.Toggle />
         <Navbar.Collapse className='justify-content-end'>
           <Nav>
-            <LinkContainer to='/login'>
-              <Nav.Link>Log In</Nav.Link>
-            </LinkContainer>
             <LinkContainer to='/account'>
               <Nav.Link>My Account</Nav.Link>
+            </LinkContainer>
+            <LinkContainer to='/login' onClick={() => {handleLogOut()}}>
+              <Nav.Link>Log Out</Nav.Link>
             </LinkContainer>
           </Nav>
         </Navbar.Collapse>
