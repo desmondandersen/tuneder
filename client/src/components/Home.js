@@ -7,6 +7,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
 
 // Import components
 import VenueProfile from './VenueProfile';
@@ -17,24 +18,56 @@ import Slideshow from './Slideshow';
 const Home = () => {
   /*logic to import all venues and musicians, 
   then put them in separate arrays*/
-  const all = useSelector((state) => state.users);
-  const venues = [];
-  const musicians = [];
+  var all = useSelector((state) => state.users);
+  var venues = [];
+  var musicians = [];
   for (var i = 0; i < all.length; i++) {
     if (all[i].type === 'Venue') venues.push(all[i]);
     else musicians.push(all[i]);
   }
-
   /* separate musicians array into 2 separate columns */
-  const musicians1 = [];
-  const musicians2 = [];
-  for (var j = 0; j < musicians.length; j++) {
-    if (j % 2 === 0) musicians1.push(musicians[j]);
-    else musicians2.push(musicians[j]);
-  }
+   var [musicians1, setMusicians1] = React.useState(musicians);
+   var [musicians2, setMusicians2] = React.useState([]);
+  /* setup search logic */
+  const [searchTerm, setSearchTerm] = React.useState("");
+
+  /* create useEffect hook for initial loading */
+  React.useEffect(() => {
+    const results = musicians.filter(musician => (musician.instrument_1).toLowerCase().includes(""));
+    const musicians1Results = [];
+    const musicians2Results = [];
+    for (var j = 0; j < results.length; j++) {
+      if (j % 2 === 0) musicians1Results.push(results[j]);
+      else musicians2Results.push(results[j]);
+    }
+    setMusicians1(musicians1Results);
+    setMusicians2(musicians2Results);
+  }, [all]);
+
+  const handleChange = event => {
+    setSearchTerm(event.target.value);
+  };
+  /* update musicians arrays for real-time search */
+  React.useEffect(() => {
+    const results = musicians.filter(musician => (musician.instrument_1).toLowerCase().includes(searchTerm.toLocaleLowerCase()));
+    const musicians1Results = [];
+    const musicians2Results = [];
+    for (var j = 0; j < results.length; j++) {
+      if (j % 2 === 0) musicians1Results.push(results[j]);
+      else musicians2Results.push(results[j]);
+    }
+    setMusicians1(musicians1Results);
+    setMusicians2(musicians2Results);
+  }, [searchTerm]);
 
   return (
     <div className='home'>
+      <Form inline>
+        <Form.Control type='text' placeholder='Search' className='search' width='320px'
+          value={searchTerm}
+          onChange={handleChange}
+        />
+      </Form>
       <Slideshow />
       <Container>
         <Row>
@@ -50,6 +83,7 @@ const Home = () => {
                   state={venue.state}
                   zip={venue.zip}
                   description={venue.description}
+                  yelp = {venue.yelp}
                   key={key}
                 />
               );

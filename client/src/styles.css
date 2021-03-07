@@ -72,6 +72,12 @@
 }
 
 /* Home */
+.home .search {
+  width: 250px;
+  position: absolute;
+  left: 30%;
+  top: 20px;
+}
 .home .container {
   margin-top: 20px;
 }
@@ -97,6 +103,10 @@
   color: #fff;
   background-color: #4a89fd;
   border-color: #929294;
+}
+
+.btn-outline-secondary {
+  margin: 5px;
 }
 
 /* Navigation */

@@ -13,6 +13,7 @@ const VenueForm = () => {
     type: 'Venue',
     name: '',
     email: '',
+    password: '',
     address: '',
     city: '',
     state: '',
@@ -156,6 +157,18 @@ const VenueForm = () => {
             <option name='100-200'>100-200</option>
             <option name='>200'>More than 200</option>
           </Form.Control>
+        </Form.Group>
+
+        <Form.Group controlId='yelp'>
+          <Form.Label>Social Media Links</Form.Label>
+          <Form.Control
+            placeholder='Yelp, Facebook, Instagram, etc.'
+            value={userData.yelp}
+            onChange={(e) =>
+              setUserData({ ...userData, yelp: e.target.value })
+            }
+            required
+          />
         </Form.Group>
 
         <Form.Group controlId='Info'>
