@@ -1,6 +1,6 @@
 // Import React
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 
 // Import components
 import Home from './components/Home.js';
@@ -10,19 +10,20 @@ import MusicianForm from './components/MusicianForm.js';
 import VenueForm from './components/VenueForm.js';
 import VenueInfo from './components/VenueInfo.js';
 import MusicianInfo from './components/MusicianInfo.js';
-import Account from './components/Account.js'
-import Map from './components/Map.js'
+import MyAccount from './components/MyAccount.js';
 
-import PrivateRoute from './PrivateRoute.js';
+import ProtectedRoute from './ProtectedRoute.js';
 
 // URL Routes
 const Routes = () => {
+  let isAuthenticated = sessionStorage.getItem('isAuthenticated')
+  if(isAuthenticated == null) {
+    isAuthenticated = false;
+  }
+
   return (
     <Switch>
-      <Route exact path='/'>
-        <Home />
-      </Route>
-
+      <ProtectedRoute exact path='/' component={Home} isAuthenticated={isAuthenticated} />
       <Route exact path='/login'>
         <LoginForm />
       </Route>
@@ -37,18 +38,10 @@ const Routes = () => {
       <Route exact path='/new-musician'>
         <MusicianForm />
       </Route>
-      <Route exact path='/venue-info'>
-        <VenueInfo />
-      </Route>
-      <Route exact path='/musician-info'>
-        <MusicianInfo />
-      </Route>
-      <Route exact path='/map'>
-        <Map />
-      </Route>
-      <PrivateRoute exact path='/account'>
-        <Account />
-      </PrivateRoute>
+      <ProtectedRoute exact path='/venue-info' component={VenueInfo} isAuthenticated={isAuthenticated} />
+      <ProtectedRoute exact path='/musician-info' component={MusicianInfo} isAuthenticated={isAuthenticated} />
+      <ProtectedRoute exact path='/account' component={MyAccount} isAuthenticated={isAuthenticated} />
+      <Route render={() => <Redirect to="/login" />} />
     </Switch>
   );
 };
