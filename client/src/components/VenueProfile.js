@@ -8,10 +8,10 @@ import { LinkContainer } from 'react-router-bootstrap';
 // Venue Profile Card
 function VenueProfile(props) {
   return (
-    <Card className='card--venue'>
+    <Card className='card--venue' >
       <Card.Body>
         <Card.Title>{props.name}</Card.Title>
-        <Card.Text>{props.artist}</Card.Text>
+        <Card.Text>{props.city}</Card.Text>
         <Nav activeKey={window.location.pathname}>
           <LinkContainer
             to={{
