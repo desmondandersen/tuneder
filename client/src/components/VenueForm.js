@@ -25,6 +25,17 @@ const VenueForm = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     dispatch(createUser(userData));
+
+    sessionStorage.setItem('isAuthenticated', true);
+    sessionStorage.setItem('type', userData.type);
+    sessionStorage.setItem('name', userData.name);
+    sessionStorage.setItem('email', userData.email);
+    sessionStorage.setItem('address', userData.address);
+    sessionStorage.setItem('city', userData.city);
+    sessionStorage.setItem('state', userData.state);
+    sessionStorage.setItem('zip', userData.zip);
+    sessionStorage.setItem('description', userData.description);
+
     history.push('/');
   };
 
