@@ -43,6 +43,17 @@ const MusicianForm = () => {
     //   return;
     // }
     dispatch(createUser(userData));
+
+    sessionStorage.setItem('isAuthenticated', true);
+    sessionStorage.setItem('type', userData.type);
+    sessionStorage.setItem('name', userData.name);
+    sessionStorage.setItem('email', userData.email);
+    sessionStorage.setItem('instrument_1', userData.instrument_1);
+    sessionStorage.setItem('instrument_2', userData.instrument_2);
+    sessionStorage.setItem('genre', userData.genre);
+    sessionStorage.setItem('bio', userData.bio);
+    sessionStorage.setItem('portfolio', userData.portfolio);
+
     history.push('/');
   };
 
