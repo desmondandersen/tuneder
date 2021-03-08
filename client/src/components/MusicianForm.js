@@ -1,7 +1,7 @@
 // Import React and Redux
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { createUser } from '../redux/actions/users';
 
 // Import bootstrap components
@@ -24,24 +24,10 @@ const MusicianForm = () => {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  // function validPassword() {
-  //   return password.length > 4;
-  // }
-  // function validName() {
-  //   return firstName.length > 0;
-  // }
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    // if (!validPassword()) {
-    //   alert('Password too short. Change and resubmit');
-    //   return;
-    // }
-    // if (!validName()) {
-    //   alert('First Name is a required field. Please fill it in and resubmit.');
-    //   return;
-    // }
     dispatch(createUser(userData));
 
     sessionStorage.setItem('isAuthenticated', true);
@@ -145,7 +131,7 @@ const MusicianForm = () => {
           <Form.Group as={Col} controlId='primaryExpertise'>
             <Form.Label>Level of Expertise</Form.Label>
             <br />
-            <div key='inline-radio' className='mb-3'>
+            <div key='expertise-radio1' className='mb-3'>
               {[1, 2, 3, 4, 5].map((index) => (
                 <Form.Check
                   inline
@@ -187,7 +173,7 @@ const MusicianForm = () => {
           <Form.Group as={Col} controlId='secondaryExpertise'>
             <Form.Label>Level of Expertise</Form.Label>
             <br />
-            <div key='inline-radio' className='mb-3'>
+            <div key='expertise-radio2' className='mb-3'>
               {[1, 2, 3, 4, 5].map((index) => (
                 <Form.Check
                   inline
@@ -206,15 +192,18 @@ const MusicianForm = () => {
           <Form.Label>Portfolio Link</Form.Label>
           <Form.Control placeholder='Youtube Link' />
         </Form.Group>
-
+        {/* value={userData.description}
+            onChange={(e) =>
+              setUserData({ ...userData, description: e.target.value })
+            } */}
         <Form.Group controlId='moreInfo'>
-          <Form.Label>Notes</Form.Label>
+          <Form.Label>More Info</Form.Label>
           <Form.Control
             as='textarea'
             rows={5}
             placeholder='Enter a short bio or any other info you want on your profile'
-            value={userData.notes}
-            onChange={(e) => setUserData({ ...userData, bio: e.target.bio })}
+            value={userData.bio}
+            onChange={(e) => setUserData({ ...userData, bio: e.target.value })}
             required
           />
         </Form.Group>

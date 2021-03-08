@@ -67,7 +67,7 @@ const Login = () => {
         }
         else{
           console.log("Incorrect password.");
-          
+          alert("Incorrect Password.");          
         }
       }
       else {
@@ -75,47 +75,61 @@ const Login = () => {
       }
     }
   }
+  if(sessionStorage.getItem('isAuthenticated')){
+    return(
+      <Redirect
+        to={{
+          pathname: '/',
+        }}
+      />
+    )
+  }
 
-  return (
-    <div className='user-input'>
-
-      <Form onSubmit={handleSubmit}>
-        <Form.Group controlId='username'>
-          <Form.Label>Email</Form.Label>
-          <Form.Control
-            autoFocus
-            placeholder='email'
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
-        </Form.Group>
-
-        <Form.Group controlId='password'>
-          <Form.Label>Password</Form.Label>
-          <Form.Control
-            type='password'
-            placeholder='password'
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </Form.Group>
-
-        {/* if login info is valid, the button brings you to home. if not, button is disabled*/}
-        <Link className='custom-link' to ='/'>
-        <Button id='submitButton' type='button' disabled={!validSubmission()} onClick={() => {handleLogin()}}>
-            Login
-        </Button>
-        </Link>
-        
-
-        <p className='text-right'>
-          <Link className='custom-link' to='/create-account'>
-            Create Account
+  else{
+    return (
+    
+      <div className='user-input'>
+  
+        <Form onSubmit={handleSubmit}>
+          <Form.Group controlId='username'>
+            <Form.Label>Email</Form.Label>
+            <Form.Control
+              autoFocus
+              placeholder='email'
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+            />
+          </Form.Group>
+  
+          <Form.Group controlId='password'>
+            <Form.Label>Password</Form.Label>
+            <Form.Control
+              type='password'
+              placeholder='password'
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </Form.Group>
+  
+          {/* if login info is valid, the button brings you to home. if not, button is disabled*/}
+          <Link className='custom-link' to ='/'>
+          <Button id='submitButton' type='button' disabled={!validSubmission()} onClick={() => {handleLogin()}}>
+              Login
+          </Button>
           </Link>
-        </p>
-      </Form>
-    </div>
-  );
+          
+  
+          <p className='text-right'>
+            <Link className='custom-link' to='/create-account'>
+              Create Account
+            </Link>
+          </p>
+        </Form>
+      </div>
+    );
+    
+  }
+ 
 };
 
 export default Login;
