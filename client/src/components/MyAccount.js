@@ -208,16 +208,16 @@ const MyAccount = () => {
                 <strong>Your email: </strong>
                 <a href={`mailto:${email}`}>{email} </a>
               </p>
+              <NavLink to='/edit-info' activeClassName='active'>
+            <Button >Edit Info</Button>
+            </NavLink>
+               <NavLink to='/' activeClassName='active'>
+                <Button variant = 'outline-secondary'>See venues</Button>
+              </NavLink>
               <NavLink to='/' activeClassName='active'>
-                <Button variant='outline-secondary'>See more musicians</Button>
+                <Button variant='outline-secondary'>See other musicians</Button>
               </NavLink>
             </div>
-            <NavLink to='/' activeClassName='active'>
-              <Button>See venues</Button>
-            </NavLink>
-            <NavLink to='/edit-info' activeClassName='active'>
-              <Button>Edit Info</Button>
-            </NavLink>
             <div>
               <ReactPlayer
                 url={portfolio}

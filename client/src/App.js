@@ -10,6 +10,7 @@ import './styles.css';
 import Routes from './Routes.js';
 import NavBar from './components/NavBar';
 
+
 const App = () => {
   const dispatch = useDispatch();
   useEffect(() => dispatch(getUsers()), [dispatch]);

@@ -14,6 +14,8 @@ import VenueProfile from './VenueProfile';
 import MusicianProfile from './MusicianProfile';
 import Slideshow from './Slideshow';
 
+import NavBar from './NavBar.js'
+
 // Home Page
 const Home = () => {
   /*logic to import all venues and musicians, 
