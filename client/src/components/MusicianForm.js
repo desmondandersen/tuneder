@@ -151,7 +151,8 @@ const MusicianForm = () => {
                   inline
                   label={index}
                   type='radio'
-                  id={`inline-radio-${index}`}
+                  // id={`inline-radio-${index}`}
+                  id='inline-radio-1'
                   value={index}
                 />
               ))}
@@ -192,7 +193,8 @@ const MusicianForm = () => {
                   inline
                   label={index}
                   type='radio'
-                  id={`inline-radio-${index}`}
+                  // id={`inline-radio-${index}`}
+                  id='inline-radio-2'
                   value={index}
                 />
               ))}

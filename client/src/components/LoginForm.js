@@ -6,44 +6,33 @@ import { Link, Redirect, useHistory } from 'react-router-dom';
 // Import bootstrap components
 import { Form, Button } from 'react-bootstrap';
 
-async function loginUser(credentials) {
-  return fetch('http://localhost:5000/login', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(credentials)
-  })
-    .then(data => data.json())
- }
-
- 
-
 // Login Page
 const Login = () => {
+  const [login, setLogin] = useState(0);
   let history = useHistory();
 
   // retrieve all emails and passwords 
   const all_users = useSelector((state) => state.users);
 
   // Create constructor for username, password
-  const [username, setUsername] = useState();
-  const [password, setPassword] = useState();
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
 
   // Validate login items
   function validSubmission() {
-    return true;
-  }
-  const handleSubmit = async e => {
-    e.preventDefault();
-    const token = await loginUser({
-      username,
-      password
-    });
-    setToken(token);
+    return username.length > 2 && password.length;
   }
 
-  function handleLogin() {
+
+  function handleSubmit() {
+    console.log('Logging in...');
+
+  }
+
+  function handleLogin() {  
+    setLogin(1);
+    console.log('Logging in...')
+    console.log(login);
     for (var i = 0; i < all_users.length; i++) {
       if(username == all_users[i].email) {
         if(password == all_users[i].password) {
@@ -78,6 +67,7 @@ const Login = () => {
         }
         else{
           console.log("Incorrect password.");
+          
         }
       }
       else {
@@ -111,9 +101,12 @@ const Login = () => {
         </Form.Group>
 
         {/* if login info is valid, the button brings you to home. if not, button is disabled*/}
-        <Button id='submitButton' type='submit' disabled={!validSubmission()} onClick={() => {handleLogin()}}>
+        <Link className='custom-link' to ='/'>
+        <Button id='submitButton' type='button' disabled={!validSubmission()} onClick={() => {handleLogin()}}>
             Login
         </Button>
+        </Link>
+        
 
         <p className='text-right'>
           <Link className='custom-link' to='/create-account'>
@@ -125,8 +118,4 @@ const Login = () => {
   );
 };
 
-Login.propTypes = {
-  setToken: PropTypes.func.isRequired
-}
-
-
+export default Login;
