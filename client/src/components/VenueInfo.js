@@ -57,7 +57,7 @@ const VenueInfo = (props) => {
           Find us {button_display}
         </Button>{' '}
         <NavLink to='/' activeClassName='active'>
-          <Button variant='outline-secondary'>See more venues</Button>
+          <Button variant='outline-secondary'>See All Venues and Musicians</Button>
         </NavLink>
       </div>
     </div>

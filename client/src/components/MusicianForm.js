@@ -15,7 +15,9 @@ const MusicianForm = () => {
     email: '',
     password: '',
     instrument_1: '',
+    expertise_1: '',
     instrument_2: '',
+    expertise_2: '',
     genre: '',
     portfolio: '',
     bio: '',
@@ -126,24 +128,24 @@ const MusicianForm = () => {
                 <option name='Other'>Other (add to notes section)</option>
               </Form.Control>
             </Form.Group>
-          </Col>
-
-          <Form.Group as={Col} controlId='primaryExpertise'>
-            <Form.Label>Level of Expertise</Form.Label>
-            <br />
-            <div key='expertise-radio1' className='mb-3'>
-              {[1, 2, 3, 4, 5].map((index) => (
-                <Form.Check
-                  inline
-                  label={index}
-                  type='radio'
-                  // id={`inline-radio-${index}`}
-                  id='inline-radio-1'
-                  value={index}
-                />
-              ))}
-            </div>
-          </Form.Group>
+            </Col>
+            <Form.Group controlId='primaryExpertise'>
+              <Form.Label>Primary Instrument Expertise Level</Form.Label>
+              <Form.Control
+                as='select'
+                defaultValue='Select'
+                value={userData.expertise_1}
+                onChange={(e) =>
+                  setUserData({ ...userData, expertise_1: e.target.value })
+                }
+                required
+              >
+                <option name='Select'>Select</option>
+                <option name='Beginner'>Beginner</option>
+                <option name='Intermediate'>Intermediate</option>
+                <option name='Advanced'>Advanced</option>
+              </Form.Control>
+            </Form.Group>
         </Row>
 
         <Row>
@@ -169,33 +171,34 @@ const MusicianForm = () => {
               </Form.Control>
             </Form.Group>
           </Col>
-
-          <Form.Group as={Col} controlId='secondaryExpertise'>
-            <Form.Label>Level of Expertise</Form.Label>
-            <br />
-            <div key='expertise-radio2' className='mb-3'>
-              {[1, 2, 3, 4, 5].map((index) => (
-                <Form.Check
-                  inline
-                  label={index}
-                  type='radio'
-                  // id={`inline-radio-${index}`}
-                  id='inline-radio-2'
-                  value={index}
-                />
-              ))}
-            </div>
-          </Form.Group>
+          <Form.Group controlId='secondaryExpertise'>
+              <Form.Label>Secondary Instrument Expertise Level</Form.Label>
+              <Form.Control
+                as='select'
+                defaultValue='Select'
+                value={userData.expertise_2}
+                onChange={(e) =>
+                  setUserData({ ...userData, expertise_2: e.target.value })
+                }
+                required
+              >
+                <option name='Select'>Select</option>
+                <option name='Beginner'>Beginner</option>
+                <option name='Intermediate'>Intermediate</option>
+                <option name='Advanced'>Advanced</option>
+              </Form.Control>
+            </Form.Group>
         </Row>
 
         <Form.Group controlId='portfolio'>
           <Form.Label>Portfolio Link</Form.Label>
-          <Form.Control placeholder='Youtube Link' />
+          <Form.Control placeholder='Youtube Link'
+            value={userData.portfolio}
+            onChange={(e) => setUserData({ ...userData, portfolio: e.target.value })}
+          
+          />
+          
         </Form.Group>
-        {/* value={userData.description}
-            onChange={(e) =>
-              setUserData({ ...userData, description: e.target.value })
-            } */}
         <Form.Group controlId='moreInfo'>
           <Form.Label>More Info</Form.Label>
           <Form.Control
