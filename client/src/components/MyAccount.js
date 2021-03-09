@@ -2,19 +2,37 @@
 import React from 'react';
 import { withRouter } from 'react-router';
 
+// Import bootstrap components
+import { NavLink } from 'react-router-dom';
+import Button from 'react-bootstrap/Button';
+
 // Import components
 import MusicianForm from './MusicianForm';
 import VenueForm from './VenueForm';
+import NavBar from './NavBar';
 
 const MyAccount = () => {
-  let type = sessionStorage.getItem('type');
+  const isLoggedIn = sessionStorage.getItem('isAuthenticated');
+  const id = sessionStorage.getItem('id');
+  const type = sessionStorage.getItem('type');
 
-  if (type === 'Venue') {
-    const id = sessionStorage.getItem('id');
+  if (isLoggedIn && type === 'Venue') {
     return <VenueForm currentId={id} />;
-  } else {
-    const id = sessionStorage.getItem('id');
+  } else if (isLoggedIn && type === 'Musician') {
     return <MusicianForm currentId={id} />;
+  } else {
+    return (
+      <>
+        <NavBar />
+        <h1>Please log in</h1>
+        <NavLink to='/login'>
+          <Button variant='primary'>Login</Button>
+        </NavLink>{' '}
+        <NavLink to='/'>
+          <Button variant='secondary'>Back to Home</Button>
+        </NavLink>
+      </>
+    );
   }
 };
 

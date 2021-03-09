@@ -13,6 +13,7 @@ import Form from 'react-bootstrap/Form';
 import VenueProfile from './VenueProfile';
 import MusicianProfile from './MusicianProfile';
 import Slideshow from './Slideshow';
+import NavBar from './NavBar';
 
 // Home Page
 const Home = () => {
@@ -86,92 +87,95 @@ const Home = () => {
   };
 
   return (
-    <div className='home'>
-      <Form inline>
-        <Form.Control
-          type='text'
-          placeholder='Search'
-          className='search'
-          width='320px'
-          value={searchTerm}
-          onChange={handleChange}
-        />
-      </Form>
-      <Slideshow />
-      <Container>
-        <Row>
-          <Col>
-            <h2>Venues</h2>
-            {venues.slice(0, nVenueCards).map((venue, key) => {
-              return (
-                <VenueProfile
-                  name={venue.name}
-                  email={venue.email}
-                  address={venue.address}
-                  city={venue.city}
-                  state={venue.state}
-                  zip={venue.zip}
-                  description={venue.description}
-                  yelp={venue.yelp}
-                  key={key}
-                />
-              );
-            })}
-            <Button style={{ width: '100%' }} onClick={clickMoreVenue}>
-              See all venues
-            </Button>
-          </Col>
-          <div>
-            <h2>Musicians</h2>
-            <Row>
-              <div>
-                <Col>
-                  {musicians1.slice(0, nCards).map((person, key) => {
-                    return (
-                      <MusicianProfile
-                        name={person.name}
-                        email={person.email}
-                        instrument_1={person.instrument_1}
-                        expertise_1={person.expertise_1}
-                        expertise_2={person.expertise_2}
-                        instrument_2={person.instrument_2}
-                        genre={person.genre}
-                        bio={person.bio}
-                        portfolio={person.portfolio}
-                        key={key}
-                      />
-                    );
-                  })}
-                </Col>
-              </div>
-              <div>
-                <Col>
-                  {musicians2.slice(0, nCards).map((person, key) => {
-                    return (
-                      <MusicianProfile
-                        name={person.name}
-                        email={person.email}
-                        instrument_1={person.instrument_1}
-                        expertise_1={person.expertise_1}
-                        expertise_2={person.expertise_2}
-                        instrument_2={person.instrument_2}
-                        genre={person.genre}
-                        bio={person.bio}
-                        portfolio={person.portfolio}
-                        key={key}
-                      />
-                    );
-                  })}
-                </Col>
-              </div>
-            </Row>
-            <Button style={{ width: '100%' }} onClick={clickMoreMusician}>
-              See more musicians
-            </Button>
-          </div>
-        </Row>
-      </Container>
-    </div>
+    <>
+      <NavBar />
+      <div className='home'>
+        <Form inline>
+          <Form.Control
+            type='text'
+            placeholder='Search'
+            className='search'
+            width='320px'
+            value={searchTerm}
+            onChange={handleChange}
+          />
+        </Form>
+        <Slideshow />
+        <Container>
+          <Row>
+            <Col>
+              <h2>Venues</h2>
+              {venues.slice(0, nVenueCards).map((venue, key) => {
+                return (
+                  <VenueProfile
+                    name={venue.name}
+                    email={venue.email}
+                    address={venue.address}
+                    city={venue.city}
+                    state={venue.state}
+                    zip={venue.zip}
+                    description={venue.description}
+                    yelp={venue.yelp}
+                    key={key}
+                  />
+                );
+              })}
+              <Button style={{ width: '100%' }} onClick={clickMoreVenue}>
+                See all venues
+              </Button>
+            </Col>
+            <div>
+              <h2>Musicians</h2>
+              <Row>
+                <div>
+                  <Col>
+                    {musicians1.slice(0, nCards).map((person, key) => {
+                      return (
+                        <MusicianProfile
+                          name={person.name}
+                          email={person.email}
+                          instrument_1={person.instrument_1}
+                          expertise_1={person.expertise_1}
+                          expertise_2={person.expertise_2}
+                          instrument_2={person.instrument_2}
+                          genre={person.genre}
+                          bio={person.bio}
+                          portfolio={person.portfolio}
+                          key={key}
+                        />
+                      );
+                    })}
+                  </Col>
+                </div>
+                <div>
+                  <Col>
+                    {musicians2.slice(0, nCards).map((person, key) => {
+                      return (
+                        <MusicianProfile
+                          name={person.name}
+                          email={person.email}
+                          instrument_1={person.instrument_1}
+                          expertise_1={person.expertise_1}
+                          expertise_2={person.expertise_2}
+                          instrument_2={person.instrument_2}
+                          genre={person.genre}
+                          bio={person.bio}
+                          portfolio={person.portfolio}
+                          key={key}
+                        />
+                      );
+                    })}
+                  </Col>
+                </div>
+              </Row>
+              <Button style={{ width: '100%' }} onClick={clickMoreMusician}>
+                See more musicians
+              </Button>
+            </div>
+          </Row>
+        </Container>
+      </div>
+    </>
   );
 };
 

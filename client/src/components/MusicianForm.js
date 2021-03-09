@@ -5,7 +5,13 @@ import { useHistory } from 'react-router-dom';
 import { createUser, updateUser } from '../redux/actions/users';
 
 // Import bootstrap components
-import { Form, Button, Row, Col } from 'react-bootstrap';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+
+// Import components
+import NavBar from './NavBar';
 
 // Musician Form Page
 const MusicianForm = ({ currentId }) => {
@@ -56,6 +62,7 @@ const MusicianForm = ({ currentId }) => {
 
   return (
     <div className='form--musician'>
+      <NavBar />
       <h1>{heading}</h1>
       <Form className='text-left' onSubmit={handleSubmit}>
         <Form.Group controlId='name'>

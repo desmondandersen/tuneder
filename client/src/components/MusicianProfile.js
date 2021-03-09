@@ -1,7 +1,9 @@
 import React from 'react';
 
 // Import bootstrap components
-import { Nav, Card, Button } from 'react-bootstrap';
+import Nav from 'react-bootstrap/Nav';
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
 import { LinkContainer } from 'react-router-bootstrap';
 
 // Musician Profile Card

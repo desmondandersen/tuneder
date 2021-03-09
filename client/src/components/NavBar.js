@@ -3,7 +3,9 @@ import React from 'react';
 import { useState } from 'react';
 
 // Import bootstrap components
-import { Nav, Navbar, Container } from 'react-bootstrap';
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
 import { LinkContainer } from 'react-router-bootstrap';
 import { Link } from 'react-router-dom';
 
@@ -15,6 +17,34 @@ const NavBar = () => {
   const handleLogOut = () => {
     setloggedIn(1);
     sessionStorage.clear();
+  };
+
+  const renderMenu = () => {
+    if (isLoggedIn) {
+      return (
+        <>
+          <LinkContainer to='/account'>
+            <Nav.Link>My Account</Nav.Link>
+          </LinkContainer>
+          <LinkContainer
+            to='/'
+            onClick={() => {
+              handleLogOut();
+            }}
+          >
+            <Nav.Link>Log Out</Nav.Link>
+          </LinkContainer>
+        </>
+      );
+    } else {
+      return (
+        <>
+          <LinkContainer to='/login'>
+            <Nav.Link>Login</Nav.Link>
+          </LinkContainer>
+        </>
+      );
+    }
   };
 
   return (
@@ -34,22 +64,9 @@ const NavBar = () => {
             Tuneder
           </Navbar.Brand>
         </Link>
-
         <Navbar.Toggle />
         <Navbar.Collapse className='justify-content-end'>
-          <Nav>
-            <LinkContainer to='/account'>
-              <Nav.Link>My Account</Nav.Link>
-            </LinkContainer>
-            <LinkContainer
-              to='/login'
-              onClick={() => {
-                handleLogOut();
-              }}
-            >
-              <Nav.Link>Log Out</Nav.Link>
-            </LinkContainer>
-          </Nav>
+          <Nav>{renderMenu()}</Nav>
         </Navbar.Collapse>
       </Navbar>
     </Container>
