@@ -1,14 +1,14 @@
 // Import React and Redux
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { createUser } from '../redux/actions/users';
+import { createUser, updateUser } from '../redux/actions/users';
 
 // Import bootstrap components
 import { Form, Button, Row, Col } from 'react-bootstrap';
 
 // Musician Form Page
-const MusicianForm = () => {
+const MusicianForm = ({ currentId }) => {
   const [userData, setUserData] = useState({
     type: 'Musician',
     name: '',
@@ -23,30 +23,40 @@ const MusicianForm = () => {
     bio: '',
   });
 
+  const user = useSelector((state) =>
+    currentId ? state.users.find((u) => u._id === currentId) : null
+  );
+
   const dispatch = useDispatch();
   const history = useHistory();
+
+  const heading = currentId
+    ? 'Edit Musician Profile'
+    : 'Create Musician Profile';
+
+  useEffect(() => {
+    if (user) setUserData(user);
+  }, [user]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    dispatch(createUser(userData));
+    if (currentId) {
+      dispatch(updateUser(currentId, userData));
+    } else {
+      dispatch(createUser(userData));
+    }
 
     sessionStorage.setItem('isAuthenticated', true);
+    sessionStorage.setItem('id', userData._id);
     sessionStorage.setItem('type', userData.type);
-    sessionStorage.setItem('name', userData.name);
-    sessionStorage.setItem('email', userData.email);
-    sessionStorage.setItem('instrument_1', userData.instrument_1);
-    sessionStorage.setItem('instrument_2', userData.instrument_2);
-    sessionStorage.setItem('genre', userData.genre);
-    sessionStorage.setItem('bio', userData.bio);
-    sessionStorage.setItem('portfolio', userData.portfolio);
 
     history.push('/');
   };
 
   return (
     <div className='form--musician'>
-      <h1>Create a new Musician Profile!</h1>
+      <h1>{heading}</h1>
       <Form className='text-left' onSubmit={handleSubmit}>
         <Form.Group controlId='name'>
           <Form.Label>Name</Form.Label>
@@ -128,23 +138,25 @@ const MusicianForm = () => {
               </Form.Control>
             </Form.Group>
           </Col>
-          <Form.Group controlId='primaryExpertise'>
-            <Form.Label>Primary Instrument Expertise Level</Form.Label>
-            <Form.Control
-              as='select'
-              defaultValue='Select'
-              value={userData.expertise_1}
-              onChange={(e) =>
-                setUserData({ ...userData, expertise_1: e.target.value })
-              }
-              required
-            >
-              <option name='Select'>Select</option>
-              <option name='Beginner'>Beginner</option>
-              <option name='Intermediate'>Intermediate</option>
-              <option name='Advanced'>Advanced</option>
-            </Form.Control>
-          </Form.Group>
+          <Col>
+            <Form.Group controlId='primaryExpertise'>
+              <Form.Label>Primary Instrument Expertise Level</Form.Label>
+              <Form.Control
+                as='select'
+                defaultValue='Select'
+                value={userData.expertise_1}
+                onChange={(e) =>
+                  setUserData({ ...userData, expertise_1: e.target.value })
+                }
+                required
+              >
+                <option name='Select'>Select</option>
+                <option name='Beginner'>Beginner</option>
+                <option name='Intermediate'>Intermediate</option>
+                <option name='Advanced'>Advanced</option>
+              </Form.Control>
+            </Form.Group>
+          </Col>
         </Row>
 
         <Row>
@@ -169,22 +181,24 @@ const MusicianForm = () => {
               </Form.Control>
             </Form.Group>
           </Col>
-          <Form.Group controlId='secondaryExpertise'>
-            <Form.Label>Secondary Instrument Expertise Level</Form.Label>
-            <Form.Control
-              as='select'
-              defaultValue='Select'
-              value={userData.expertise_2}
-              onChange={(e) =>
-                setUserData({ ...userData, expertise_2: e.target.value })
-              }
-            >
-              <option name='Select'>Select</option>
-              <option name='Beginner'>Beginner</option>
-              <option name='Intermediate'>Intermediate</option>
-              <option name='Advanced'>Advanced</option>
-            </Form.Control>
-          </Form.Group>
+          <Col>
+            <Form.Group controlId='secondaryExpertise'>
+              <Form.Label>Secondary Instrument Expertise Level</Form.Label>
+              <Form.Control
+                as='select'
+                defaultValue='Select'
+                value={userData.expertise_2}
+                onChange={(e) =>
+                  setUserData({ ...userData, expertise_2: e.target.value })
+                }
+              >
+                <option name='Select'>Select</option>
+                <option name='Beginner'>Beginner</option>
+                <option name='Intermediate'>Intermediate</option>
+                <option name='Advanced'>Advanced</option>
+              </Form.Control>
+            </Form.Group>
+          </Col>
         </Row>
 
         <Form.Group controlId='portfolio'>

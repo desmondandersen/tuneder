@@ -10,8 +10,6 @@ import { Link } from 'react-router-dom';
 // Navigation Bar Component
 const NavBar = () => {
   let isLoggedIn = sessionStorage.getItem('isAuthenticated');
-  // const [count, setCount] = useState(0);
-  // setCount(count+1);
   const [loggedIn, setloggedIn] = useState(0);
 
   function handleLogOut() {
@@ -43,7 +41,7 @@ const NavBar = () => {
         <Navbar.Collapse className='justify-content-end'>
           <Nav>
             <LinkContainer to='/account'>
-              <Nav.Link>{isLoggedIn ? 'My Account' : 'my account'}</Nav.Link>
+              <Nav.Link>My Account</Nav.Link>
             </LinkContainer>
             <LinkContainer
               to='/login'
@@ -51,7 +49,7 @@ const NavBar = () => {
                 handleLogOut();
               }}
             >
-              <Nav.Link>{isLoggedIn ? 'Log Out' : 'log out'}</Nav.Link>
+              <Nav.Link>Log Out</Nav.Link>
             </LinkContainer>
           </Nav>
         </Navbar.Collapse>

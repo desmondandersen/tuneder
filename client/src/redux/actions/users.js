@@ -25,3 +25,16 @@ export const createUser = (user) => async (dispatch) => {
     console.log(error.message);
   }
 };
+
+// Action: edit a user
+export const updateUser = (id, user) => async (dispatch) => {
+  try {
+    const { data } = await api.updateUser(id, user);
+    const action = { type: 'UPDATE', payload: data };
+    console.log('Updating user');
+    dispatch(action);
+  } catch (error) {
+    console.log('Error updating user...');
+    console.log(error.message);
+  }
+};

@@ -1,14 +1,14 @@
 // Import React and Redux
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { createUser } from '../redux/actions/users';
+import { createUser, updateUser } from '../redux/actions/users';
 
 // Import bootstrap components
 import { Form, Button, Row, Col } from 'react-bootstrap';
 
 // Venue Form Page
-const VenueForm = () => {
+const VenueForm = ({ currentId }) => {
   const [userData, setUserData] = useState({
     type: 'Venue',
     name: '',
@@ -19,29 +19,39 @@ const VenueForm = () => {
     state: '',
     zip: '',
   });
+
+  const user = useSelector((state) =>
+    currentId ? state.users.find((u) => u._id === currentId) : null
+  );
+
   const dispatch = useDispatch();
   const history = useHistory();
 
+  const heading = currentId ? 'Edit Venue Profile' : 'Create Venue Profile';
+
+  useEffect(() => {
+    if (user) setUserData(user);
+  }, [user]);
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    dispatch(createUser(userData));
+
+    if (currentId) {
+      dispatch(updateUser(currentId, userData));
+    } else {
+      dispatch(createUser(userData));
+    }
 
     sessionStorage.setItem('isAuthenticated', true);
+    sessionStorage.setItem('id', userData._id);
     sessionStorage.setItem('type', userData.type);
-    sessionStorage.setItem('name', userData.name);
-    sessionStorage.setItem('email', userData.email);
-    sessionStorage.setItem('address', userData.address);
-    sessionStorage.setItem('city', userData.city);
-    sessionStorage.setItem('state', userData.state);
-    sessionStorage.setItem('zip', userData.zip);
-    sessionStorage.setItem('description', userData.description);
 
     history.push('/');
   };
 
   return (
     <div className='form--venue'>
-      <h1>Create a Venue</h1>
+      <h1>{heading}</h1>
       <Form onSubmit={handleSubmit}>
         <Form.Group controlId='name'>
           <Form.Label>Venue Name</Form.Label>
@@ -175,9 +185,7 @@ const VenueForm = () => {
           <Form.Control
             placeholder='Yelp, Facebook, Instagram, etc.'
             value={userData.yelp}
-            onChange={(e) =>
-              setUserData({ ...userData, yelp: e.target.value })
-            }
+            onChange={(e) => setUserData({ ...userData, yelp: e.target.value })}
             required
           />
         </Form.Group>

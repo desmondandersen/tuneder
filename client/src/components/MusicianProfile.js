@@ -6,7 +6,6 @@ import { LinkContainer } from 'react-router-bootstrap';
 
 // Musician Profile Card
 const MusicianProfile = (props) => {
-  console.log(props.name + ': ' + props.expertise);
   return (
     <Card className='card--musician'>
       <Card.Body>
@@ -30,9 +29,7 @@ const MusicianProfile = (props) => {
               },
             }}
           >
-            <Nav.Link>
-              <Button variant='primary'>Full Profile</Button>
-            </Nav.Link>
+            <Button variant='primary'>Full Profile</Button>
           </LinkContainer>
         </Nav>
       </Card.Body>

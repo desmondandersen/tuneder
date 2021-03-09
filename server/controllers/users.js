@@ -1,4 +1,5 @@
 import express from 'express';
+import mongoose from 'mongoose';
 
 import Users from '../models/userModel.js';
 
@@ -8,17 +9,6 @@ const router = express.Router();
 export const getUsers = async (req, res) => {
   try {
     const users = await Users.find();
-
-    res.status(200).json(users);
-  } catch (error) {
-    res.status(404).json({ message: error.message });
-  }
-};
-
-// Get emails and passwords information
-export const getUsersLogin = async (req, res) => {
-  try {
-    const users = await Users.find({}, { email: 1, password: 1 });
 
     res.status(200).json(users);
   } catch (error) {

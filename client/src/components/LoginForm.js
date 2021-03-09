@@ -38,25 +38,12 @@ const Login = () => {
           sessionStorage.setItem('isAuthenticated', true);
 
           if (all_users[i].type === 'Venue') {
+            sessionStorage.setItem('id', all_users[i]._id);
             sessionStorage.setItem('type', all_users[i].type);
-            sessionStorage.setItem('name', all_users[i].name);
-            sessionStorage.setItem('email', all_users[i].email);
-            sessionStorage.setItem('address', all_users[i].address);
-            sessionStorage.setItem('city', all_users[i].city);
-            sessionStorage.setItem('state', all_users[i].state);
-            sessionStorage.setItem('zip', all_users[i].audience_size);
-            sessionStorage.setItem('description', all_users[i].description);
           } else {
+            console.log(all_users[i]);
+            sessionStorage.setItem('id', all_users[i]._id);
             sessionStorage.setItem('type', all_users[i].type);
-            sessionStorage.setItem('name', all_users[i].name);
-            sessionStorage.setItem('email', all_users[i].email);
-            sessionStorage.setItem('instrument_1', all_users[i].instrument_1);
-            sessionStorage.setItem('instrument_2', all_users[i].instrument_2);
-            sessionStorage.setItem('expertise_1', all_users[i].expertise_1);
-            sessionStorage.setItem('expertise_2', all_users[i].expertise_2);
-            sessionStorage.setItem('genre', all_users[i].genre);
-            sessionStorage.setItem('bio', all_users[i].bio);
-            sessionStorage.setItem('portfolio', all_users[i].portfolio);
           }
 
           history.push('/');
