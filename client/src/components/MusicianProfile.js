@@ -8,11 +8,11 @@ import { LinkContainer } from 'react-router-bootstrap';
 const MusicianProfile = (props) => {
   //console.log(props.name + ': ' + props.instrument_1);
   return (
-    <Card className='card--musician'>
+    <Card className='card--musician' >
       <Card.Body>
-        <Card.Title>{props.instrument_one}</Card.Title>
-        <Card.Subtitle>{props.genre}</Card.Subtitle>
-        <Card.Text>{props.name}</Card.Text>
+        <Card.Title>{props.name}</Card.Title>
+        <Card.Subtitle>{props.instrument_1}</Card.Subtitle>
+        <Card.Text>{props.genre}</Card.Text>
         <Nav activeKey={window.location.pathname}>
           <LinkContainer
             to={{

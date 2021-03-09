@@ -1,8 +1,9 @@
 import React from 'react';
 
-import { NavLink } from 'react-router-dom';
+import { NavLink, Redirect } from 'react-router-dom';
 import { withRouter } from 'react-router';
 import ReactPlayer from 'react-player/lazy'
+
 
 // Import bootstrap components
 import { Button } from 'react-bootstrap';
@@ -10,8 +11,10 @@ import { Button } from 'react-bootstrap';
 import VenueInfo from './VenueInfo.js';
 import MusicianInfo from './MusicianInfo.js';
 
-// Musician Info Page
+
+
 const MyAccount = () => {
+
     let type = sessionStorage.getItem('type');
 
     if(type == 'Venue')
@@ -35,16 +38,11 @@ const MyAccount = () => {
                         <strong>Address: </strong>
                         {address}, {city}, {state} {zip}
                         <br />
-                        <strong>Contact: </strong>
+                        <strong>Your email: </strong>
                         <a href={`mailto:${email}`}>{email} </a>
                         <br />
                     </p>
-                    <Button href={`mailto:${email}`} variant='primary'>
-                        Message
-                    </Button>{' '}
-                    <NavLink to='/' activeClassName='active'>
-                        <Button variant='outline-secondary'>See more venues</Button>
-                    </NavLink>
+                    <Button> Edit Info</Button>
                 </div>
             </div>
         );
@@ -70,9 +68,6 @@ const MyAccount = () => {
           else return instrument_1;
         };
       
-        if(portfolio == ""){
-          portfolio = "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-        }
       
         return (
           <div className='form-details1'>
@@ -85,19 +80,16 @@ const MyAccount = () => {
                 <br />
                 <strong>Instruments: </strong> {renderInstruments()}
                 <br />
-                <strong>Contact: </strong>
+                <strong>Your email: </strong>
                 <a href={`mailto:${email}`}>{email} </a>
               </p>
-              <Button href={`mailto:${email}`} variant='primary'>
-                Message
-              </Button>{' '}
-              <NavLink to='/' activeClassName='active'>
-                <Button variant='outline-secondary'>See more musicians</Button>
+              <NavLink to='/edit-info' activeClassName='active'>
+            <Button >Edit Info</Button>
+            </NavLink>
+               <NavLink to='/' activeClassName='active'>
+                <Button variant = 'outline-secondary'>Back to Home</Button>
               </NavLink>
             </div>
-            <NavLink to='/' activeClassName='active'>
-              <Button>See more venues</Button>
-            </NavLink>
             <div>
               <ReactPlayer
                 url={portfolio}
@@ -107,6 +99,8 @@ const MyAccount = () => {
           </div>
         );
     }
+
+    
 };
 
 export default withRouter(MyAccount);

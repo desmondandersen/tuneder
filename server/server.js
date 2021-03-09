@@ -18,6 +18,12 @@ const CONNECTION_URL =
   'mongodb+srv://dbAdmin:eggert97@cluster0.nayet.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
 const PORT = process.env.PORT || 5000;
 
+app.use('/login', (req, res) => {
+  res.send({
+    token: 'test123'
+  });
+});
+
 mongoose
   .connect(CONNECTION_URL, {
     useNewUrlParser: true,
