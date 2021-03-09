@@ -12,12 +12,10 @@ const NavBar = () => {
   let isLoggedIn = sessionStorage.getItem('isAuthenticated');
   const [loggedIn, setloggedIn] = useState(0);
 
-  function handleLogOut() {
+  const handleLogOut = () => {
     setloggedIn(1);
-    console.log('loggedIn:', loggedIn);
     sessionStorage.clear();
-    console.log('Logged Out');
-  }
+  };
 
   return (
     <Container>
