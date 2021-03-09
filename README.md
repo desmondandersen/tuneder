@@ -8,4 +8,4 @@ Make sure you have the latest versions of node and npm installed.
 
 1. Clone repository and navigate to project directory.
 2. Within /server folder run `npm install` then `npm start`.
-3. Within /client folder run `npm install` then `yarn start`.
+3. Within /client folder run `npm install` then `npm start`.
