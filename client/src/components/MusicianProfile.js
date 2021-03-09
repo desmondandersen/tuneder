@@ -6,9 +6,9 @@ import { LinkContainer } from 'react-router-bootstrap';
 
 // Musician Profile Card
 const MusicianProfile = (props) => {
-  //console.log(props.name + ': ' + props.instrument_1);
+  console.log(props.name + ': ' + props.expertise);
   return (
-    <Card className='card--musician' >
+    <Card className='card--musician'>
       <Card.Body>
         <Card.Title>{props.name}</Card.Title>
         <Card.Subtitle>{props.instrument_1}</Card.Subtitle>
@@ -21,7 +21,9 @@ const MusicianProfile = (props) => {
                 musician_name: props.name,
                 email: props.email,
                 instrument_1: props.instrument_1,
+                expertise_1: props.expertise_1,
                 instrument_2: props.instrument_2,
+                expertise_2: props.expertise_2,
                 genre: props.genre,
                 bio: props.bio,
                 portfolio: props.portfolio,

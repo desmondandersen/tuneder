@@ -1,7 +1,7 @@
 // Import React and Redux
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { createUser } from '../redux/actions/users';
 
 // Import bootstrap components
@@ -25,7 +25,6 @@ const MusicianForm = () => {
 
   const dispatch = useDispatch();
   const history = useHistory();
-
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -128,24 +127,24 @@ const MusicianForm = () => {
                 <option name='Other'>Other (add to notes section)</option>
               </Form.Control>
             </Form.Group>
-            </Col>
-            <Form.Group controlId='primaryExpertise'>
-              <Form.Label>Primary Instrument Expertise Level</Form.Label>
-              <Form.Control
-                as='select'
-                defaultValue='Select'
-                value={userData.expertise_1}
-                onChange={(e) =>
-                  setUserData({ ...userData, expertise_1: e.target.value })
-                }
-                required
-              >
-                <option name='Select'>Select</option>
-                <option name='Beginner'>Beginner</option>
-                <option name='Intermediate'>Intermediate</option>
-                <option name='Advanced'>Advanced</option>
-              </Form.Control>
-            </Form.Group>
+          </Col>
+          <Form.Group controlId='primaryExpertise'>
+            <Form.Label>Primary Instrument Expertise Level</Form.Label>
+            <Form.Control
+              as='select'
+              defaultValue='Select'
+              value={userData.expertise_1}
+              onChange={(e) =>
+                setUserData({ ...userData, expertise_1: e.target.value })
+              }
+              required
+            >
+              <option name='Select'>Select</option>
+              <option name='Beginner'>Beginner</option>
+              <option name='Intermediate'>Intermediate</option>
+              <option name='Advanced'>Advanced</option>
+            </Form.Control>
+          </Form.Group>
         </Row>
 
         <Row>
@@ -159,7 +158,6 @@ const MusicianForm = () => {
                 onChange={(e) =>
                   setUserData({ ...userData, instrument_2: e.target.value })
                 }
-                required
               >
                 <option name='Select'>Select</option>
                 <option name='Drums'>Drums</option>
@@ -172,32 +170,32 @@ const MusicianForm = () => {
             </Form.Group>
           </Col>
           <Form.Group controlId='secondaryExpertise'>
-              <Form.Label>Secondary Instrument Expertise Level</Form.Label>
-              <Form.Control
-                as='select'
-                defaultValue='Select'
-                value={userData.expertise_2}
-                onChange={(e) =>
-                  setUserData({ ...userData, expertise_2: e.target.value })
-                }
-                required
-              >
-                <option name='Select'>Select</option>
-                <option name='Beginner'>Beginner</option>
-                <option name='Intermediate'>Intermediate</option>
-                <option name='Advanced'>Advanced</option>
-              </Form.Control>
-            </Form.Group>
+            <Form.Label>Secondary Instrument Expertise Level</Form.Label>
+            <Form.Control
+              as='select'
+              defaultValue='Select'
+              value={userData.expertise_2}
+              onChange={(e) =>
+                setUserData({ ...userData, expertise_2: e.target.value })
+              }
+            >
+              <option name='Select'>Select</option>
+              <option name='Beginner'>Beginner</option>
+              <option name='Intermediate'>Intermediate</option>
+              <option name='Advanced'>Advanced</option>
+            </Form.Control>
+          </Form.Group>
         </Row>
 
         <Form.Group controlId='portfolio'>
           <Form.Label>Portfolio Link</Form.Label>
-          <Form.Control placeholder='Youtube Link'
+          <Form.Control
+            placeholder='Youtube Link'
             value={userData.portfolio}
-            onChange={(e) => setUserData({ ...userData, portfolio: e.target.value })}
-          
+            onChange={(e) =>
+              setUserData({ ...userData, portfolio: e.target.value })
+            }
           />
-          
         </Form.Group>
         <Form.Group controlId='moreInfo'>
           <Form.Label>More Info</Form.Label>

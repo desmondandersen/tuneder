@@ -2,11 +2,10 @@
 import React from 'react';
 import { useState } from 'react';
 
-
 // Import bootstrap components
-import { Nav, Navbar, Form, Container, Button } from 'react-bootstrap';
+import { Nav, Navbar, Container } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 // Navigation Bar Component
 const NavBar = () => {
@@ -14,15 +13,14 @@ const NavBar = () => {
   // const [count, setCount] = useState(0);
   // setCount(count+1);
   const [loggedIn, setloggedIn] = useState(0);
-  
-  
+
   function handleLogOut() {
     setloggedIn(1);
-    console.log("loggedIn:", loggedIn);
+    console.log('loggedIn:', loggedIn);
     sessionStorage.clear();
-    console.log("Logged Out");
+    console.log('Logged Out');
   }
-  
+
   return (
     <Container>
       <Navbar
@@ -41,15 +39,19 @@ const NavBar = () => {
           </Navbar.Brand>
         </Link>
 
-
         <Navbar.Toggle />
         <Navbar.Collapse className='justify-content-end'>
           <Nav>
             <LinkContainer to='/account'>
               <Nav.Link>{isLoggedIn ? 'My Account' : 'my account'}</Nav.Link>
             </LinkContainer>
-            <LinkContainer to='/login' onClick={() => {handleLogOut()}}>
-              <Nav.Link>{(isLoggedIn) ? 'Log Out' : 'log out'}</Nav.Link>
+            <LinkContainer
+              to='/login'
+              onClick={() => {
+                handleLogOut();
+              }}
+            >
+              <Nav.Link>{isLoggedIn ? 'Log Out' : 'log out'}</Nav.Link>
             </LinkContainer>
           </Nav>
         </Navbar.Collapse>
