@@ -1,7 +1,6 @@
 // Import React and Redux
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { useState } from 'react'
 
 // Import bootstrap components
 import Container from 'react-bootstrap/Container';
@@ -14,33 +13,31 @@ import Form from 'react-bootstrap/Form';
 import VenueProfile from './VenueProfile';
 import MusicianProfile from './MusicianProfile';
 import Slideshow from './Slideshow';
-
-import NavBar from './NavBar.js'
+import NavBar from './NavBar'
 
 // Home Page
 const Home = () => {
   // Declare number of musician cards shown
-  let [nCards, setNCards] = useState(0)
+  const [nCards, setNCards] = useState(0)
   // Declare number of venue cards shown
-  let [nVenueCards, setNVenueCards] = useState(0);
+  const [nVenueCards, setNVenueCards] = useState(0);
 
-  /*logic to import all venues and musicians, 
-  then put them in separate arrays*/
-  var all = useSelector((state) => state.users);
-  var venues = [];
-  var musicians = [];
+  // Logic to import all venues and musicians, then put them in separate arrays
+  const all = useSelector((state) => state.users);
+  let venues = [];
+  let musicians = [];
   for (var i = 0; i < all.length; i++) {
     if (all[i].type === 'Venue') venues.push(all[i]);
     else musicians.push(all[i]);
   }
-  /* separate musicians array into 2 separate columns */
-   var [musicians1, setMusicians1] = React.useState(musicians);
-   var [musicians2, setMusicians2] = React.useState([]);
-  /* setup search logic */
-  const [searchTerm, setSearchTerm] = React.useState("");
+  // Separate musicians array into 2 separate columns
+   const [musicians1, setMusicians1] = useState(musicians);
+   const [musicians2, setMusicians2] = useState([]);
+  // Setup search logic
+  const [searchTerm, setSearchTerm] = useState("");
 
-  /* create useEffect hook for initial loading */
-  React.useEffect(() => {
+  // Create useEffect hook for initial loading
+  useEffect(() => {
     const results = musicians.filter(musician => (musician.instrument_1).toLowerCase().includes(""));
     const musicians1Results = [];
     const musicians2Results = [];
@@ -58,8 +55,8 @@ const Home = () => {
   const handleChange = event => {
     setSearchTerm(event.target.value);
   };
-  /* update musicians arrays for real-time search */
-  React.useEffect(() => {
+  // Update musicians arrays for real-time search
+  useEffect(() => {
     const results = musicians.filter(musician => (musician.instrument_1.concat(musician.name).concat(musician.genre)).toLowerCase().includes(searchTerm.toLocaleLowerCase()));
     const musicians1Results = [];
     const musicians2Results = [];
@@ -71,7 +68,7 @@ const Home = () => {
     setMusicians2(musicians2Results);
   }, [searchTerm]);
 
-  // functions to increment number of showing cards
+  // Functions to increment number of showing cards
   const clickMoreMusician = event => {
     setNCards(nCards+4);
   };
