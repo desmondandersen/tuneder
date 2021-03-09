@@ -1,6 +1,7 @@
 // Import React and Redux
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { useState } from 'react'
 
 // Import bootstrap components
 import Container from 'react-bootstrap/Container';
@@ -18,6 +19,11 @@ import NavBar from './NavBar.js'
 
 // Home Page
 const Home = () => {
+  // Declare number of musician cards shown
+  let [nCards, setNCards] = useState(0)
+  // Declare number of venue cards shown
+  let [nVenueCards, setNVenueCards] = useState(0);
+
   /*logic to import all venues and musicians, 
   then put them in separate arrays*/
   var all = useSelector((state) => state.users);
@@ -44,6 +50,9 @@ const Home = () => {
     }
     setMusicians1(musicians1Results);
     setMusicians2(musicians2Results);
+    // set nCards back to 4
+    setNCards(4);
+    setNVenueCards(4);
   }, [all]);
 
   const handleChange = event => {
@@ -51,7 +60,7 @@ const Home = () => {
   };
   /* update musicians arrays for real-time search */
   React.useEffect(() => {
-    const results = musicians.filter(musician => (musician.instrument_1).toLowerCase().includes(searchTerm.toLocaleLowerCase()));
+    const results = musicians.filter(musician => (musician.instrument_1.concat(musician.name).concat(musician.genre)).toLowerCase().includes(searchTerm.toLocaleLowerCase()));
     const musicians1Results = [];
     const musicians2Results = [];
     for (var j = 0; j < results.length; j++) {
@@ -61,6 +70,14 @@ const Home = () => {
     setMusicians1(musicians1Results);
     setMusicians2(musicians2Results);
   }, [searchTerm]);
+
+  // functions to increment number of showing cards
+  const clickMoreMusician = event => {
+    setNCards(nCards+4);
+  };
+  const clickMoreVenue = event => {
+    setNVenueCards(nVenueCards+4);
+  }
 
   return (
     <div className='home'>
@@ -75,7 +92,7 @@ const Home = () => {
         <Row>
           <Col>
             <h2>Venues</h2>
-            {venues.map((venue, key) => {
+            {venues.slice(0, nVenueCards).map((venue, key) => {
               return (
                 <VenueProfile
                   name={venue.name}
@@ -90,14 +107,14 @@ const Home = () => {
                 />
               );
             })}
-            <Button style={{ width: '100%' }}>See all venues</Button>
+            <Button style={{ width: '100%' }} onClick={clickMoreVenue}>See all venues</Button>
           </Col>
           <div>
             <h2>Musicians</h2>
             <Row>
               <div>
                 <Col>
-                  {musicians1.map((person, key) => {
+                  {musicians1.slice(0,nCards).map((person, key) => {
                     return (
                       <MusicianProfile
                         name={person.name}
@@ -115,7 +132,7 @@ const Home = () => {
               </div>
               <div>
                 <Col>
-                  {musicians2.map((person, key) => {
+                  {musicians2.slice(0,nCards).map((person, key) => {
                     return (
                       <MusicianProfile
                         name={person.name}
@@ -132,7 +149,7 @@ const Home = () => {
                 </Col>
               </div>
             </Row>
-            <Button style={{ width: '100%' }}>See more musicians</Button>
+            <Button style={{ width: '100%' }} onClick={clickMoreMusician}>See more musicians</Button>
           </div>
         </Row>
       </Container>
