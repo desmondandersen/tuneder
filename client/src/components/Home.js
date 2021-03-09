@@ -103,7 +103,7 @@ const Home = () => {
         <Slideshow />
         <Container>
           <Row>
-            <Col>
+            <Col md={7}>
               <h2>Venues</h2>
               {venues.slice(0, nVenueCards).map((venue, key) => {
                 return (
@@ -124,54 +124,51 @@ const Home = () => {
                 See all venues
               </Button>
             </Col>
-            <div>
+
+            <Col>
               <h2>Musicians</h2>
               <Row>
-                <div>
-                  <Col>
-                    {musicians1.slice(0, nCards).map((person, key) => {
-                      return (
-                        <MusicianProfile
-                          name={person.name}
-                          email={person.email}
-                          instrument_1={person.instrument_1}
-                          expertise_1={person.expertise_1}
-                          expertise_2={person.expertise_2}
-                          instrument_2={person.instrument_2}
-                          genre={person.genre}
-                          bio={person.bio}
-                          portfolio={person.portfolio}
-                          key={key}
-                        />
-                      );
-                    })}
-                  </Col>
-                </div>
-                <div>
-                  <Col>
-                    {musicians2.slice(0, nCards).map((person, key) => {
-                      return (
-                        <MusicianProfile
-                          name={person.name}
-                          email={person.email}
-                          instrument_1={person.instrument_1}
-                          expertise_1={person.expertise_1}
-                          expertise_2={person.expertise_2}
-                          instrument_2={person.instrument_2}
-                          genre={person.genre}
-                          bio={person.bio}
-                          portfolio={person.portfolio}
-                          key={key}
-                        />
-                      );
-                    })}
-                  </Col>
-                </div>
+                <Col>
+                  {musicians1.slice(0, nCards).map((person, key) => {
+                    return (
+                      <MusicianProfile
+                        name={person.name}
+                        email={person.email}
+                        instrument_1={person.instrument_1}
+                        expertise_1={person.expertise_1}
+                        expertise_2={person.expertise_2}
+                        instrument_2={person.instrument_2}
+                        genre={person.genre}
+                        bio={person.bio}
+                        portfolio={person.portfolio}
+                        key={key}
+                      />
+                    );
+                  })}
+                </Col>
+                <Col>
+                  {musicians2.slice(0, nCards).map((person, key) => {
+                    return (
+                      <MusicianProfile
+                        name={person.name}
+                        email={person.email}
+                        instrument_1={person.instrument_1}
+                        expertise_1={person.expertise_1}
+                        expertise_2={person.expertise_2}
+                        instrument_2={person.instrument_2}
+                        genre={person.genre}
+                        bio={person.bio}
+                        portfolio={person.portfolio}
+                        key={key}
+                      />
+                    );
+                  })}
+                </Col>
               </Row>
               <Button style={{ width: '100%' }} onClick={clickMoreMusician}>
                 See more musicians
               </Button>
-            </div>
+            </Col>
           </Row>
         </Container>
       </div>

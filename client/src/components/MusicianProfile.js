@@ -31,7 +31,9 @@ const MusicianProfile = (props) => {
               },
             }}
           >
-            <Button variant='primary'>Full Profile</Button>
+            <Nav.Link>
+              <Button variant='primary'>Full Profile</Button>
+            </Nav.Link>
           </LinkContainer>
         </Nav>
       </Card.Body>
