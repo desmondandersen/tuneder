@@ -55,7 +55,7 @@ const VenueInfo = (props) => {
           <Button href={yelp} target='_blank' variant='outline-secondary'>
             Find us {button_display}
           </Button>{' '}
-          <NavLink to='/' activeClassName='active'>
+          <NavLink to='/'>
             <Button variant='outline-secondary'>
               See All Venues and Musicians
             </Button>

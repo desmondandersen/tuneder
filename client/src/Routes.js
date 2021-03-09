@@ -11,6 +11,7 @@ import VenueForm from './components/VenueForm.js';
 import VenueInfo from './components/VenueInfo.js';
 import MusicianInfo from './components/MusicianInfo.js';
 import MyAccount from './components/MyAccount.js';
+import PageNotFound from './components/PageNotFound.js';
 
 // URL Routes
 const Routes = () => {
@@ -44,6 +45,9 @@ const Routes = () => {
       </Route>
       <Route exact path='/account'>
         <MyAccount />
+      </Route>
+      <Route path='*'>
+        <PageNotFound />
       </Route>
     </Switch>
   );

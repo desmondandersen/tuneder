@@ -14,7 +14,7 @@ const MusicianProfile = (props) => {
         <Card.Title>{props.name}</Card.Title>
         <Card.Subtitle>{props.instrument_1}</Card.Subtitle>
         <Card.Text>{props.genre}</Card.Text>
-        <Nav activeKey={window.location.pathname}>
+        <Nav>
           <LinkContainer
             to={{
               pathname: '/musician-info',

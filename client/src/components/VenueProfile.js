@@ -14,7 +14,7 @@ function VenueProfile(props) {
       <Card.Body>
         <Card.Title>{props.name}</Card.Title>
         <Card.Text>{props.city}</Card.Text>
-        <Nav activeKey={window.location.pathname}>
+        <Nav>
           <LinkContainer
             to={{
               pathname: '/venue-info',

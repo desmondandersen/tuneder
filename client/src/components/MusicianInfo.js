@@ -48,7 +48,7 @@ const MusicianInfo = (props) => {
           <Button href={`mailto:${email}`} variant='primary'>
             Message
           </Button>{' '}
-          <NavLink to='/' activeClassName='active'>
+          <NavLink to='/'>
             <Button variant='outline-secondary'>
               See All Venues and Musicians
             </Button>
