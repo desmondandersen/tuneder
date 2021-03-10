@@ -19,6 +19,7 @@ const VenueInfo = (props) => {
   const zip = props.location.state.zip;
   const description = props.location.state.description;
   const yelp = props.location.state.yelp;
+  const audience_size = props.location.state.audience_size;
 
   let button_display = '';
 
@@ -41,6 +42,9 @@ const VenueInfo = (props) => {
           <p>
             <strong>Description: </strong>
             {description}
+            <br />
+            <strong>Audience Size: </strong>
+            {audience_size} people
             <br />
             <strong>Address: </strong>
             {address}, {city}, {state} {zip}
