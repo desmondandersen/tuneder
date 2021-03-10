@@ -1,5 +1,9 @@
 @import 'react-slideshow-image/dist/styles.css';
 
+body {
+  background-color: #fef8f5;
+}
+
 .app {
   text-align: center;
   font-family: 'Helvetica Neue', sans-serif;
@@ -27,7 +31,7 @@
 }
 
 .custom-link {
-  color: #659afc;
+  color: #5f5f5f;
 }
 
 /* Forms */
@@ -49,9 +53,10 @@
 }
 
 .form-details1 {
-  float: left;
   position: relative;
-  left: 30%;
+  left: 25%;
+  width: 50%;
+  margin-bottom: 40px;
 }
 
 .form-details2 {
@@ -64,6 +69,7 @@
 .card--venue {
   margin-bottom: 10px;
   align-items: center;
+  border-radius: 10px 10px 10px 10px;
 }
 
 .card--venue .btn,
@@ -93,26 +99,50 @@
 /* Buttons */
 .btn-primary,
 .btn-primary:disabled {
-  color: #fff;
-  background-color: #659afc;
-  border-color: #929294;
+  color: #ffffff;
+  border-color: #f3b89b;
   border-width: 1px;
+
+  background-color: #f3b89b;
+  border-radius: 10px 10px 10px 10px;
+  font-family: "Open Sans", sans-serif;
 }
 
 .btn-primary:hover {
   color: #fff;
-  background-color: #4a89fd;
-  border-color: #929294;
+  background-color: #fc9561;
+  border-color: #fc9561;
 }
 
 .btn-outline-secondary {
+
+  border-radius: 10px 10px 10px 10px;
   margin: 5px;
+}
+
+.btn-outline-secondary hover{
+  background-color: #f3b89b;
+  border-color: f3b89b;
+
+}
+
+a{
+  color: #ce8f6f
+}
+
+a:hover{
+  color: #815b48
 }
 
 /* Navigation */
 .navbar {
+  background-color: #f3dcd1;
+  border-radius: 10px 10px 10px 10px;
+  padding-left: 20px;
+  padding-right: 20px;
   margin-top: 10px;
   margin-bottom: 10px;
+  font-family: "Open Sans", sans-serif;
 }
 
 .navbar__logo {

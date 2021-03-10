@@ -1,6 +1,6 @@
 // Import React
 import React from 'react';
-import { Route, Switch, Redirect } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
 // Import components
 import Home from './components/Home.js';
@@ -11,39 +11,44 @@ import VenueForm from './components/VenueForm.js';
 import VenueInfo from './components/VenueInfo.js';
 import MusicianInfo from './components/MusicianInfo.js';
 import MyAccount from './components/MyAccount.js';
-import EditProfile from './components/EditProfile.js'
-
-import ProtectedRoute from './ProtectedRoute.js';
+import PageNotFound from './components/PageNotFound.js';
 
 // URL Routes
 const Routes = () => {
-  let isAuthenticated = sessionStorage.getItem('isAuthenticated')
-  if(isAuthenticated == null) {
+  let isAuthenticated = sessionStorage.getItem('isAuthenticated');
+  if (isAuthenticated == null) {
     isAuthenticated = false;
   }
 
   return (
     <Switch>
-      <ProtectedRoute exact path='/' component={Home} isAuthenticated={isAuthenticated} />
+      <Route exact path='/'>
+        <Home />
+      </Route>
       <Route exact path='/login'>
         <LoginForm />
       </Route>
-
       <Route exact path='/create-account'>
         <CreateAccount />
       </Route>
-      
       <Route exact path='/new-venue'>
         <VenueForm />
       </Route>
       <Route exact path='/new-musician'>
         <MusicianForm />
       </Route>
-      <ProtectedRoute exact path='/venue-info' component={VenueInfo} isAuthenticated={isAuthenticated} />
-      <ProtectedRoute exact path='/musician-info' component={MusicianInfo} isAuthenticated={isAuthenticated} />
-      <ProtectedRoute exact path='/account' component={MyAccount} isAuthenticated={isAuthenticated} />
-      <ProtectedRoute exact path='/edit-info' component={EditProfile} isAuthenticated={isAuthenticated}/>
-      <Route render={() => <Redirect to="/login" />} />
+      <Route exact path='/venue-info'>
+        <VenueInfo />
+      </Route>
+      <Route exact path='/musician-info'>
+        <MusicianInfo />
+      </Route>
+      <Route exact path='/account'>
+        <MyAccount />
+      </Route>
+      <Route path='*'>
+        <PageNotFound />
+      </Route>
     </Switch>
   );
 };
