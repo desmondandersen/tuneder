@@ -24,6 +24,7 @@ const VenueForm = ({ currentId }) => {
     city: '',
     state: '',
     zip: '',
+    audience_size: '',
   });
 
   const user = useSelector((state) =>

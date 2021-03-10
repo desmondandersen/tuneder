@@ -28,6 +28,7 @@ function VenueProfile(props) {
                 zip: props.zip,
                 description: props.description,
                 yelp: props.yelp,
+                audience_size: props.audience_size,
               },
             }}
           >
