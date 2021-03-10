@@ -116,6 +116,7 @@ const Home = () => {
                     zip={venue.zip}
                     description={venue.description}
                     yelp={venue.yelp}
+                    audience_size={venue.audience_size}
                     key={key}
                   />
                 );
