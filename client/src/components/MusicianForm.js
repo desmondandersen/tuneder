@@ -1,65 +1,69 @@
 // Import React and Redux
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { useHistory, withRouter } from 'react-router-dom';
-import { createUser } from '../redux/actions/users';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+import { createUser, updateUser } from '../redux/actions/users';
 
 // Import bootstrap components
-import { Form, Button, Row, Col } from 'react-bootstrap';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+
+// Import components
+import NavBar from './NavBar';
 
 // Musician Form Page
-const MusicianForm = () => {
+const MusicianForm = ({ currentId }) => {
   const [userData, setUserData] = useState({
     type: 'Musician',
     name: '',
     email: '',
     password: '',
     instrument_1: '',
+    expertise_1: '',
     instrument_2: '',
+    expertise_2: '',
     genre: '',
     portfolio: '',
     bio: '',
   });
 
+  const user = useSelector((state) =>
+    currentId ? state.users.find((u) => u._id === currentId) : null
+  );
+
   const dispatch = useDispatch();
   let history = useHistory();
 
-  // function validPassword() {
-  //   return password.length > 4;
-  // }
-  // function validName() {
-  //   return firstName.length > 0;
-  // }
+  const heading = currentId
+    ? 'Edit Musician Profile'
+    : 'Create Musician Profile';
+
+  useEffect(() => {
+    if (user) setUserData(user);
+  }, [user]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    // if (!validPassword()) {
-    //   alert('Password too short. Change and resubmit');
-    //   return;
-    // }
-    // if (!validName()) {
-    //   alert('First Name is a required field. Please fill it in and resubmit.');
-    //   return;
-    // }
-    dispatch(createUser(userData));
+    if (currentId) {
+      dispatch(updateUser(currentId, userData));
+    } else {
+      dispatch(createUser(userData));
+    }
 
     sessionStorage.setItem('isAuthenticated', true);
+    sessionStorage.setItem('id', userData._id);
     sessionStorage.setItem('type', userData.type);
-    sessionStorage.setItem('name', userData.name);
-    sessionStorage.setItem('email', userData.email);
-    sessionStorage.setItem('instrument_1', userData.instrument_1);
-    sessionStorage.setItem('instrument_2', userData.instrument_2);
-    sessionStorage.setItem('genre', userData.genre);
-    sessionStorage.setItem('bio', userData.bio);
-    sessionStorage.setItem('portfolio', userData.portfolio);
 
     //history.push('/');
   };
 
   return (
     <div className='form--musician'>
-      <h1>Create a new Musician Profile!</h1>
+      <NavBar />
+      <h1>{heading}</h1>
       <Form className='text-left' onSubmit={handleSubmit}>
         <Form.Group controlId='name'>
           <Form.Label>Name</Form.Label>
@@ -141,22 +145,25 @@ const MusicianForm = () => {
               </Form.Control>
             </Form.Group>
           </Col>
-
-          <Form.Group as={Col} controlId='primaryExpertise'>
-            <Form.Label>Level of Expertise</Form.Label>
-            <br />
-            <div key='inline-radio' className='mb-3'>
-              {[1, 2, 3, 4, 5].map((index) => (
-                <Form.Check
-                  inline
-                  label={index}
-                  type='radio'
-                  id={`inline-radio-${index}`}
-                  value={index}
-                />
-              ))}
-            </div>
-          </Form.Group>
+          <Col>
+            <Form.Group controlId='primaryExpertise'>
+              <Form.Label>Primary Instrument Expertise Level</Form.Label>
+              <Form.Control
+                as='select'
+                defaultValue='Select'
+                value={userData.expertise_1}
+                onChange={(e) =>
+                  setUserData({ ...userData, expertise_1: e.target.value })
+                }
+                required
+              >
+                <option name='Select'>Select</option>
+                <option name='Beginner'>Beginner</option>
+                <option name='Intermediate'>Intermediate</option>
+                <option name='Advanced'>Advanced</option>
+              </Form.Control>
+            </Form.Group>
+          </Col>
         </Row>
 
         <Row>
@@ -170,7 +177,6 @@ const MusicianForm = () => {
                 onChange={(e) =>
                   setUserData({ ...userData, instrument_2: e.target.value })
                 }
-                required
               >
                 <option name='Select'>Select</option>
                 <option name='Drums'>Drums</option>
@@ -182,37 +188,44 @@ const MusicianForm = () => {
               </Form.Control>
             </Form.Group>
           </Col>
-
-          <Form.Group as={Col} controlId='secondaryExpertise'>
-            <Form.Label>Level of Expertise</Form.Label>
-            <br />
-            <div key='inline-radio' className='mb-3'>
-              {[1, 2, 3, 4, 5].map((index) => (
-                <Form.Check
-                  inline
-                  label={index}
-                  type='radio'
-                  id={`inline-radio-${index}`}
-                  value={index}
-                />
-              ))}
-            </div>
-          </Form.Group>
+          <Col>
+            <Form.Group controlId='secondaryExpertise'>
+              <Form.Label>Secondary Instrument Expertise Level</Form.Label>
+              <Form.Control
+                as='select'
+                defaultValue='Select'
+                value={userData.expertise_2}
+                onChange={(e) =>
+                  setUserData({ ...userData, expertise_2: e.target.value })
+                }
+              >
+                <option name='Select'>Select</option>
+                <option name='Beginner'>Beginner</option>
+                <option name='Intermediate'>Intermediate</option>
+                <option name='Advanced'>Advanced</option>
+              </Form.Control>
+            </Form.Group>
+          </Col>
         </Row>
 
         <Form.Group controlId='portfolio'>
           <Form.Label>Portfolio Link</Form.Label>
-          <Form.Control placeholder='Youtube Link' />
+          <Form.Control
+            placeholder='Youtube Link'
+            value={userData.portfolio}
+            onChange={(e) =>
+              setUserData({ ...userData, portfolio: e.target.value })
+            }
+          />
         </Form.Group>
-
         <Form.Group controlId='moreInfo'>
-          <Form.Label>Notes</Form.Label>
+          <Form.Label>More Info</Form.Label>
           <Form.Control
             as='textarea'
             rows={5}
             placeholder='Enter a short bio or any other info you want on your profile'
-            value={userData.notes}
-            onChange={(e) => setUserData({ ...userData, bio: e.target.bio })}
+            value={userData.bio}
+            onChange={(e) => setUserData({ ...userData, bio: e.target.value })}
             required
           />
         </Form.Group>

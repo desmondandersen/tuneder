@@ -2,7 +2,9 @@
 import React from 'react';
 
 // Import bootstrap components
-import { Nav, Card, Button } from 'react-bootstrap';
+import Card from 'react-bootstrap/Card';
+import Button from 'react-bootstrap/Button';
+import Nav from 'react-bootstrap/Nav';
 import { LinkContainer } from 'react-router-bootstrap';
 
 // Venue Profile Card
@@ -11,8 +13,8 @@ function VenueProfile(props) {
     <Card className='card--venue'>
       <Card.Body>
         <Card.Title>{props.name}</Card.Title>
-        <Card.Text>{props.artist}</Card.Text>
-        <Nav activeKey={window.location.pathname}>
+        <Card.Text>{props.city}</Card.Text>
+        <Nav>
           <LinkContainer
             to={{
               pathname: '/venue-info',
@@ -26,6 +28,7 @@ function VenueProfile(props) {
                 zip: props.zip,
                 description: props.description,
                 yelp: props.yelp,
+                audience_size: props.audience_size,
               },
             }}
           >

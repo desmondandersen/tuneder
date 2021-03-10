@@ -1,52 +1,55 @@
 // Import React
 import React from 'react';
+import { useState } from 'react';
 
 // Import bootstrap components
-import { Nav, Navbar, Form, Container, Button } from 'react-bootstrap';
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
 import { LinkContainer } from 'react-router-bootstrap';
 import { Link } from 'react-router-dom';
 
 // Navigation Bar Component
 const NavBar = () => {
-  function handleLogOut() {
-    sessionStorage.removeItem('isAuthenticated');
-    if(sessionStorage.getItem('type') == 'Venue')
-    {
-      sessionStorage.removeItem('type');
-      sessionStorage.removeItem('name');
-      sessionStorage.removeItem('email');
-      sessionStorage.removeItem('address');
-      sessionStorage.removeItem('city');
-      sessionStorage.removeItem('state');
-      sessionStorage.removeItem('zip');
-      sessionStorage.removeItem('description');
-    }
-    else
-    {
-      sessionStorage.removeItem('type');
-      sessionStorage.removeItem('name');
-      sessionStorage.removeItem('email');
-      sessionStorage.removeItem('instrument_1');
-      sessionStorage.removeItem('instrument_2');
-      sessionStorage.removeItem('genre');
-      sessionStorage.removeItem('bio');
-      sessionStorage.removeItem('portfolio');
-    }
-  }
+  let isLoggedIn = sessionStorage.getItem('isAuthenticated');
+  const [loggedIn, setloggedIn] = useState(0);
 
-  // const [searchTerm, setSearchTerm] = React.useState("");
-  // const handleChange = event => {
-  //   setSearchTerm(event.target.value);
-  //   console.log(searchTerm);
-  //   return searchTerm;
-  // };
+  const handleLogOut = () => {
+    setloggedIn(1);
+    sessionStorage.clear();
+  };
+
+  const renderMenu = () => {
+    if (isLoggedIn) {
+      return (
+        <>
+          <LinkContainer to='/account'>
+            <Nav.Link>My Account</Nav.Link>
+          </LinkContainer>
+          <LinkContainer
+            to='/'
+            onClick={() => {
+              handleLogOut();
+            }}
+          >
+            <Nav.Link>Log Out</Nav.Link>
+          </LinkContainer>
+        </>
+      );
+    } else {
+      return (
+        <>
+          <LinkContainer to='/login'>
+            <Nav.Link>Login</Nav.Link>
+          </LinkContainer>
+        </>
+      );
+    }
+  };
+
   return (
     <Container>
-      <Navbar
-        collapseOnSelect
-        className='justify-content-between navbar'
-        expand='lg'
-      >
+      <Navbar collapseOnSelect expand='lg'>
         <Link to='/'>
           <Navbar.Brand>
             <img
@@ -57,24 +60,9 @@ const NavBar = () => {
             Tuneder
           </Navbar.Brand>
         </Link>
-
-        {/* <Form inline>
-          <Form.Control type='text' placeholder='Search' className='mr-sm-2' 
-            value={searchTerm}
-            onChange={handleChange}
-          />
-        </Form> */}
-
         <Navbar.Toggle />
         <Navbar.Collapse className='justify-content-end'>
-          <Nav>
-            <LinkContainer to='/account'>
-              <Nav.Link>My Account</Nav.Link>
-            </LinkContainer>
-            <LinkContainer to='/login' onClick={() => {handleLogOut()}}>
-              <Nav.Link>Log Out</Nav.Link>
-            </LinkContainer>
-          </Nav>
+          <Nav>{renderMenu()}</Nav>
         </Navbar.Collapse>
       </Navbar>
     </Container>
