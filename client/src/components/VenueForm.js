@@ -226,4 +226,4 @@ const VenueForm = ({ currentId }) => {
   );
 };
 
-export default withRouter(VenueForm);
+export default VenueForm;

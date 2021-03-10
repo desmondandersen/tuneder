@@ -238,4 +238,4 @@ const MusicianForm = ({ currentId }) => {
   );
 };
 
-export default withRouter(MusicianForm);
+export default MusicianForm;
