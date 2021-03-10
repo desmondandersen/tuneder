@@ -61,6 +61,7 @@ const VenueForm = ({ currentId }) => {
 
     sessionStorage.setItem('isAuthenticated', true);
     sessionStorage.setItem('email', userData.email);
+    sessionStorage.setItem('id', '');
     sessionStorage.setItem('type', userData.type);
 
     history.push('/');

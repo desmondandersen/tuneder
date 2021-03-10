@@ -13,16 +13,18 @@ import NavBar from './NavBar';
 
 const MyAccount = () => {
   const isLoggedIn = sessionStorage.getItem('isAuthenticated');
-  const id = sessionStorage.getItem('id');
+  let id = sessionStorage.getItem('id');
   const email = sessionStorage.getItem('email');
   const type = sessionStorage.getItem('type');
+  console.log(email);
 
   const all_users = useSelector((state) => state.users);
-  if (isLoggedIn && id === 'undefined') {
+  if (isLoggedIn && id === '') {
     for (let i = 0; i < all_users.length; i++) {
       if (email === all_users[i].email) {
+        console.log('Updating id');
         sessionStorage.setItem('id', all_users[i]._id);
-        console.log(all_users[i]);
+        id = all_users[i]._id;
       }
     }
   }
