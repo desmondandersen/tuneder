@@ -49,11 +49,7 @@ const NavBar = () => {
 
   return (
     <Container>
-      <Navbar
-        collapseOnSelect
-        className='bg-light justify-content-between navbar'
-        expand='lg'
-      >
+      <Navbar collapseOnSelect expand='lg'>
         <Link to='/'>
           <Navbar.Brand>
             <img
