@@ -2,27 +2,51 @@
 import React from 'react';
 import { useState } from 'react';
 
-
 // Import bootstrap components
-import { Nav, Navbar, Form, Container, Button } from 'react-bootstrap';
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
 import { LinkContainer } from 'react-router-bootstrap';
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 // Navigation Bar Component
 const NavBar = () => {
   let isLoggedIn = sessionStorage.getItem('isAuthenticated');
-  // const [count, setCount] = useState(0);
-  // setCount(count+1);
   const [loggedIn, setloggedIn] = useState(0);
-  
-  
-  function handleLogOut() {
+
+  const handleLogOut = () => {
     setloggedIn(1);
-    console.log("loggedIn:", loggedIn);
     sessionStorage.clear();
-    console.log("Logged Out");
-  }
-  
+  };
+
+  const renderMenu = () => {
+    if (isLoggedIn) {
+      return (
+        <>
+          <LinkContainer to='/account'>
+            <Nav.Link>My Account</Nav.Link>
+          </LinkContainer>
+          <LinkContainer
+            to='/'
+            onClick={() => {
+              handleLogOut();
+            }}
+          >
+            <Nav.Link>Log Out</Nav.Link>
+          </LinkContainer>
+        </>
+      );
+    } else {
+      return (
+        <>
+          <LinkContainer to='/login'>
+            <Nav.Link>Login</Nav.Link>
+          </LinkContainer>
+        </>
+      );
+    }
+  };
+
   return (
     <Container>
       <Navbar
@@ -40,18 +64,9 @@ const NavBar = () => {
             Tuneder
           </Navbar.Brand>
         </Link>
-
-
         <Navbar.Toggle />
         <Navbar.Collapse className='justify-content-end'>
-          <Nav>
-            <LinkContainer to='/account'>
-              <Nav.Link>{isLoggedIn ? 'My Account' : 'my account'}</Nav.Link>
-            </LinkContainer>
-            <LinkContainer to='/login' onClick={() => {handleLogOut()}}>
-              <Nav.Link>{(isLoggedIn) ? 'Log Out' : 'log out'}</Nav.Link>
-            </LinkContainer>
-          </Nav>
+          <Nav>{renderMenu()}</Nav>
         </Navbar.Collapse>
       </Navbar>
     </Container>

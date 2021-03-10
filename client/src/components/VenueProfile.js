@@ -2,17 +2,19 @@
 import React from 'react';
 
 // Import bootstrap components
-import { Nav, Card, Button } from 'react-bootstrap';
+import Card from 'react-bootstrap/Card';
+import Button from 'react-bootstrap/Button';
+import Nav from 'react-bootstrap/Nav';
 import { LinkContainer } from 'react-router-bootstrap';
 
 // Venue Profile Card
 function VenueProfile(props) {
   return (
-    <Card className='card--venue' >
+    <Card className='card--venue'>
       <Card.Body>
         <Card.Title>{props.name}</Card.Title>
         <Card.Text>{props.city}</Card.Text>
-        <Nav activeKey={window.location.pathname}>
+        <Nav>
           <LinkContainer
             to={{
               pathname: '/venue-info',

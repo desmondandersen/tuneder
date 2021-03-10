@@ -8,8 +8,6 @@ import './styles.css';
 
 // Import components
 import Routes from './Routes.js';
-import NavBar from './components/NavBar';
-
 
 const App = () => {
   const dispatch = useDispatch();
@@ -17,7 +15,6 @@ const App = () => {
 
   return (
     <div className='app'>
-      <NavBar />
       <Routes />
     </div>
   );

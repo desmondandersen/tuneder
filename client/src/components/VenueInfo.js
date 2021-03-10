@@ -4,7 +4,10 @@ import { NavLink } from 'react-router-dom';
 import { withRouter } from 'react-router';
 
 // Import bootstrap components
-import { Button } from 'react-bootstrap';
+import Button from 'react-bootstrap/Button';
+
+// Import components
+import NavBar from './NavBar';
 
 // Venue Info Page
 const VenueInfo = (props) => {
@@ -17,50 +20,49 @@ const VenueInfo = (props) => {
   const description = props.location.state.description;
   const yelp = props.location.state.yelp;
 
-  let button_display = "";
+  let button_display = '';
 
-  if (yelp.includes("yelp")){
-    button_display = "on Yelp"
+  if (yelp.includes('yelp')) {
+    button_display = 'on Yelp';
+  } else if (yelp.includes('facebook')) {
+    button_display = 'on Facebook';
+  } else if (yelp.includes('instagram')) {
+    button_display = 'on Instagram';
+  } else {
+    button_display = 'Elsewhere';
   }
-  else if (yelp.includes("facebook")){
-    button_display = "on Facebook"
-  }
-  else if (yelp.includes("instagram")){
-    button_display = "on Instagram"
-  }
-  else{
-    button_display = "Elsewhere"
-  }
-
-  
-
 
   return (
-    <div className='form-details1'>
-      <div className='form-details2'>
-        <h2>{venue_name}</h2>
-        <p>
-          <strong>Description: </strong>
-          {description}
-          <br />
-          <strong>Address: </strong>
-          {address}, {city}, {state} {zip}
-          <br />
-          <strong>Contact: </strong>
-          <a href={`mailto:${email}`}>{email} </a>
-          <br />
-        </p>
-        <Button href={`mailto:${email}`} variant='primary'>
-          Message
-        </Button>{' '}
-        <Button  href={yelp} target = '_blank' variant='outline-secondary'>
-          Find us {button_display}
-        </Button>{' '}
-        <NavLink to='/' activeClassName='active'>
-          <Button variant='outline-secondary'>See All Venues and Musicians</Button>
-        </NavLink>
+    <>
+      <NavBar />
+      <div className='form-details1'>
+        <div className='form-details2'>
+          <h2>{venue_name}</h2>
+          <p>
+            <strong>Description: </strong>
+            {description}
+            <br />
+            <strong>Address: </strong>
+            {address}, {city}, {state} {zip}
+            <br />
+            <strong>Contact: </strong>
+            <a href={`mailto:${email}`}>{email} </a>
+            <br />
+          </p>
+          <Button href={`mailto:${email}`} variant='primary'>
+            Message
+          </Button>{' '}
+          <Button href={yelp} target='_blank' variant='outline-secondary'>
+            Find us {button_display}
+          </Button>{' '}
+          <NavLink to='/'>
+            <Button variant='outline-secondary'>
+              See All Venues and Musicians
+            </Button>
+          </NavLink>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
