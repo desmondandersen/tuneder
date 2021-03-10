@@ -1,7 +1,7 @@
 // Import React and Redux
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useHistory, withRouter } from 'react-router-dom';
 import { createUser } from '../redux/actions/users';
 
 // Import bootstrap components
@@ -22,7 +22,7 @@ const MusicianForm = () => {
   });
 
   const dispatch = useDispatch();
-  const history = useHistory();
+  let history = useHistory();
 
   // function validPassword() {
   //   return password.length > 4;
@@ -54,7 +54,7 @@ const MusicianForm = () => {
     sessionStorage.setItem('bio', userData.bio);
     sessionStorage.setItem('portfolio', userData.portfolio);
 
-    history.push('/');
+    //history.push('/');
   };
 
   return (
@@ -225,4 +225,4 @@ const MusicianForm = () => {
   );
 };
 
-export default MusicianForm;
+export default withRouter(MusicianForm);

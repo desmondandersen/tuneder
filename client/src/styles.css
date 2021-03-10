@@ -1,5 +1,9 @@
 @import 'react-slideshow-image/dist/styles.css';
 
+body {
+  background-color: #fef8f5;
+}
+
 .app {
   text-align: center;
   font-family: 'Helvetica Neue', sans-serif;
@@ -111,8 +115,13 @@
 
 /* Navigation */
 .navbar {
+  background-color: #f3ebe7;
+  border-radius: 10px 10px 10px 10px;
+  padding-left: 20px;
+  padding-right: 20px;
   margin-top: 10px;
   margin-bottom: 10px;
+  font-family: "Open Sans", sans-serif;
 }
 
 .navbar__logo {

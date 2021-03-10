@@ -1,7 +1,7 @@
 // Import React
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { Link, Redirect, useHistory } from 'react-router-dom';
+import { Link, withRouter, useHistory } from 'react-router-dom';
 
 // Import bootstrap components
 import { Form, Button } from 'react-bootstrap';
@@ -108,4 +108,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default withRouter(Login);

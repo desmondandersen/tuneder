@@ -1,7 +1,7 @@
 // Import React and Redux
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useHistory, withRouter } from 'react-router-dom';
 import { createUser } from '../redux/actions/users';
 
 // Import bootstrap components
@@ -204,4 +204,4 @@ const VenueForm = () => {
   );
 };
 
-export default VenueForm;
+export default withRouter(VenueForm);

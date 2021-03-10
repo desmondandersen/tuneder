@@ -6,7 +6,6 @@ import { Nav, Navbar, Form, Container, Button } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import { Link } from 'react-router-dom';
 
-
 // Navigation Bar Component
 const NavBar = () => {
   function handleLogOut() {
@@ -45,7 +44,7 @@ const NavBar = () => {
     <Container>
       <Navbar
         collapseOnSelect
-        className='bg-light justify-content-between navbar'
+        className='justify-content-between navbar'
         expand='lg'
       >
         <Link to='/'>
