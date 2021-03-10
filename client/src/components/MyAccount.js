@@ -1,6 +1,6 @@
 // Import React
 import React from 'react';
-import { withRouter } from 'react-router';
+import { useSelector } from 'react-redux';
 
 // Import bootstrap components
 import { NavLink } from 'react-router-dom';
@@ -14,7 +14,18 @@ import NavBar from './NavBar';
 const MyAccount = () => {
   const isLoggedIn = sessionStorage.getItem('isAuthenticated');
   const id = sessionStorage.getItem('id');
+  const email = sessionStorage.getItem('email');
   const type = sessionStorage.getItem('type');
+
+  const all_users = useSelector((state) => state.users);
+  if (isLoggedIn && id === 'undefined') {
+    for (let i = 0; i < all_users.length; i++) {
+      if (email === all_users[i].email) {
+        sessionStorage.setItem('id', all_users[i]._id);
+        console.log(all_users[i]);
+      }
+    }
+  }
 
   if (isLoggedIn && type === 'Venue') {
     return <VenueForm currentId={id} />;
@@ -36,4 +47,4 @@ const MyAccount = () => {
   }
 };
 
-export default withRouter(MyAccount);
+export default MyAccount;
