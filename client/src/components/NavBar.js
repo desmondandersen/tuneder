@@ -24,10 +24,9 @@ const NavBar = () => {
   }
   
   return (
-    <Container>
-      <Navbar
+    <Container >
+      <Navbar 
         collapseOnSelect
-        className='bg-light justify-content-between navbar'
         expand='lg'
       >
         <Link to='/'>
@@ -46,10 +45,10 @@ const NavBar = () => {
         <Navbar.Collapse className='justify-content-end'>
           <Nav>
             <LinkContainer to='/account'>
-              <Nav.Link>{isLoggedIn ? 'My Account' : 'my account'}</Nav.Link>
+              <Nav.Link>{isLoggedIn ? 'My Account' : 'My Account'}</Nav.Link>
             </LinkContainer>
             <LinkContainer to='/login' onClick={() => {handleLogOut()}}>
-              <Nav.Link>{(isLoggedIn) ? 'Log Out' : 'log out'}</Nav.Link>
+              <Nav.Link>{(isLoggedIn) ? 'Log Out' : 'Log Out'}</Nav.Link>
             </LinkContainer>
           </Nav>
         </Navbar.Collapse>
