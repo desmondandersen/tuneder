@@ -43,14 +43,16 @@ const NavBar = () => {
 
         <Navbar.Toggle />
         <Navbar.Collapse className='justify-content-end'>
-          <Nav>
+          {/* <Nav>
             <LinkContainer to='/account'>
               <Nav.Link>{isLoggedIn ? 'My Account' : 'My Account'}</Nav.Link>
             </LinkContainer>
             <LinkContainer to='/login' onClick={() => {handleLogOut()}}>
               <Nav.Link>{(isLoggedIn) ? 'Log Out' : 'Log Out'}</Nav.Link>
             </LinkContainer>
-          </Nav>
+          </Nav> */}
+
+          <Nav>{renderMenu()}</Nav>
         </Navbar.Collapse>
       </Navbar>
     </Container>
