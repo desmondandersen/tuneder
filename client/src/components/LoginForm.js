@@ -113,7 +113,7 @@ const Login = () => {
   
           {/* if login info is valid, the button brings you to home. if not, button is disabled*/}
           <Link className='custom-link' to ='/'>
-          <Button id='submitButton' type='button' disabled={!validSubmission()} onClick={() => {handleLogin()}}>
+          <Button id='submitButton' type='submit' disabled={!validSubmission()} onClick={() => {handleLogin()}}>
               Login
           </Button>
           </Link>
