@@ -36,7 +36,7 @@ const MusicianForm = ({ currentId }) => {
   const all_users = useSelector((state) => state.users);
 
   const dispatch = useDispatch();
-  const history = useHistory();
+  let history = useHistory();
 
   const heading = currentId
     ? 'Edit Musician Profile'
@@ -68,7 +68,7 @@ const MusicianForm = ({ currentId }) => {
     sessionStorage.setItem('id', '');
     sessionStorage.setItem('type', userData.type);
 
-    history.push('/');
+    //history.push('/');
   };
 
   return (

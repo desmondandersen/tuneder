@@ -6,7 +6,7 @@ body {
 
 .app {
   text-align: center;
-  font-family: 'Helvetica Neue', sans-serif;
+  font-family: "Open Sans", sans-serif;
 }
 
 /* User Input */
@@ -81,7 +81,7 @@ body {
 .home .search {
   width: 250px;
   position: absolute;
-  left: 30%;
+  left: 19%;
   top: 20px;
 }
 .home .container {
@@ -195,4 +195,9 @@ a:hover{
   text-align: center;
   color: white;
   margin-top: 10px;
+}
+
+.sectiontext {
+  margin-bottom: 12px;
+  font-weight: 500;
 }
