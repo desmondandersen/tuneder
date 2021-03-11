@@ -31,6 +31,8 @@ const VenueForm = ({ currentId }) => {
     currentId ? state.users.find((u) => u._id === currentId) : null
   );
 
+  const all_users = useSelector((state) => state.users);
+
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -43,6 +45,14 @@ const VenueForm = ({ currentId }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
+    // Check for pre-existing email
+    for (let i = 0; i < all_users.length; i++) {
+      if (userData.email === all_users[i].email) {
+        alert('Warning: Account associated with email already exists.');
+        return;
+      }
+    }
+
     if (currentId) {
       dispatch(updateUser(currentId, userData));
     } else {
@@ -50,7 +60,8 @@ const VenueForm = ({ currentId }) => {
     }
 
     sessionStorage.setItem('isAuthenticated', true);
-    sessionStorage.setItem('id', userData._id);
+    sessionStorage.setItem('email', userData.email);
+    sessionStorage.setItem('id', '');
     sessionStorage.setItem('type', userData.type);
 
     history.push('/');
@@ -162,16 +173,6 @@ const VenueForm = ({ currentId }) => {
               />
             </Form.Group>
           </Form.Row>
-
-          {/*
-        <Form.Group>
-          <Form.File
-            id='venuepic'
-            label='Upload a picture of the venue'
-            custom
-          />
-        </Form.Group>
-        */}
 
           <Form.Group controlId='audience_size'>
             <Form.Label>What is the size of your audience?</Form.Label>

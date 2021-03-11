@@ -104,7 +104,7 @@ const Home = () => {
         <Container>
           <Row>
             <Col md={7}>
-              <h2>Venues</h2>
+              <h2 class='sectiontext'>Venues</h2>
               {venues.slice(0, nVenueCards).map((venue, key) => {
                 return (
                   <VenueProfile
@@ -127,7 +127,7 @@ const Home = () => {
             </Col>
 
             <Col>
-              <h2>Musicians</h2>
+              <h2 class='sectiontext'>Musicians</h2>
               <Row>
                 <Col>
                   {musicians1.slice(0, nCards).map((person, key) => {

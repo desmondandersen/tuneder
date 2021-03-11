@@ -35,8 +35,10 @@ const MusicianForm = ({ currentId }) => {
     currentId ? state.users.find((u) => u._id === currentId) : null
   );
 
+  const all_users = useSelector((state) => state.users);
+
   const dispatch = useDispatch();
-  const history = useHistory();
+  let history = useHistory();
 
   const heading = currentId
     ? 'Edit Musician Profile'
@@ -49,6 +51,14 @@ const MusicianForm = ({ currentId }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
+    // Check for pre-existing email
+    for (let i = 0; i < all_users.length; i++) {
+      if (userData.email === all_users[i].email) {
+        alert('Warning: Account associated with email already exists.');
+        return;
+      }
+    }
+
     if (currentId) {
       dispatch(updateUser(currentId, userData));
     } else {
@@ -56,10 +66,11 @@ const MusicianForm = ({ currentId }) => {
     }
 
     sessionStorage.setItem('isAuthenticated', true);
-    sessionStorage.setItem('id', userData._id);
+    sessionStorage.setItem('email', userData.email);
+    sessionStorage.setItem('id', '');
     sessionStorage.setItem('type', userData.type);
 
-    history.push('/');
+    //history.push('/');
   };
 
   return (
