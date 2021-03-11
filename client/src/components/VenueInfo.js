@@ -3,7 +3,6 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { withRouter } from 'react-router';
 //Import icons
-import { GiTheaterCurtains } from "react-icons/gi";
 import { SiMinutemailer } from "react-icons/si";
 
 // Import bootstrap components
@@ -41,13 +40,14 @@ const VenueInfo = (props) => {
       <NavBar />
       <div className='form-details1'>
         <div className='form-details2'>
+        <br /> <br /> <br /> <br />
           <h1>{venue_name}</h1>
           <p>
+          <strong>Audience Size: </strong>
+            {audience_size} people
+            <br />
             <strong>Description: </strong>
             {description}
-            <br />
-            <strong>Audience Size: </strong>
-            {audience_size} people
             <br />
             <strong>Address: </strong>
             {address}, {city}, {state} {zip}

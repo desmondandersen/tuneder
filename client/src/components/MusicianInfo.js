@@ -6,11 +6,8 @@ import ReactPlayer from 'react-player/lazy';
 
 // Import bootstrap components
 import Button from 'react-bootstrap/Button';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 
 //Import icons
-import { BsMusicNote } from "react-icons/bs";
 import { SiMinutemailer } from "react-icons/si";
 
 // Import components
@@ -61,14 +58,6 @@ const MusicianInfo = (props) => {
             </Button>
           </NavLink>
           <br/>
-          <BsMusicNote/><BsMusicNote/><BsMusicNote/><BsMusicNote/><BsMusicNote/><BsMusicNote/>
-            <BsMusicNote/><BsMusicNote/><BsMusicNote/>
-            <BsMusicNote/><BsMusicNote/><BsMusicNote/><BsMusicNote/><BsMusicNote/><BsMusicNote/><BsMusicNote/>
-            <BsMusicNote/><BsMusicNote/><BsMusicNote/>
-            <BsMusicNote/><BsMusicNote/><BsMusicNote/><BsMusicNote/><BsMusicNote/><BsMusicNote/><BsMusicNote/>
-            <BsMusicNote/><BsMusicNote/><BsMusicNote/>
-            <BsMusicNote/><BsMusicNote/><BsMusicNote/><BsMusicNote/><BsMusicNote/><BsMusicNote/><BsMusicNote/>
-            <BsMusicNote/><BsMusicNote/><BsMusicNote/><BsMusicNote/><BsMusicNote/><BsMusicNote/>
           <hr />
         </div>
         <ReactPlayer url={portfolio} controls={true} />
