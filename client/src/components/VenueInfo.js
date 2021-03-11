@@ -2,6 +2,9 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { withRouter } from 'react-router';
+//Import icons
+import { GiTheaterCurtains } from "react-icons/gi";
+import { SiMinutemailer } from "react-icons/si";
 
 // Import bootstrap components
 import Button from 'react-bootstrap/Button';
@@ -30,7 +33,7 @@ const VenueInfo = (props) => {
   } else if (yelp.includes('instagram')) {
     button_display = 'on Instagram';
   } else {
-    button_display = 'Elsewhere';
+    button_display = 'elsewhere';
   }
 
   return (
@@ -38,7 +41,7 @@ const VenueInfo = (props) => {
       <NavBar />
       <div className='form-details1'>
         <div className='form-details2'>
-          <h2>{venue_name}</h2>
+          <h1>{venue_name}</h1>
           <p>
             <strong>Description: </strong>
             {description}
@@ -54,7 +57,7 @@ const VenueInfo = (props) => {
             <br />
           </p>
           <Button href={`mailto:${email}`} variant='primary'>
-            Message
+            Message &nbsp;<SiMinutemailer/>
           </Button>{' '}
           <Button href={yelp} target='_blank' variant='outline-secondary'>
             Find us {button_display}

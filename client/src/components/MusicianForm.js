@@ -10,6 +10,8 @@ import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
+//Import icons
+import {FaGuitar } from 'react-icons/fa'
 // Import components
 import NavBar from './NavBar';
 
@@ -138,7 +140,7 @@ const MusicianForm = ({ currentId }) => {
                 <option name='Select'>Select</option>
                 <option name='Drums'>Drums</option>
                 <option name='Piano'>Piano</option>
-                <option name='Guitar'>Guitar</option>
+                <option name='Guitar'>Guitar </option>
                 <option name='Bass'>Bass</option>
                 <option name='Vocals'>Vocals</option>
                 <option name='Other'>Other (add to notes section)</option>

@@ -6,6 +6,12 @@ import ReactPlayer from 'react-player/lazy';
 
 // Import bootstrap components
 import Button from 'react-bootstrap/Button';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+
+//Import icons
+import { BsMusicNote } from "react-icons/bs";
+import { SiMinutemailer } from "react-icons/si";
 
 // Import components
 import NavBar from './NavBar';
@@ -33,26 +39,36 @@ const MusicianInfo = (props) => {
       <NavBar />
       <div className='form-details1'>
         <div className='form-details2'>
-          <h2>{musician_name}</h2>
+        <br /> <br /> <br />
+          <h1>{musician_name}</h1>
           <p>
-            <strong>Bio: </strong>
-            {bio}
-            <br />
             <strong>Genre: </strong> {genre}
             <br />
             <strong>Instruments: </strong> {renderInstruments()}
+            <br />
+            <strong>Bio: </strong>
+            {bio}
             <br />
             <strong>Contact: </strong>
             <a href={`mailto:${email}`}>{email} </a>
           </p>
           <Button href={`mailto:${email}`} variant='primary'>
-            Message
+            Message  &nbsp;<SiMinutemailer/>
           </Button>{' '}
           <NavLink to='/'>
             <Button variant='outline-secondary'>
               See All Venues and Musicians
             </Button>
           </NavLink>
+          <br/>
+          <BsMusicNote/><BsMusicNote/><BsMusicNote/><BsMusicNote/><BsMusicNote/><BsMusicNote/>
+            <BsMusicNote/><BsMusicNote/><BsMusicNote/>
+            <BsMusicNote/><BsMusicNote/><BsMusicNote/><BsMusicNote/><BsMusicNote/><BsMusicNote/><BsMusicNote/>
+            <BsMusicNote/><BsMusicNote/><BsMusicNote/>
+            <BsMusicNote/><BsMusicNote/><BsMusicNote/><BsMusicNote/><BsMusicNote/><BsMusicNote/><BsMusicNote/>
+            <BsMusicNote/><BsMusicNote/><BsMusicNote/>
+            <BsMusicNote/><BsMusicNote/><BsMusicNote/><BsMusicNote/><BsMusicNote/><BsMusicNote/><BsMusicNote/>
+            <BsMusicNote/><BsMusicNote/><BsMusicNote/><BsMusicNote/><BsMusicNote/><BsMusicNote/>
           <hr />
         </div>
         <ReactPlayer url={portfolio} controls={true} />
