@@ -10,8 +10,8 @@ import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
-//Import icons
-import {FaGuitar } from 'react-icons/fa'
+
+
 // Import components
 import NavBar from './NavBar';
 
@@ -51,9 +51,9 @@ const MusicianForm = ({ currentId }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    // Check for pre-existing email
+    //Check for pre-existing email
     for (let i = 0; i < all_users.length; i++) {
-      if (userData.email === all_users[i].email) {
+      if ((!currentId) && userData.email === all_users[i].email) {
         alert('Warning: Account associated with email already exists.');
         return;
       }
@@ -70,7 +70,7 @@ const MusicianForm = ({ currentId }) => {
     sessionStorage.setItem('id', '');
     sessionStorage.setItem('type', userData.type);
 
-    //history.push('/');
+    history.push('/');
   };
 
   return (

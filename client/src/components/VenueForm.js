@@ -47,7 +47,7 @@ const VenueForm = ({ currentId }) => {
 
     // Check for pre-existing email
     for (let i = 0; i < all_users.length; i++) {
-      if (userData.email === all_users[i].email) {
+      if ((!currentId) && userData.email === all_users[i].email) {
         alert('Warning: Account associated with email already exists.');
         return;
       }
