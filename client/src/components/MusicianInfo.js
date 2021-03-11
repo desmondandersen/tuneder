@@ -36,7 +36,7 @@ const MusicianInfo = (props) => {
       <NavBar />
       <div className='form-details1'>
         <div className='form-details2'>
-        <br /> <br /> <br />
+        <br /> 
           <h1>{musician_name}</h1>
           <p>
             <strong>Genre: </strong> {genre}
